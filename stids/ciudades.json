@@ -1,0 +1,4570 @@
+[
+  {
+    "id": 69,
+    "name": "Colombia, Amazonas, El Encanto"
+  },
+  {
+    "id": 70,
+    "name": "Colombia, Amazonas, La Chorrera"
+  },
+  {
+    "id": 71,
+    "name": "Colombia, Amazonas, La Pedrera"
+  },
+  {
+    "id": 72,
+    "name": "Colombia, Amazonas, La Victoria"
+  },
+  {
+    "id": 73,
+    "name": "Colombia, Amazonas, Leticia"
+  },
+  {
+    "id": 74,
+    "name": "Colombia, Amazonas, Mirití-Paraná"
+  },
+  {
+    "id": 75,
+    "name": "Colombia, Amazonas, Puerto Alegría"
+  },
+  {
+    "id": 76,
+    "name": "Colombia, Amazonas, Puerto Arica"
+  },
+  {
+    "id": 77,
+    "name": "Colombia, Amazonas, Puerto Nariño"
+  },
+  {
+    "id": 78,
+    "name": "Colombia, Amazonas, Puerto Santander"
+  },
+  {
+    "id": 79,
+    "name": "Colombia, Amazonas, Tarapacá"
+  },
+  {
+    "id": 149,
+    "name": "Colombia, Antioquia, Abejorral"
+  },
+  {
+    "id": 126,
+    "name": "Colombia, Antioquia, Abriaquí"
+  },
+  {
+    "id": 150,
+    "name": "Colombia, Antioquia, Alejandría"
+  },
+  {
+    "id": 172,
+    "name": "Colombia, Antioquia, Amagá"
+  },
+  {
+    "id": 99,
+    "name": "Colombia, Antioquia, Amalfi"
+  },
+  {
+    "id": 173,
+    "name": "Colombia, Antioquia, Andes"
+  },
+  {
+    "id": 174,
+    "name": "Colombia, Antioquia, Angelópolis"
+  },
+  {
+    "id": 109,
+    "name": "Colombia, Antioquia, Angostura"
+  },
+  {
+    "id": 100,
+    "name": "Colombia, Antioquia, Anorí"
+  },
+  {
+    "id": 127,
+    "name": "Colombia, Antioquia, Antioquia"
+  },
+  {
+    "id": 128,
+    "name": "Colombia, Antioquia, Anzá"
+  },
+  {
+    "id": 195,
+    "name": "Colombia, Antioquia, Apartadó"
+  },
+  {
+    "id": 196,
+    "name": "Colombia, Antioquia, Arboletes"
+  },
+  {
+    "id": 151,
+    "name": "Colombia, Antioquia, Argelia"
+  },
+  {
+    "id": 129,
+    "name": "Colombia, Antioquia, Armenia"
+  },
+  {
+    "id": 206,
+    "name": "Colombia, Antioquia, Barbosa"
+  },
+  {
+    "id": 207,
+    "name": "Colombia, Antioquia, Bello"
+  },
+  {
+    "id": 110,
+    "name": "Colombia, Antioquia, Belmira"
+  },
+  {
+    "id": 175,
+    "name": "Colombia, Antioquia, Betania"
+  },
+  {
+    "id": 176,
+    "name": "Colombia, Antioquia, Betulia"
+  },
+  {
+    "id": 111,
+    "name": "Colombia, Antioquia, Briceño"
+  },
+  {
+    "id": 130,
+    "name": "Colombia, Antioquia, Buriticá"
+  },
+  {
+    "id": 87,
+    "name": "Colombia, Antioquia, Cáceres"
+  },
+  {
+    "id": 131,
+    "name": "Colombia, Antioquia, Caicedo"
+  },
+  {
+    "id": 208,
+    "name": "Colombia, Antioquia, Caldas"
+  },
+  {
+    "id": 112,
+    "name": "Colombia, Antioquia, Campamento"
+  },
+  {
+    "id": 132,
+    "name": "Colombia, Antioquia, Cañasgordas"
+  },
+  {
+    "id": 93,
+    "name": "Colombia, Antioquia, Caracolí"
+  },
+  {
+    "id": 177,
+    "name": "Colombia, Antioquia, Caramanta"
+  },
+  {
+    "id": 197,
+    "name": "Colombia, Antioquia, Carepa"
+  },
+  {
+    "id": 113,
+    "name": "Colombia, Antioquia, Carolina del Príncipe"
+  },
+  {
+    "id": 88,
+    "name": "Colombia, Antioquia, Caucasia"
+  },
+  {
+    "id": 198,
+    "name": "Colombia, Antioquia, Chigorodó"
+  },
+  {
+    "id": 101,
+    "name": "Colombia, Antioquia, Cisneros"
+  },
+  {
+    "id": 178,
+    "name": "Colombia, Antioquia, Ciudad Bolívar"
+  },
+  {
+    "id": 153,
+    "name": "Colombia, Antioquia, Cocorná"
+  },
+  {
+    "id": 154,
+    "name": "Colombia, Antioquia, Concepción"
+  },
+  {
+    "id": 179,
+    "name": "Colombia, Antioquia, Concordia"
+  },
+  {
+    "id": 209,
+    "name": "Colombia, Antioquia, Copacabana"
+  },
+  {
+    "id": 133,
+    "name": "Colombia, Antioquia, Dabeiba"
+  },
+  {
+    "id": 114,
+    "name": "Colombia, Antioquia, Donmatías"
+  },
+  {
+    "id": 134,
+    "name": "Colombia, Antioquia, Ebéjico"
+  },
+  {
+    "id": 89,
+    "name": "Colombia, Antioquia, El Bagre"
+  },
+  {
+    "id": 152,
+    "name": "Colombia, Antioquia, El Carmen de Viboral"
+  },
+  {
+    "id": 155,
+    "name": "Colombia, Antioquia, El Peñol"
+  },
+  {
+    "id": 156,
+    "name": "Colombia, Antioquia, El Retiro"
+  },
+  {
+    "id": 157,
+    "name": "Colombia, Antioquia, El Santuario"
+  },
+  {
+    "id": 115,
+    "name": "Colombia, Antioquia, Entrerríos"
+  },
+  {
+    "id": 210,
+    "name": "Colombia, Antioquia, Envigado"
+  },
+  {
+    "id": 180,
+    "name": "Colombia, Antioquia, Fredonia"
+  },
+  {
+    "id": 135,
+    "name": "Colombia, Antioquia, Frontino"
+  },
+  {
+    "id": 136,
+    "name": "Colombia, Antioquia, Giraldo"
+  },
+  {
+    "id": 211,
+    "name": "Colombia, Antioquia, Girardota"
+  },
+  {
+    "id": 116,
+    "name": "Colombia, Antioquia, Gómez Plata"
+  },
+  {
+    "id": 158,
+    "name": "Colombia, Antioquia, Granada"
+  },
+  {
+    "id": 117,
+    "name": "Colombia, Antioquia, Guadalupe"
+  },
+  {
+    "id": 159,
+    "name": "Colombia, Antioquia, Guarne"
+  },
+  {
+    "id": 160,
+    "name": "Colombia, Antioquia, Guatapé"
+  },
+  {
+    "id": 137,
+    "name": "Colombia, Antioquia, Heliconia"
+  },
+  {
+    "id": 181,
+    "name": "Colombia, Antioquia, Hispania"
+  },
+  {
+    "id": 212,
+    "name": "Colombia, Antioquia, Itagüí"
+  },
+  {
+    "id": 118,
+    "name": "Colombia, Antioquia, Ituango"
+  },
+  {
+    "id": 182,
+    "name": "Colombia, Antioquia, Jardín"
+  },
+  {
+    "id": 183,
+    "name": "Colombia, Antioquia, Jericó"
+  },
+  {
+    "id": 161,
+    "name": "Colombia, Antioquia, La Ceja"
+  },
+  {
+    "id": 213,
+    "name": "Colombia, Antioquia, La Estrella"
+  },
+  {
+    "id": 184,
+    "name": "Colombia, Antioquia, La Pintada"
+  },
+  {
+    "id": 162,
+    "name": "Colombia, Antioquia, La Unión"
+  },
+  {
+    "id": 138,
+    "name": "Colombia, Antioquia, Liborina"
+  },
+  {
+    "id": 94,
+    "name": "Colombia, Antioquia, Maceo"
+  },
+  {
+    "id": 163,
+    "name": "Colombia, Antioquia, Marinilla"
+  },
+  {
+    "id": 214,
+    "name": "Colombia, Antioquia, Medellín"
+  },
+  {
+    "id": 185,
+    "name": "Colombia, Antioquia, Montebello"
+  },
+  {
+    "id": 199,
+    "name": "Colombia, Antioquia, Murindó"
+  },
+  {
+    "id": 200,
+    "name": "Colombia, Antioquia, Mutatá"
+  },
+  {
+    "id": 164,
+    "name": "Colombia, Antioquia, Nariño"
+  },
+  {
+    "id": 90,
+    "name": "Colombia, Antioquia, Nechí"
+  },
+  {
+    "id": 201,
+    "name": "Colombia, Antioquia, Necoclí"
+  },
+  {
+    "id": 139,
+    "name": "Colombia, Antioquia, Olaya"
+  },
+  {
+    "id": 140,
+    "name": "Colombia, Antioquia, Peque"
+  },
+  {
+    "id": 186,
+    "name": "Colombia, Antioquia, Pueblorrico"
+  },
+  {
+    "id": 95,
+    "name": "Colombia, Antioquia, Puerto Berrío"
+  },
+  {
+    "id": 96,
+    "name": "Colombia, Antioquia, Puerto Nare"
+  },
+  {
+    "id": 97,
+    "name": "Colombia, Antioquia, Puerto Triunfo"
+  },
+  {
+    "id": 102,
+    "name": "Colombia, Antioquia, Remedios"
+  },
+  {
+    "id": 165,
+    "name": "Colombia, Antioquia, Rionegro"
+  },
+  {
+    "id": 145,
+    "name": "Colombia, Antioquia, Sabanalarga"
+  },
+  {
+    "id": 215,
+    "name": "Colombia, Antioquia, Sabaneta"
+  },
+  {
+    "id": 187,
+    "name": "Colombia, Antioquia, Salgar"
+  },
+  {
+    "id": 119,
+    "name": "Colombia, Antioquia, San Andrés de Cuerquia"
+  },
+  {
+    "id": 166,
+    "name": "Colombia, Antioquia, San Carlos"
+  },
+  {
+    "id": 167,
+    "name": "Colombia, Antioquia, San Francisco"
+  },
+  {
+    "id": 142,
+    "name": "Colombia, Antioquia, San Jerónimo"
+  },
+  {
+    "id": 120,
+    "name": "Colombia, Antioquia, San José de la Montaña"
+  },
+  {
+    "id": 202,
+    "name": "Colombia, Antioquia, San Juan de Urabá"
+  },
+  {
+    "id": 168,
+    "name": "Colombia, Antioquia, San Luis"
+  },
+  {
+    "id": 121,
+    "name": "Colombia, Antioquia, San Pedro de los Milagros"
+  },
+  {
+    "id": 203,
+    "name": "Colombia, Antioquia, San Pedro de Urabá"
+  },
+  {
+    "id": 169,
+    "name": "Colombia, Antioquia, San Rafael"
+  },
+  {
+    "id": 103,
+    "name": "Colombia, Antioquia, San Roque"
+  },
+  {
+    "id": 170,
+    "name": "Colombia, Antioquia, San Vicente"
+  },
+  {
+    "id": 188,
+    "name": "Colombia, Antioquia, Santa Bárbara"
+  },
+  {
+    "id": 122,
+    "name": "Colombia, Antioquia, Santa Rosa de Osos"
+  },
+  {
+    "id": 104,
+    "name": "Colombia, Antioquia, Santo Domingo"
+  },
+  {
+    "id": 105,
+    "name": "Colombia, Antioquia, Segovia"
+  },
+  {
+    "id": 171,
+    "name": "Colombia, Antioquia, Sonsón"
+  },
+  {
+    "id": 147,
+    "name": "Colombia, Antioquia, Sopetrán"
+  },
+  {
+    "id": 189,
+    "name": "Colombia, Antioquia, Támesis"
+  },
+  {
+    "id": 91,
+    "name": "Colombia, Antioquia, Tarazá"
+  },
+  {
+    "id": 190,
+    "name": "Colombia, Antioquia, Tarso"
+  },
+  {
+    "id": 191,
+    "name": "Colombia, Antioquia, Titiribí"
+  },
+  {
+    "id": 123,
+    "name": "Colombia, Antioquia, Toledo"
+  },
+  {
+    "id": 204,
+    "name": "Colombia, Antioquia, Turbo"
+  },
+  {
+    "id": 148,
+    "name": "Colombia, Antioquia, Uramita"
+  },
+  {
+    "id": 192,
+    "name": "Colombia, Antioquia, Urrao"
+  },
+  {
+    "id": 124,
+    "name": "Colombia, Antioquia, Valdivia"
+  },
+  {
+    "id": 193,
+    "name": "Colombia, Antioquia, Valparaíso"
+  },
+  {
+    "id": 106,
+    "name": "Colombia, Antioquia, Vegachí"
+  },
+  {
+    "id": 194,
+    "name": "Colombia, Antioquia, Venecia"
+  },
+  {
+    "id": 205,
+    "name": "Colombia, Antioquia, Vigía del Fuerte"
+  },
+  {
+    "id": 107,
+    "name": "Colombia, Antioquia, Yalí"
+  },
+  {
+    "id": 125,
+    "name": "Colombia, Antioquia, Yarumal"
+  },
+  {
+    "id": 108,
+    "name": "Colombia, Antioquia, Yolombó"
+  },
+  {
+    "id": 98,
+    "name": "Colombia, Antioquia, Yondó"
+  },
+  {
+    "id": 92,
+    "name": "Colombia, Antioquia, Zaragoza"
+  },
+  {
+    "id": 80,
+    "name": "Colombia, Arauca, Arauca"
+  },
+  {
+    "id": 81,
+    "name": "Colombia, Arauca, Arauquita"
+  },
+  {
+    "id": 82,
+    "name": "Colombia, Arauca, Cravo Norte"
+  },
+  {
+    "id": 83,
+    "name": "Colombia, Arauca, Fortul"
+  },
+  {
+    "id": 84,
+    "name": "Colombia, Arauca, Puerto Rondón"
+  },
+  {
+    "id": 85,
+    "name": "Colombia, Arauca, Saravena"
+  },
+  {
+    "id": 86,
+    "name": "Colombia, Arauca, Tame"
+  },
+  {
+    "id": 3,
+    "name": "Colombia, Atlántico, Baranoa"
+  },
+  {
+    "id": 1,
+    "name": "Colombia, Atlántico, Barranquilla"
+  },
+  {
+    "id": 4,
+    "name": "Colombia, Atlántico, Campo de la Cruz"
+  },
+  {
+    "id": 5,
+    "name": "Colombia, Atlántico, Candelaria"
+  },
+  {
+    "id": 6,
+    "name": "Colombia, Atlántico, Galapa"
+  },
+  {
+    "id": 7,
+    "name": "Colombia, Atlántico, Juan de Acosta"
+  },
+  {
+    "id": 8,
+    "name": "Colombia, Atlántico, Luruaco"
+  },
+  {
+    "id": 9,
+    "name": "Colombia, Atlántico, Malambo"
+  },
+  {
+    "id": 10,
+    "name": "Colombia, Atlántico, Manatí"
+  },
+  {
+    "id": 11,
+    "name": "Colombia, Atlántico, Palmar de Varela"
+  },
+  {
+    "id": 12,
+    "name": "Colombia, Atlántico, Piojó"
+  },
+  {
+    "id": 13,
+    "name": "Colombia, Atlántico, Polonuevo"
+  },
+  {
+    "id": 14,
+    "name": "Colombia, Atlántico, Ponedera"
+  },
+  {
+    "id": 15,
+    "name": "Colombia, Atlántico, Puerto Colombia"
+  },
+  {
+    "id": 16,
+    "name": "Colombia, Atlántico, Repelón"
+  },
+  {
+    "id": 17,
+    "name": "Colombia, Atlántico, Sabanagrande"
+  },
+  {
+    "id": 18,
+    "name": "Colombia, Atlántico, Sabanalarga"
+  },
+  {
+    "id": 19,
+    "name": "Colombia, Atlántico, Santa Lucía"
+  },
+  {
+    "id": 20,
+    "name": "Colombia, Atlántico, Santo Tomás"
+  },
+  {
+    "id": 2,
+    "name": "Colombia, Atlántico, Soledad"
+  },
+  {
+    "id": 21,
+    "name": "Colombia, Atlántico, Suán"
+  },
+  {
+    "id": 22,
+    "name": "Colombia, Atlántico, Tubará"
+  },
+  {
+    "id": 23,
+    "name": "Colombia, Atlántico, Usiacurí"
+  },
+  {
+    "id": 559,
+    "name": "Colombia, Bogotá, Antonio Nariño"
+  },
+  {
+    "id": 556,
+    "name": "Colombia, Bogotá, Barrios Unidos"
+  },
+  {
+    "id": 551,
+    "name": "Colombia, Bogotá, Bosa"
+  },
+  {
+    "id": 546,
+    "name": "Colombia, Bogotá, Chapinero"
+  },
+  {
+    "id": 563,
+    "name": "Colombia, Bogotá, Ciudad Bolívar"
+  },
+  {
+    "id": 554,
+    "name": "Colombia, Bogotá, Engativá"
+  },
+  {
+    "id": 553,
+    "name": "Colombia, Bogotá, Fontibón"
+  },
+  {
+    "id": 552,
+    "name": "Colombia, Bogotá, Kennedy"
+  },
+  {
+    "id": 561,
+    "name": "Colombia, Bogotá, La Candelaria"
+  },
+  {
+    "id": 558,
+    "name": "Colombia, Bogotá, Los Mártires"
+  },
+  {
+    "id": 560,
+    "name": "Colombia, Bogotá, Puente Aranda"
+  },
+  {
+    "id": 562,
+    "name": "Colombia, Bogotá, Rafael Uribe Uribe"
+  },
+  {
+    "id": 548,
+    "name": "Colombia, Bogotá, San Cristóbal"
+  },
+  {
+    "id": 547,
+    "name": "Colombia, Bogotá, Santa Fe"
+  },
+  {
+    "id": 555,
+    "name": "Colombia, Bogotá, Suba"
+  },
+  {
+    "id": 564,
+    "name": "Colombia, Bogotá, Sumapaz"
+  },
+  {
+    "id": 557,
+    "name": "Colombia, Bogotá, Teusaquillo"
+  },
+  {
+    "id": 550,
+    "name": "Colombia, Bogotá, Tunjuelito"
+  },
+  {
+    "id": 545,
+    "name": "Colombia, Bogotá, Usaquén"
+  },
+  {
+    "id": 549,
+    "name": "Colombia, Bogotá, Usme"
+  },
+  {
+    "id": 216,
+    "name": "Colombia, Bolívar, Achí"
+  },
+  {
+    "id": 217,
+    "name": "Colombia, Bolívar, Altos del Rosario"
+  },
+  {
+    "id": 218,
+    "name": "Colombia, Bolívar, Arenal"
+  },
+  {
+    "id": 219,
+    "name": "Colombia, Bolívar, Arjona"
+  },
+  {
+    "id": 220,
+    "name": "Colombia, Bolívar, Arroyohondo"
+  },
+  {
+    "id": 221,
+    "name": "Colombia, Bolívar, Barranco de Loba"
+  },
+  {
+    "id": 222,
+    "name": "Colombia, Bolívar, Calamar"
+  },
+  {
+    "id": 223,
+    "name": "Colombia, Bolívar, Cantagallo"
+  },
+  {
+    "id": 225,
+    "name": "Colombia, Bolívar, Cartagena de Indias"
+  },
+  {
+    "id": 226,
+    "name": "Colombia, Bolívar, Cicuco"
+  },
+  {
+    "id": 227,
+    "name": "Colombia, Bolívar, Clemencia"
+  },
+  {
+    "id": 228,
+    "name": "Colombia, Bolívar, Córdoba"
+  },
+  {
+    "id": 224,
+    "name": "Colombia, Bolívar, El Carmen de Bolívar"
+  },
+  {
+    "id": 229,
+    "name": "Colombia, Bolívar, El Guamo"
+  },
+  {
+    "id": 230,
+    "name": "Colombia, Bolívar, El Peñón"
+  },
+  {
+    "id": 231,
+    "name": "Colombia, Bolívar, Hatillo de Loba"
+  },
+  {
+    "id": 232,
+    "name": "Colombia, Bolívar, Magangué"
+  },
+  {
+    "id": 233,
+    "name": "Colombia, Bolívar, Mahates"
+  },
+  {
+    "id": 234,
+    "name": "Colombia, Bolívar, Margarita"
+  },
+  {
+    "id": 235,
+    "name": "Colombia, Bolívar, María La Baja"
+  },
+  {
+    "id": 236,
+    "name": "Colombia, Bolívar, Montecristo"
+  },
+  {
+    "id": 237,
+    "name": "Colombia, Bolívar, Morales"
+  },
+  {
+    "id": 238,
+    "name": "Colombia, Bolívar, Norosí"
+  },
+  {
+    "id": 239,
+    "name": "Colombia, Bolívar, Pinillos"
+  },
+  {
+    "id": 240,
+    "name": "Colombia, Bolívar, Regidor"
+  },
+  {
+    "id": 241,
+    "name": "Colombia, Bolívar, Río Viejo"
+  },
+  {
+    "id": 242,
+    "name": "Colombia, Bolívar, San Cristóbal"
+  },
+  {
+    "id": 243,
+    "name": "Colombia, Bolívar, San Estanislao"
+  },
+  {
+    "id": 244,
+    "name": "Colombia, Bolívar, San Fernando"
+  },
+  {
+    "id": 245,
+    "name": "Colombia, Bolívar, San Jacinto"
+  },
+  {
+    "id": 246,
+    "name": "Colombia, Bolívar, San Jacinto del Cauca"
+  },
+  {
+    "id": 247,
+    "name": "Colombia, Bolívar, San Juan Nepomuceno"
+  },
+  {
+    "id": 248,
+    "name": "Colombia, Bolívar, San Martín de Loba"
+  },
+  {
+    "id": 249,
+    "name": "Colombia, Bolívar, San Pablo"
+  },
+  {
+    "id": 250,
+    "name": "Colombia, Bolívar, Santa Catalina"
+  },
+  {
+    "id": 251,
+    "name": "Colombia, Bolívar, Santa Cruz de Mompox"
+  },
+  {
+    "id": 252,
+    "name": "Colombia, Bolívar, Santa Rosa"
+  },
+  {
+    "id": 253,
+    "name": "Colombia, Bolívar, Santa Rosa del Sur"
+  },
+  {
+    "id": 254,
+    "name": "Colombia, Bolívar, Simití"
+  },
+  {
+    "id": 255,
+    "name": "Colombia, Bolívar, Soplaviento"
+  },
+  {
+    "id": 256,
+    "name": "Colombia, Bolívar, Talaigua Nuevo"
+  },
+  {
+    "id": 257,
+    "name": "Colombia, Bolívar, Tiquisio"
+  },
+  {
+    "id": 258,
+    "name": "Colombia, Bolívar, Turbaco"
+  },
+  {
+    "id": 259,
+    "name": "Colombia, Bolívar, Turbaná"
+  },
+  {
+    "id": 260,
+    "name": "Colombia, Bolívar, Villanueva"
+  },
+  {
+    "id": 261,
+    "name": "Colombia, Bolívar, Zambrano"
+  },
+  {
+    "id": 333,
+    "name": "Colombia, Boyacá, Almeida"
+  },
+  {
+    "id": 354,
+    "name": "Colombia, Boyacá, Aquitania"
+  },
+  {
+    "id": 341,
+    "name": "Colombia, Boyacá, Arcabuco"
+  },
+  {
+    "id": 367,
+    "name": "Colombia, Boyacá, Belén"
+  },
+  {
+    "id": 287,
+    "name": "Colombia, Boyacá, Berbeo"
+  },
+  {
+    "id": 376,
+    "name": "Colombia, Boyacá, Betéitiva"
+  },
+  {
+    "id": 309,
+    "name": "Colombia, Boyacá, Boavita"
+  },
+  {
+    "id": 293,
+    "name": "Colombia, Boyacá, Boyacá"
+  },
+  {
+    "id": 318,
+    "name": "Colombia, Boyacá, Briceño"
+  },
+  {
+    "id": 319,
+    "name": "Colombia, Boyacá, Buenavista"
+  },
+  {
+    "id": 368,
+    "name": "Colombia, Boyacá, Busbanzá"
+  },
+  {
+    "id": 320,
+    "name": "Colombia, Boyacá, Caldas"
+  },
+  {
+    "id": 288,
+    "name": "Colombia, Boyacá, Campohermoso"
+  },
+  {
+    "id": 369,
+    "name": "Colombia, Boyacá, Cerinza"
+  },
+  {
+    "id": 303,
+    "name": "Colombia, Boyacá, Chinavita"
+  },
+  {
+    "id": 321,
+    "name": "Colombia, Boyacá, Chiquinquirá"
+  },
+  {
+    "id": 262,
+    "name": "Colombia, Boyacá, Chíquiza"
+  },
+  {
+    "id": 277,
+    "name": "Colombia, Boyacá, Chiscas"
+  },
+  {
+    "id": 377,
+    "name": "Colombia, Boyacá, Chita"
+  },
+  {
+    "id": 342,
+    "name": "Colombia, Boyacá, Chitaraque"
+  },
+  {
+    "id": 263,
+    "name": "Colombia, Boyacá, Chivatá"
+  },
+  {
+    "id": 334,
+    "name": "Colombia, Boyacá, Chivor"
+  },
+  {
+    "id": 294,
+    "name": "Colombia, Boyacá, Ciénega"
+  },
+  {
+    "id": 264,
+    "name": "Colombia, Boyacá, Cómbita"
+  },
+  {
+    "id": 322,
+    "name": "Colombia, Boyacá, Coper"
+  },
+  {
+    "id": 370,
+    "name": "Colombia, Boyacá, Corrales"
+  },
+  {
+    "id": 310,
+    "name": "Colombia, Boyacá, Covarachía"
+  },
+  {
+    "id": 383,
+    "name": "Colombia, Boyacá, Cubará"
+  },
+  {
+    "id": 265,
+    "name": "Colombia, Boyacá, Cucaita"
+  },
+  {
+    "id": 355,
+    "name": "Colombia, Boyacá, Cuítiva"
+  },
+  {
+    "id": 371,
+    "name": "Colombia, Boyacá, Duitama"
+  },
+  {
+    "id": 278,
+    "name": "Colombia, Boyacá, El Cocuy"
+  },
+  {
+    "id": 279,
+    "name": "Colombia, Boyacá, El Espino"
+  },
+  {
+    "id": 356,
+    "name": "Colombia, Boyacá, Firavitoba"
+  },
+  {
+    "id": 372,
+    "name": "Colombia, Boyacá, Floresta"
+  },
+  {
+    "id": 343,
+    "name": "Colombia, Boyacá, Gachantivá"
+  },
+  {
+    "id": 357,
+    "name": "Colombia, Boyacá, Gámeza"
+  },
+  {
+    "id": 304,
+    "name": "Colombia, Boyacá, Garagoa"
+  },
+  {
+    "id": 280,
+    "name": "Colombia, Boyacá, Guacamayas"
+  },
+  {
+    "id": 335,
+    "name": "Colombia, Boyacá, Guateque"
+  },
+  {
+    "id": 336,
+    "name": "Colombia, Boyacá, Guayatá"
+  },
+  {
+    "id": 281,
+    "name": "Colombia, Boyacá, Güicán"
+  },
+  {
+    "id": 358,
+    "name": "Colombia, Boyacá, Iza"
+  },
+  {
+    "id": 295,
+    "name": "Colombia, Boyacá, Jenesano"
+  },
+  {
+    "id": 378,
+    "name": "Colombia, Boyacá, Jericó"
+  },
+  {
+    "id": 337,
+    "name": "Colombia, Boyacá, La Capilla"
+  },
+  {
+    "id": 311,
+    "name": "Colombia, Boyacá, La Uvita"
+  },
+  {
+    "id": 323,
+    "name": "Colombia, Boyacá, La Victoria"
+  },
+  {
+    "id": 283,
+    "name": "Colombia, Boyacá, Labranzagrande"
+  },
+  {
+    "id": 305,
+    "name": "Colombia, Boyacá, Macanal"
+  },
+  {
+    "id": 324,
+    "name": "Colombia, Boyacá, Maripí"
+  },
+  {
+    "id": 289,
+    "name": "Colombia, Boyacá, Miraflores"
+  },
+  {
+    "id": 359,
+    "name": "Colombia, Boyacá, Mongua"
+  },
+  {
+    "id": 360,
+    "name": "Colombia, Boyacá, Monguí"
+  },
+  {
+    "id": 344,
+    "name": "Colombia, Boyacá, Moniquirá"
+  },
+  {
+    "id": 266,
+    "name": "Colombia, Boyacá, Motavita"
+  },
+  {
+    "id": 325,
+    "name": "Colombia, Boyacá, Muzo"
+  },
+  {
+    "id": 361,
+    "name": "Colombia, Boyacá, Nobsa"
+  },
+  {
+    "id": 296,
+    "name": "Colombia, Boyacá, Nuevo Colón"
+  },
+  {
+    "id": 267,
+    "name": "Colombia, Boyacá, Oicatá"
+  },
+  {
+    "id": 326,
+    "name": "Colombia, Boyacá, Otanche"
+  },
+  {
+    "id": 306,
+    "name": "Colombia, Boyacá, Pachavita"
+  },
+  {
+    "id": 290,
+    "name": "Colombia, Boyacá, Páez"
+  },
+  {
+    "id": 373,
+    "name": "Colombia, Boyacá, Paipa"
+  },
+  {
+    "id": 284,
+    "name": "Colombia, Boyacá, Pajarito"
+  },
+  {
+    "id": 282,
+    "name": "Colombia, Boyacá, Panqueba"
+  },
+  {
+    "id": 327,
+    "name": "Colombia, Boyacá, Pauna"
+  },
+  {
+    "id": 285,
+    "name": "Colombia, Boyacá, Paya"
+  },
+  {
+    "id": 379,
+    "name": "Colombia, Boyacá, Paz de Río"
+  },
+  {
+    "id": 362,
+    "name": "Colombia, Boyacá, Pesca"
+  },
+  {
+    "id": 286,
+    "name": "Colombia, Boyacá, Pisba"
+  },
+  {
+    "id": 384,
+    "name": "Colombia, Boyacá, Puerto Boyacá"
+  },
+  {
+    "id": 328,
+    "name": "Colombia, Boyacá, Quípama"
+  },
+  {
+    "id": 297,
+    "name": "Colombia, Boyacá, Ramiriquí"
+  },
+  {
+    "id": 345,
+    "name": "Colombia, Boyacá, Ráquira"
+  },
+  {
+    "id": 298,
+    "name": "Colombia, Boyacá, Rondón"
+  },
+  {
+    "id": 329,
+    "name": "Colombia, Boyacá, Saboyá"
+  },
+  {
+    "id": 346,
+    "name": "Colombia, Boyacá, Sáchica"
+  },
+  {
+    "id": 268,
+    "name": "Colombia, Boyacá, Samacá"
+  },
+  {
+    "id": 291,
+    "name": "Colombia, Boyacá, San Eduardo"
+  },
+  {
+    "id": 347,
+    "name": "Colombia, Boyacá, San José de Pare"
+  },
+  {
+    "id": 307,
+    "name": "Colombia, Boyacá, San Luis de Gaceno"
+  },
+  {
+    "id": 312,
+    "name": "Colombia, Boyacá, San Mateo"
+  },
+  {
+    "id": 330,
+    "name": "Colombia, Boyacá, San Miguel de Sema"
+  },
+  {
+    "id": 331,
+    "name": "Colombia, Boyacá, San Pablo de Borbur"
+  },
+  {
+    "id": 308,
+    "name": "Colombia, Boyacá, Santa María"
+  },
+  {
+    "id": 374,
+    "name": "Colombia, Boyacá, Santa Rosa de Viterbo"
+  },
+  {
+    "id": 348,
+    "name": "Colombia, Boyacá, Santa Sofía"
+  },
+  {
+    "id": 349,
+    "name": "Colombia, Boyacá, Santana"
+  },
+  {
+    "id": 313,
+    "name": "Colombia, Boyacá, Sativanorte"
+  },
+  {
+    "id": 314,
+    "name": "Colombia, Boyacá, Sativasur"
+  },
+  {
+    "id": 269,
+    "name": "Colombia, Boyacá, Siachoque"
+  },
+  {
+    "id": 315,
+    "name": "Colombia, Boyacá, Soatá"
+  },
+  {
+    "id": 380,
+    "name": "Colombia, Boyacá, Socha"
+  },
+  {
+    "id": 381,
+    "name": "Colombia, Boyacá, Socotá"
+  },
+  {
+    "id": 363,
+    "name": "Colombia, Boyacá, Sogamoso"
+  },
+  {
+    "id": 338,
+    "name": "Colombia, Boyacá, Somondoco"
+  },
+  {
+    "id": 271,
+    "name": "Colombia, Boyacá, Sora"
+  },
+  {
+    "id": 270,
+    "name": "Colombia, Boyacá, Soracá"
+  },
+  {
+    "id": 272,
+    "name": "Colombia, Boyacá, Sotaquirá"
+  },
+  {
+    "id": 316,
+    "name": "Colombia, Boyacá, Susacón"
+  },
+  {
+    "id": 350,
+    "name": "Colombia, Boyacá, Sutamarchán"
+  },
+  {
+    "id": 339,
+    "name": "Colombia, Boyacá, Sutatenza"
+  },
+  {
+    "id": 382,
+    "name": "Colombia, Boyacá, Tasco"
+  },
+  {
+    "id": 340,
+    "name": "Colombia, Boyacá, Tenza"
+  },
+  {
+    "id": 299,
+    "name": "Colombia, Boyacá, Tibaná"
+  },
+  {
+    "id": 364,
+    "name": "Colombia, Boyacá, Tibasosa"
+  },
+  {
+    "id": 351,
+    "name": "Colombia, Boyacá, Tinjacá"
+  },
+  {
+    "id": 317,
+    "name": "Colombia, Boyacá, Tipacoque"
+  },
+  {
+    "id": 273,
+    "name": "Colombia, Boyacá, Toca"
+  },
+  {
+    "id": 352,
+    "name": "Colombia, Boyacá, Togüí"
+  },
+  {
+    "id": 365,
+    "name": "Colombia, Boyacá, Tópaga"
+  },
+  {
+    "id": 366,
+    "name": "Colombia, Boyacá, Tota"
+  },
+  {
+    "id": 274,
+    "name": "Colombia, Boyacá, Tunja"
+  },
+  {
+    "id": 332,
+    "name": "Colombia, Boyacá, Tununguá"
+  },
+  {
+    "id": 300,
+    "name": "Colombia, Boyacá, Turmequé"
+  },
+  {
+    "id": 275,
+    "name": "Colombia, Boyacá, Tuta"
+  },
+  {
+    "id": 375,
+    "name": "Colombia, Boyacá, Tutazá"
+  },
+  {
+    "id": 301,
+    "name": "Colombia, Boyacá, Úmbita"
+  },
+  {
+    "id": 276,
+    "name": "Colombia, Boyacá, Ventaquemada"
+  },
+  {
+    "id": 353,
+    "name": "Colombia, Boyacá, Villa de Leyva"
+  },
+  {
+    "id": 302,
+    "name": "Colombia, Boyacá, Viracachá"
+  },
+  {
+    "id": 292,
+    "name": "Colombia, Boyacá, Zetaquira"
+  },
+  {
+    "id": 408,
+    "name": "Colombia, Caldas, Aguadas"
+  },
+  {
+    "id": 394,
+    "name": "Colombia, Caldas, Anserma"
+  },
+  {
+    "id": 409,
+    "name": "Colombia, Caldas, Aranzazu"
+  },
+  {
+    "id": 395,
+    "name": "Colombia, Caldas, Belalcázar"
+  },
+  {
+    "id": 399,
+    "name": "Colombia, Caldas, Chinchiná"
+  },
+  {
+    "id": 385,
+    "name": "Colombia, Caldas, Filadelfia"
+  },
+  {
+    "id": 404,
+    "name": "Colombia, Caldas, La Dorada"
+  },
+  {
+    "id": 386,
+    "name": "Colombia, Caldas, La Merced"
+  },
+  {
+    "id": 400,
+    "name": "Colombia, Caldas, Manizales"
+  },
+  {
+    "id": 390,
+    "name": "Colombia, Caldas, Manzanares"
+  },
+  {
+    "id": 387,
+    "name": "Colombia, Caldas, Marmato"
+  },
+  {
+    "id": 391,
+    "name": "Colombia, Caldas, Marquetalia"
+  },
+  {
+    "id": 392,
+    "name": "Colombia, Caldas, Marulanda"
+  },
+  {
+    "id": 401,
+    "name": "Colombia, Caldas, Neira"
+  },
+  {
+    "id": 405,
+    "name": "Colombia, Caldas, Norcasia"
+  },
+  {
+    "id": 410,
+    "name": "Colombia, Caldas, Pácora"
+  },
+  {
+    "id": 402,
+    "name": "Colombia, Caldas, Palestina"
+  },
+  {
+    "id": 393,
+    "name": "Colombia, Caldas, Pensilvania"
+  },
+  {
+    "id": 388,
+    "name": "Colombia, Caldas, Riosucio"
+  },
+  {
+    "id": 396,
+    "name": "Colombia, Caldas, Risaralda"
+  },
+  {
+    "id": 411,
+    "name": "Colombia, Caldas, Salamina"
+  },
+  {
+    "id": 406,
+    "name": "Colombia, Caldas, Samaná"
+  },
+  {
+    "id": 397,
+    "name": "Colombia, Caldas, San José"
+  },
+  {
+    "id": 389,
+    "name": "Colombia, Caldas, Supía"
+  },
+  {
+    "id": 407,
+    "name": "Colombia, Caldas, Victoria"
+  },
+  {
+    "id": 403,
+    "name": "Colombia, Caldas, Villamaría"
+  },
+  {
+    "id": 398,
+    "name": "Colombia, Caldas, Viterbo"
+  },
+  {
+    "id": 412,
+    "name": "Colombia, Caquetá, Albania"
+  },
+  {
+    "id": 413,
+    "name": "Colombia, Caquetá, Belén de los Andaquies"
+  },
+  {
+    "id": 414,
+    "name": "Colombia, Caquetá, Cartagena del Chairá"
+  },
+  {
+    "id": 415,
+    "name": "Colombia, Caquetá, Curillo"
+  },
+  {
+    "id": 416,
+    "name": "Colombia, Caquetá, El Doncello"
+  },
+  {
+    "id": 417,
+    "name": "Colombia, Caquetá, El Paujil"
+  },
+  {
+    "id": 418,
+    "name": "Colombia, Caquetá, Florencia"
+  },
+  {
+    "id": 419,
+    "name": "Colombia, Caquetá, La Montañita"
+  },
+  {
+    "id": 420,
+    "name": "Colombia, Caquetá, Morelia"
+  },
+  {
+    "id": 421,
+    "name": "Colombia, Caquetá, Puerto Milán"
+  },
+  {
+    "id": 422,
+    "name": "Colombia, Caquetá, Puerto Rico"
+  },
+  {
+    "id": 423,
+    "name": "Colombia, Caquetá, San José del Fragua"
+  },
+  {
+    "id": 424,
+    "name": "Colombia, Caquetá, San Vicente del Caguán"
+  },
+  {
+    "id": 425,
+    "name": "Colombia, Caquetá, Solano"
+  },
+  {
+    "id": 426,
+    "name": "Colombia, Caquetá, Solita"
+  },
+  {
+    "id": 427,
+    "name": "Colombia, Caquetá, Valparaíso"
+  },
+  {
+    "id": 428,
+    "name": "Colombia, Casanare, Aguazul"
+  },
+  {
+    "id": 429,
+    "name": "Colombia, Casanare, Chámeza"
+  },
+  {
+    "id": 430,
+    "name": "Colombia, Casanare, Hato Corozal"
+  },
+  {
+    "id": 431,
+    "name": "Colombia, Casanare, La Salina"
+  },
+  {
+    "id": 432,
+    "name": "Colombia, Casanare, Maní"
+  },
+  {
+    "id": 433,
+    "name": "Colombia, Casanare, Monterrey"
+  },
+  {
+    "id": 434,
+    "name": "Colombia, Casanare, Nunchía"
+  },
+  {
+    "id": 435,
+    "name": "Colombia, Casanare, Orocué"
+  },
+  {
+    "id": 436,
+    "name": "Colombia, Casanare, Paz de Ariporo"
+  },
+  {
+    "id": 437,
+    "name": "Colombia, Casanare, Pore"
+  },
+  {
+    "id": 438,
+    "name": "Colombia, Casanare, Recetor"
+  },
+  {
+    "id": 439,
+    "name": "Colombia, Casanare, Sabanalarga"
+  },
+  {
+    "id": 440,
+    "name": "Colombia, Casanare, Sácama"
+  },
+  {
+    "id": 441,
+    "name": "Colombia, Casanare, San Luis de Palenque"
+  },
+  {
+    "id": 442,
+    "name": "Colombia, Casanare, Támara"
+  },
+  {
+    "id": 443,
+    "name": "Colombia, Casanare, Tauramena"
+  },
+  {
+    "id": 444,
+    "name": "Colombia, Casanare, Trinidad"
+  },
+  {
+    "id": 445,
+    "name": "Colombia, Casanare, Villanueva"
+  },
+  {
+    "id": 446,
+    "name": "Colombia, Casanare, Yopal"
+  },
+  {
+    "id": 466,
+    "name": "Colombia, Cauca, Almaguer"
+  },
+  {
+    "id": 467,
+    "name": "Colombia, Cauca, Argelia"
+  },
+  {
+    "id": 468,
+    "name": "Colombia, Cauca, Balboa"
+  },
+  {
+    "id": 469,
+    "name": "Colombia, Cauca, Bolívar"
+  },
+  {
+    "id": 447,
+    "name": "Colombia, Cauca, Buenos Aires"
+  },
+  {
+    "id": 457,
+    "name": "Colombia, Cauca, Cajibío"
+  },
+  {
+    "id": 481,
+    "name": "Colombia, Cauca, Caldono"
+  },
+  {
+    "id": 448,
+    "name": "Colombia, Cauca, Caloto"
+  },
+  {
+    "id": 449,
+    "name": "Colombia, Cauca, Corinto"
+  },
+  {
+    "id": 458,
+    "name": "Colombia, Cauca, El Tambo"
+  },
+  {
+    "id": 470,
+    "name": "Colombia, Cauca, Florencia"
+  },
+  {
+    "id": 450,
+    "name": "Colombia, Cauca, Guachené"
+  },
+  {
+    "id": 478,
+    "name": "Colombia, Cauca, Guapí"
+  },
+  {
+    "id": 482,
+    "name": "Colombia, Cauca, Inzá"
+  },
+  {
+    "id": 483,
+    "name": "Colombia, Cauca, Jambaló"
+  },
+  {
+    "id": 459,
+    "name": "Colombia, Cauca, La Sierra"
+  },
+  {
+    "id": 471,
+    "name": "Colombia, Cauca, La Vega"
+  },
+  {
+    "id": 479,
+    "name": "Colombia, Cauca, López de Micay"
+  },
+  {
+    "id": 472,
+    "name": "Colombia, Cauca, Mercaderes"
+  },
+  {
+    "id": 451,
+    "name": "Colombia, Cauca, Miranda"
+  },
+  {
+    "id": 460,
+    "name": "Colombia, Cauca, Morales"
+  },
+  {
+    "id": 452,
+    "name": "Colombia, Cauca, Padilla"
+  },
+  {
+    "id": 484,
+    "name": "Colombia, Cauca, Páez"
+  },
+  {
+    "id": 473,
+    "name": "Colombia, Cauca, Patía"
+  },
+  {
+    "id": 474,
+    "name": "Colombia, Cauca, Piamonte"
+  },
+  {
+    "id": 461,
+    "name": "Colombia, Cauca, Piendamó"
+  },
+  {
+    "id": 462,
+    "name": "Colombia, Cauca, Popayán"
+  },
+  {
+    "id": 453,
+    "name": "Colombia, Cauca, Puerto Tejada"
+  },
+  {
+    "id": 485,
+    "name": "Colombia, Cauca, Puracé"
+  },
+  {
+    "id": 463,
+    "name": "Colombia, Cauca, Rosas"
+  },
+  {
+    "id": 475,
+    "name": "Colombia, Cauca, San Sebastián"
+  },
+  {
+    "id": 476,
+    "name": "Colombia, Cauca, Santa Rosa"
+  },
+  {
+    "id": 454,
+    "name": "Colombia, Cauca, Santander de Quilichao"
+  },
+  {
+    "id": 486,
+    "name": "Colombia, Cauca, Silvia"
+  },
+  {
+    "id": 464,
+    "name": "Colombia, Cauca, Sotará"
+  },
+  {
+    "id": 455,
+    "name": "Colombia, Cauca, Suárez"
+  },
+  {
+    "id": 477,
+    "name": "Colombia, Cauca, Sucre"
+  },
+  {
+    "id": 465,
+    "name": "Colombia, Cauca, Timbío"
+  },
+  {
+    "id": 480,
+    "name": "Colombia, Cauca, Timbiquí"
+  },
+  {
+    "id": 487,
+    "name": "Colombia, Cauca, Toribío"
+  },
+  {
+    "id": 488,
+    "name": "Colombia, Cauca, Totoró"
+  },
+  {
+    "id": 456,
+    "name": "Colombia, Cauca, Villa Rica"
+  },
+  {
+    "id": 490,
+    "name": "Colombia, Cesar, Aguachica"
+  },
+  {
+    "id": 491,
+    "name": "Colombia, Cesar, Agustín Codazzi"
+  },
+  {
+    "id": 502,
+    "name": "Colombia, Cesar, Astrea"
+  },
+  {
+    "id": 510,
+    "name": "Colombia, Cesar, Becerril"
+  },
+  {
+    "id": 492,
+    "name": "Colombia, Cesar, Bosconia"
+  },
+  {
+    "id": 514,
+    "name": "Colombia, Cesar, Cesar"
+  },
+  {
+    "id": 493,
+    "name": "Colombia, Cesar, Chimichagua"
+  },
+  {
+    "id": 500,
+    "name": "Colombia, Cesar, Chiriguaná"
+  },
+  {
+    "id": 496,
+    "name": "Colombia, Cesar, Curumaní"
+  },
+  {
+    "id": 494,
+    "name": "Colombia, Cesar, El Copey"
+  },
+  {
+    "id": 497,
+    "name": "Colombia, Cesar, El Paso"
+  },
+  {
+    "id": 506,
+    "name": "Colombia, Cesar, Gamarra"
+  },
+  {
+    "id": 513,
+    "name": "Colombia, Cesar, González"
+  },
+  {
+    "id": 512,
+    "name": "Colombia, Cesar, La Gloria"
+  },
+  {
+    "id": 501,
+    "name": "Colombia, Cesar, La Jagua de Ibirico"
+  },
+  {
+    "id": 498,
+    "name": "Colombia, Cesar, La Paz"
+  },
+  {
+    "id": 507,
+    "name": "Colombia, Cesar, Manaure Balcón del Cesar"
+  },
+  {
+    "id": 505,
+    "name": "Colombia, Cesar, Pailitas"
+  },
+  {
+    "id": 504,
+    "name": "Colombia, Cesar, Pelaya"
+  },
+  {
+    "id": 499,
+    "name": "Colombia, Cesar, Pueblo Bello"
+  },
+  {
+    "id": 508,
+    "name": "Colombia, Cesar, Río de Oro"
+  },
+  {
+    "id": 495,
+    "name": "Colombia, Cesar, San Alberto"
+  },
+  {
+    "id": 511,
+    "name": "Colombia, Cesar, San Diego"
+  },
+  {
+    "id": 503,
+    "name": "Colombia, Cesar, San Martín"
+  },
+  {
+    "id": 509,
+    "name": "Colombia, Cesar, Tamalameque"
+  },
+  {
+    "id": 489,
+    "name": "Colombia, Cesar, Valledupar"
+  },
+  {
+    "id": 515,
+    "name": "Colombia, Chocó, Acandí"
+  },
+  {
+    "id": 516,
+    "name": "Colombia, Chocó, Alto Baudó"
+  },
+  {
+    "id": 517,
+    "name": "Colombia, Chocó, Atrato"
+  },
+  {
+    "id": 518,
+    "name": "Colombia, Chocó, Bagadó"
+  },
+  {
+    "id": 519,
+    "name": "Colombia, Chocó, Bahía Solano"
+  },
+  {
+    "id": 520,
+    "name": "Colombia, Chocó, Bajo Baudó"
+  },
+  {
+    "id": 521,
+    "name": "Colombia, Chocó, Bojayá"
+  },
+  {
+    "id": 522,
+    "name": "Colombia, Chocó, Cértegui"
+  },
+  {
+    "id": 523,
+    "name": "Colombia, Chocó, Condoto"
+  },
+  {
+    "id": 524,
+    "name": "Colombia, Chocó, El Cantón de San Pablo"
+  },
+  {
+    "id": 525,
+    "name": "Colombia, Chocó, El Carmen de Atrato"
+  },
+  {
+    "id": 526,
+    "name": "Colombia, Chocó, El Carmen del Darién"
+  },
+  {
+    "id": 527,
+    "name": "Colombia, Chocó, El Litoral de San Juan"
+  },
+  {
+    "id": 528,
+    "name": "Colombia, Chocó, Istmina"
+  },
+  {
+    "id": 529,
+    "name": "Colombia, Chocó, Juradó"
+  },
+  {
+    "id": 530,
+    "name": "Colombia, Chocó, Lloró"
+  },
+  {
+    "id": 531,
+    "name": "Colombia, Chocó, Medio Atrato"
+  },
+  {
+    "id": 532,
+    "name": "Colombia, Chocó, Medio Baudó"
+  },
+  {
+    "id": 533,
+    "name": "Colombia, Chocó, Medio San Juan"
+  },
+  {
+    "id": 534,
+    "name": "Colombia, Chocó, Nóvita"
+  },
+  {
+    "id": 535,
+    "name": "Colombia, Chocó, Nuquí"
+  },
+  {
+    "id": 536,
+    "name": "Colombia, Chocó, Quibdó"
+  },
+  {
+    "id": 537,
+    "name": "Colombia, Chocó, Río Iró"
+  },
+  {
+    "id": 538,
+    "name": "Colombia, Chocó, Río Quito"
+  },
+  {
+    "id": 539,
+    "name": "Colombia, Chocó, Riosucio"
+  },
+  {
+    "id": 540,
+    "name": "Colombia, Chocó, San José del Palmar"
+  },
+  {
+    "id": 541,
+    "name": "Colombia, Chocó, Sipí"
+  },
+  {
+    "id": 542,
+    "name": "Colombia, Chocó, Tadó"
+  },
+  {
+    "id": 543,
+    "name": "Colombia, Chocó, Unguía"
+  },
+  {
+    "id": 544,
+    "name": "Colombia, Chocó, Unión Panamericana"
+  },
+  {
+    "id": 39,
+    "name": "Colombia, Córdoba, Ayapel"
+  },
+  {
+    "id": 40,
+    "name": "Colombia, Córdoba, Buenavista"
+  },
+  {
+    "id": 41,
+    "name": "Colombia, Córdoba, Canalete"
+  },
+  {
+    "id": 42,
+    "name": "Colombia, Córdoba, Cereté"
+  },
+  {
+    "id": 43,
+    "name": "Colombia, Córdoba, Chimá"
+  },
+  {
+    "id": 44,
+    "name": "Colombia, Córdoba, Chinú"
+  },
+  {
+    "id": 45,
+    "name": "Colombia, Córdoba, Ciénaga de Oro"
+  },
+  {
+    "id": 46,
+    "name": "Colombia, Córdoba, Cotorra"
+  },
+  {
+    "id": 47,
+    "name": "Colombia, Córdoba, La Apartada"
+  },
+  {
+    "id": 48,
+    "name": "Colombia, Córdoba, Los Córdobas"
+  },
+  {
+    "id": 49,
+    "name": "Colombia, Córdoba, Momil"
+  },
+  {
+    "id": 52,
+    "name": "Colombia, Córdoba, Moñitos"
+  },
+  {
+    "id": 50,
+    "name": "Colombia, Córdoba, Montelíbano"
+  },
+  {
+    "id": 51,
+    "name": "Colombia, Córdoba, Montería"
+  },
+  {
+    "id": 53,
+    "name": "Colombia, Córdoba, Planeta Rica"
+  },
+  {
+    "id": 54,
+    "name": "Colombia, Córdoba, Pueblo Nuevo"
+  },
+  {
+    "id": 55,
+    "name": "Colombia, Córdoba, Puerto Escondido"
+  },
+  {
+    "id": 56,
+    "name": "Colombia, Córdoba, Puerto Libertador"
+  },
+  {
+    "id": 57,
+    "name": "Colombia, Córdoba, Purísima"
+  },
+  {
+    "id": 58,
+    "name": "Colombia, Córdoba, Sahagún"
+  },
+  {
+    "id": 59,
+    "name": "Colombia, Córdoba, San Andrés de Sotavento"
+  },
+  {
+    "id": 60,
+    "name": "Colombia, Córdoba, San Antero"
+  },
+  {
+    "id": 61,
+    "name": "Colombia, Córdoba, San Bernardo del Viento"
+  },
+  {
+    "id": 62,
+    "name": "Colombia, Córdoba, San Carlos"
+  },
+  {
+    "id": 63,
+    "name": "Colombia, Córdoba, San José de Uré"
+  },
+  {
+    "id": 64,
+    "name": "Colombia, Córdoba, San Pelayo"
+  },
+  {
+    "id": 65,
+    "name": "Colombia, Córdoba, Santa Cruz de Lorica"
+  },
+  {
+    "id": 66,
+    "name": "Colombia, Córdoba, Tierralta"
+  },
+  {
+    "id": 67,
+    "name": "Colombia, Córdoba, Tuchín"
+  },
+  {
+    "id": 68,
+    "name": "Colombia, Córdoba, Valencia"
+  },
+  {
+    "id": 572,
+    "name": "Colombia, Cundinamarca, Agua de Dios"
+  },
+  {
+    "id": 583,
+    "name": "Colombia, Cundinamarca, Albán"
+  },
+  {
+    "id": 661,
+    "name": "Colombia, Cundinamarca, Anapoima"
+  },
+  {
+    "id": 662,
+    "name": "Colombia, Cundinamarca, Anolaima"
+  },
+  {
+    "id": 663,
+    "name": "Colombia, Cundinamarca, Apulo"
+  },
+  {
+    "id": 651,
+    "name": "Colombia, Cundinamarca, Arbeláez"
+  },
+  {
+    "id": 603,
+    "name": "Colombia, Cundinamarca, Beltrán"
+  },
+  {
+    "id": 604,
+    "name": "Colombia, Cundinamarca, Bituima"
+  },
+  {
+    "id": 640,
+    "name": "Colombia, Cundinamarca, Bojacá"
+  },
+  {
+    "id": 652,
+    "name": "Colombia, Cundinamarca, Cabrera"
+  },
+  {
+    "id": 664,
+    "name": "Colombia, Cundinamarca, Cachipay"
+  },
+  {
+    "id": 630,
+    "name": "Colombia, Cundinamarca, Cajicá"
+  },
+  {
+    "id": 580,
+    "name": "Colombia, Cundinamarca, Caparrapí"
+  },
+  {
+    "id": 612,
+    "name": "Colombia, Cundinamarca, Cáqueza"
+  },
+  {
+    "id": 671,
+    "name": "Colombia, Cundinamarca, Carmen de Carupa"
+  },
+  {
+    "id": 605,
+    "name": "Colombia, Cundinamarca, Chaguaní"
+  },
+  {
+    "id": 631,
+    "name": "Colombia, Cundinamarca, Chía"
+  },
+  {
+    "id": 613,
+    "name": "Colombia, Cundinamarca, Chipaque"
+  },
+  {
+    "id": 614,
+    "name": "Colombia, Cundinamarca, Choachí"
+  },
+  {
+    "id": 565,
+    "name": "Colombia, Cundinamarca, Chocontá"
+  },
+  {
+    "id": 632,
+    "name": "Colombia, Cundinamarca, Cogua"
+  },
+  {
+    "id": 641,
+    "name": "Colombia, Cundinamarca, Cota"
+  },
+  {
+    "id": 672,
+    "name": "Colombia, Cundinamarca, Cucunubá"
+  },
+  {
+    "id": 665,
+    "name": "Colombia, Cundinamarca, El Colegio"
+  },
+  {
+    "id": 622,
+    "name": "Colombia, Cundinamarca, El Peñón"
+  },
+  {
+    "id": 642,
+    "name": "Colombia, Cundinamarca, El Rosal"
+  },
+  {
+    "id": 643,
+    "name": "Colombia, Cundinamarca, Facatativá"
+  },
+  {
+    "id": 615,
+    "name": "Colombia, Cundinamarca, Fómeque"
+  },
+  {
+    "id": 616,
+    "name": "Colombia, Cundinamarca, Fosca"
+  },
+  {
+    "id": 645,
+    "name": "Colombia, Cundinamarca, Funza"
+  },
+  {
+    "id": 673,
+    "name": "Colombia, Cundinamarca, Fúquene"
+  },
+  {
+    "id": 653,
+    "name": "Colombia, Cundinamarca, Fusagasugá"
+  },
+  {
+    "id": 595,
+    "name": "Colombia, Cundinamarca, Gachalá"
+  },
+  {
+    "id": 633,
+    "name": "Colombia, Cundinamarca, Gachancipá"
+  },
+  {
+    "id": 596,
+    "name": "Colombia, Cundinamarca, Gachetá"
+  },
+  {
+    "id": 597,
+    "name": "Colombia, Cundinamarca, Gama"
+  },
+  {
+    "id": 573,
+    "name": "Colombia, Cundinamarca, Girardot"
+  },
+  {
+    "id": 654,
+    "name": "Colombia, Cundinamarca, Granada"
+  },
+  {
+    "id": 674,
+    "name": "Colombia, Cundinamarca, Guachetá"
+  },
+  {
+    "id": 581,
+    "name": "Colombia, Cundinamarca, Guaduas"
+  },
+  {
+    "id": 598,
+    "name": "Colombia, Cundinamarca, Guasca"
+  },
+  {
+    "id": 574,
+    "name": "Colombia, Cundinamarca, Guataquí"
+  },
+  {
+    "id": 599,
+    "name": "Colombia, Cundinamarca, Guatavita"
+  },
+  {
+    "id": 606,
+    "name": "Colombia, Cundinamarca, Guayabal de Síquima"
+  },
+  {
+    "id": 617,
+    "name": "Colombia, Cundinamarca, Guayabetal"
+  },
+  {
+    "id": 618,
+    "name": "Colombia, Cundinamarca, Gutiérrez"
+  },
+  {
+    "id": 575,
+    "name": "Colombia, Cundinamarca, Jerusalén"
+  },
+  {
+    "id": 600,
+    "name": "Colombia, Cundinamarca, Junín"
+  },
+  {
+    "id": 601,
+    "name": "Colombia, Cundinamarca, La Calera"
+  },
+  {
+    "id": 666,
+    "name": "Colombia, Cundinamarca, La Mesa"
+  },
+  {
+    "id": 623,
+    "name": "Colombia, Cundinamarca, La Palma"
+  },
+  {
+    "id": 584,
+    "name": "Colombia, Cundinamarca, La Peña"
+  },
+  {
+    "id": 585,
+    "name": "Colombia, Cundinamarca, La Vega"
+  },
+  {
+    "id": 675,
+    "name": "Colombia, Cundinamarca, Lenguazaque"
+  },
+  {
+    "id": 566,
+    "name": "Colombia, Cundinamarca, Machetá"
+  },
+  {
+    "id": 644,
+    "name": "Colombia, Cundinamarca, Madrid"
+  },
+  {
+    "id": 567,
+    "name": "Colombia, Cundinamarca, Manta"
+  },
+  {
+    "id": 610,
+    "name": "Colombia, Cundinamarca, Medina"
+  },
+  {
+    "id": 646,
+    "name": "Colombia, Cundinamarca, Mosquera"
+  },
+  {
+    "id": 576,
+    "name": "Colombia, Cundinamarca, Nariño"
+  },
+  {
+    "id": 634,
+    "name": "Colombia, Cundinamarca, Nemocón"
+  },
+  {
+    "id": 577,
+    "name": "Colombia, Cundinamarca, Nilo"
+  },
+  {
+    "id": 586,
+    "name": "Colombia, Cundinamarca, Nimaima"
+  },
+  {
+    "id": 587,
+    "name": "Colombia, Cundinamarca, Nocaima"
+  },
+  {
+    "id": 624,
+    "name": "Colombia, Cundinamarca, Pacho"
+  },
+  {
+    "id": 625,
+    "name": "Colombia, Cundinamarca, Paime"
+  },
+  {
+    "id": 655,
+    "name": "Colombia, Cundinamarca, Pandi"
+  },
+  {
+    "id": 611,
+    "name": "Colombia, Cundinamarca, Paratebueno"
+  },
+  {
+    "id": 656,
+    "name": "Colombia, Cundinamarca, Pasca"
+  },
+  {
+    "id": 582,
+    "name": "Colombia, Cundinamarca, Puerto Salgar"
+  },
+  {
+    "id": 607,
+    "name": "Colombia, Cundinamarca, Pulí"
+  },
+  {
+    "id": 588,
+    "name": "Colombia, Cundinamarca, Quebradanegra"
+  },
+  {
+    "id": 619,
+    "name": "Colombia, Cundinamarca, Quetame"
+  },
+  {
+    "id": 667,
+    "name": "Colombia, Cundinamarca, Quipile"
+  },
+  {
+    "id": 578,
+    "name": "Colombia, Cundinamarca, Ricaurte"
+  },
+  {
+    "id": 668,
+    "name": "Colombia, Cundinamarca, San Antonio del Tequendama"
+  },
+  {
+    "id": 657,
+    "name": "Colombia, Cundinamarca, San Bernardo"
+  },
+  {
+    "id": 626,
+    "name": "Colombia, Cundinamarca, San Cayetano"
+  },
+  {
+    "id": 589,
+    "name": "Colombia, Cundinamarca, San Francisco"
+  },
+  {
+    "id": 608,
+    "name": "Colombia, Cundinamarca, San Juan de Rioseco"
+  },
+  {
+    "id": 590,
+    "name": "Colombia, Cundinamarca, Sasaima"
+  },
+  {
+    "id": 568,
+    "name": "Colombia, Cundinamarca, Sesquilé"
+  },
+  {
+    "id": 649,
+    "name": "Colombia, Cundinamarca, Sibaté"
+  },
+  {
+    "id": 658,
+    "name": "Colombia, Cundinamarca, Silvania"
+  },
+  {
+    "id": 676,
+    "name": "Colombia, Cundinamarca, Simijaca"
+  },
+  {
+    "id": 650,
+    "name": "Colombia, Cundinamarca, Soacha"
+  },
+  {
+    "id": 635,
+    "name": "Colombia, Cundinamarca, Sopó"
+  },
+  {
+    "id": 647,
+    "name": "Colombia, Cundinamarca, Subachoque"
+  },
+  {
+    "id": 569,
+    "name": "Colombia, Cundinamarca, Suesca"
+  },
+  {
+    "id": 591,
+    "name": "Colombia, Cundinamarca, Supatá"
+  },
+  {
+    "id": 677,
+    "name": "Colombia, Cundinamarca, Susa"
+  },
+  {
+    "id": 678,
+    "name": "Colombia, Cundinamarca, Sutatausa"
+  },
+  {
+    "id": 636,
+    "name": "Colombia, Cundinamarca, Tabio"
+  },
+  {
+    "id": 679,
+    "name": "Colombia, Cundinamarca, Tausa"
+  },
+  {
+    "id": 669,
+    "name": "Colombia, Cundinamarca, Tena"
+  },
+  {
+    "id": 637,
+    "name": "Colombia, Cundinamarca, Tenjo"
+  },
+  {
+    "id": 659,
+    "name": "Colombia, Cundinamarca, Tibacuy"
+  },
+  {
+    "id": 570,
+    "name": "Colombia, Cundinamarca, Tibirita"
+  },
+  {
+    "id": 579,
+    "name": "Colombia, Cundinamarca, Tocaima"
+  },
+  {
+    "id": 638,
+    "name": "Colombia, Cundinamarca, Tocancipá"
+  },
+  {
+    "id": 627,
+    "name": "Colombia, Cundinamarca, Topaipí"
+  },
+  {
+    "id": 602,
+    "name": "Colombia, Cundinamarca, Ubalá"
+  },
+  {
+    "id": 620,
+    "name": "Colombia, Cundinamarca, Ubaque"
+  },
+  {
+    "id": 680,
+    "name": "Colombia, Cundinamarca, Ubaté"
+  },
+  {
+    "id": 621,
+    "name": "Colombia, Cundinamarca, Une"
+  },
+  {
+    "id": 592,
+    "name": "Colombia, Cundinamarca, Útica"
+  },
+  {
+    "id": 660,
+    "name": "Colombia, Cundinamarca, Venecia"
+  },
+  {
+    "id": 593,
+    "name": "Colombia, Cundinamarca, Vergara"
+  },
+  {
+    "id": 609,
+    "name": "Colombia, Cundinamarca, Vianí"
+  },
+  {
+    "id": 628,
+    "name": "Colombia, Cundinamarca, Villagómez"
+  },
+  {
+    "id": 571,
+    "name": "Colombia, Cundinamarca, Villapinzón"
+  },
+  {
+    "id": 594,
+    "name": "Colombia, Cundinamarca, Villeta"
+  },
+  {
+    "id": 670,
+    "name": "Colombia, Cundinamarca, Viotá"
+  },
+  {
+    "id": 629,
+    "name": "Colombia, Cundinamarca, Yacopí"
+  },
+  {
+    "id": 648,
+    "name": "Colombia, Cundinamarca, Zipacón"
+  },
+  {
+    "id": 639,
+    "name": "Colombia, Cundinamarca, Zipaquirá"
+  },
+  {
+    "id": 681,
+    "name": "Colombia, Guainía, Barrancominas"
+  },
+  {
+    "id": 682,
+    "name": "Colombia, Guainía, Cacahual"
+  },
+  {
+    "id": 683,
+    "name": "Colombia, Guainía, Inírida"
+  },
+  {
+    "id": 684,
+    "name": "Colombia, Guainía, La Guadalupe"
+  },
+  {
+    "id": 685,
+    "name": "Colombia, Guainía, Mapiripana"
+  },
+  {
+    "id": 686,
+    "name": "Colombia, Guainía, Morichal Nuevo"
+  },
+  {
+    "id": 687,
+    "name": "Colombia, Guainía, Pana Pana"
+  },
+  {
+    "id": 688,
+    "name": "Colombia, Guainía, Puerto Colombia"
+  },
+  {
+    "id": 689,
+    "name": "Colombia, Guainía, San Felipe"
+  },
+  {
+    "id": 690,
+    "name": "Colombia, Guaviare, Calamar"
+  },
+  {
+    "id": 691,
+    "name": "Colombia, Guaviare, El Retorno"
+  },
+  {
+    "id": 692,
+    "name": "Colombia, Guaviare, Miraflores"
+  },
+  {
+    "id": 693,
+    "name": "Colombia, Guaviare, San José del Guaviare"
+  },
+  {
+    "id": 722,
+    "name": "Colombia, Huila, Acevedo"
+  },
+  {
+    "id": 709,
+    "name": "Colombia, Huila, Agrado"
+  },
+  {
+    "id": 694,
+    "name": "Colombia, Huila, Aipe"
+  },
+  {
+    "id": 695,
+    "name": "Colombia, Huila, Algeciras"
+  },
+  {
+    "id": 710,
+    "name": "Colombia, Huila, Altamira"
+  },
+  {
+    "id": 696,
+    "name": "Colombia, Huila, Baraya"
+  },
+  {
+    "id": 697,
+    "name": "Colombia, Huila, Campoalegre"
+  },
+  {
+    "id": 698,
+    "name": "Colombia, Huila, Colombia"
+  },
+  {
+    "id": 723,
+    "name": "Colombia, Huila, Elías"
+  },
+  {
+    "id": 711,
+    "name": "Colombia, Huila, Garzón"
+  },
+  {
+    "id": 712,
+    "name": "Colombia, Huila, Gigante"
+  },
+  {
+    "id": 713,
+    "name": "Colombia, Huila, Guadalupe"
+  },
+  {
+    "id": 699,
+    "name": "Colombia, Huila, Hobo"
+  },
+  {
+    "id": 700,
+    "name": "Colombia, Huila, Íquira"
+  },
+  {
+    "id": 724,
+    "name": "Colombia, Huila, Isnos"
+  },
+  {
+    "id": 717,
+    "name": "Colombia, Huila, La Argentina"
+  },
+  {
+    "id": 718,
+    "name": "Colombia, Huila, La Plata"
+  },
+  {
+    "id": 719,
+    "name": "Colombia, Huila, Nátaga"
+  },
+  {
+    "id": 701,
+    "name": "Colombia, Huila, Neiva"
+  },
+  {
+    "id": 725,
+    "name": "Colombia, Huila, Oporapa"
+  },
+  {
+    "id": 720,
+    "name": "Colombia, Huila, Paicol"
+  },
+  {
+    "id": 702,
+    "name": "Colombia, Huila, Palermo"
+  },
+  {
+    "id": 726,
+    "name": "Colombia, Huila, Palestina"
+  },
+  {
+    "id": 714,
+    "name": "Colombia, Huila, Pital"
+  },
+  {
+    "id": 727,
+    "name": "Colombia, Huila, Pitalito"
+  },
+  {
+    "id": 703,
+    "name": "Colombia, Huila, Rivera"
+  },
+  {
+    "id": 728,
+    "name": "Colombia, Huila, Saladoblanco"
+  },
+  {
+    "id": 729,
+    "name": "Colombia, Huila, San Agustín"
+  },
+  {
+    "id": 704,
+    "name": "Colombia, Huila, Santa María"
+  },
+  {
+    "id": 715,
+    "name": "Colombia, Huila, Suaza"
+  },
+  {
+    "id": 716,
+    "name": "Colombia, Huila, Tarqui"
+  },
+  {
+    "id": 705,
+    "name": "Colombia, Huila, Tello"
+  },
+  {
+    "id": 706,
+    "name": "Colombia, Huila, Teruel"
+  },
+  {
+    "id": 721,
+    "name": "Colombia, Huila, Tesalia"
+  },
+  {
+    "id": 730,
+    "name": "Colombia, Huila, Timaná"
+  },
+  {
+    "id": 707,
+    "name": "Colombia, Huila, Villavieja"
+  },
+  {
+    "id": 708,
+    "name": "Colombia, Huila, Yaguará"
+  },
+  {
+    "id": 24,
+    "name": "Colombia, La Guajira, Albania"
+  },
+  {
+    "id": 25,
+    "name": "Colombia, La Guajira, Barrancas"
+  },
+  {
+    "id": 26,
+    "name": "Colombia, La Guajira, Dibulla"
+  },
+  {
+    "id": 27,
+    "name": "Colombia, La Guajira, Distracción"
+  },
+  {
+    "id": 28,
+    "name": "Colombia, La Guajira, El Molino"
+  },
+  {
+    "id": 29,
+    "name": "Colombia, La Guajira, Fonseca"
+  },
+  {
+    "id": 30,
+    "name": "Colombia, La Guajira, Hatonuevo"
+  },
+  {
+    "id": 31,
+    "name": "Colombia, La Guajira, La Jagua del Pilar"
+  },
+  {
+    "id": 32,
+    "name": "Colombia, La Guajira, Maicao"
+  },
+  {
+    "id": 33,
+    "name": "Colombia, La Guajira, Manaure"
+  },
+  {
+    "id": 34,
+    "name": "Colombia, La Guajira, Riohacha"
+  },
+  {
+    "id": 35,
+    "name": "Colombia, La Guajira, San Juan del Cesar"
+  },
+  {
+    "id": 36,
+    "name": "Colombia, La Guajira, Uribia"
+  },
+  {
+    "id": 37,
+    "name": "Colombia, La Guajira, Urumita"
+  },
+  {
+    "id": 38,
+    "name": "Colombia, La Guajira, Villanueva"
+  },
+  {
+    "id": 731,
+    "name": "Colombia, Magdalena, Algarrobo"
+  },
+  {
+    "id": 732,
+    "name": "Colombia, Magdalena, Aracataca"
+  },
+  {
+    "id": 733,
+    "name": "Colombia, Magdalena, Ariguaní"
+  },
+  {
+    "id": 734,
+    "name": "Colombia, Magdalena, Cerro de San Antonio"
+  },
+  {
+    "id": 735,
+    "name": "Colombia, Magdalena, Chibolo"
+  },
+  {
+    "id": 736,
+    "name": "Colombia, Magdalena, Ciénaga"
+  },
+  {
+    "id": 737,
+    "name": "Colombia, Magdalena, Concordia"
+  },
+  {
+    "id": 738,
+    "name": "Colombia, Magdalena, El Banco"
+  },
+  {
+    "id": 739,
+    "name": "Colombia, Magdalena, El Piñón"
+  },
+  {
+    "id": 741,
+    "name": "Colombia, Magdalena, El Retén"
+  },
+  {
+    "id": 742,
+    "name": "Colombia, Magdalena, Fundación"
+  },
+  {
+    "id": 743,
+    "name": "Colombia, Magdalena, Guamal"
+  },
+  {
+    "id": 744,
+    "name": "Colombia, Magdalena, Nueva Granada"
+  },
+  {
+    "id": 745,
+    "name": "Colombia, Magdalena, Pedraza"
+  },
+  {
+    "id": 746,
+    "name": "Colombia, Magdalena, Pijiño del Carmen"
+  },
+  {
+    "id": 747,
+    "name": "Colombia, Magdalena, Pivijay"
+  },
+  {
+    "id": 748,
+    "name": "Colombia, Magdalena, Plato"
+  },
+  {
+    "id": 749,
+    "name": "Colombia, Magdalena, Pueblo Viejo"
+  },
+  {
+    "id": 750,
+    "name": "Colombia, Magdalena, Remolino"
+  },
+  {
+    "id": 751,
+    "name": "Colombia, Magdalena, Sabanas de San Ángel"
+  },
+  {
+    "id": 752,
+    "name": "Colombia, Magdalena, Salamina"
+  },
+  {
+    "id": 753,
+    "name": "Colombia, Magdalena, San Sebastián de Buenavista"
+  },
+  {
+    "id": 757,
+    "name": "Colombia, Magdalena, San Zenón"
+  },
+  {
+    "id": 754,
+    "name": "Colombia, Magdalena, Santa Ana"
+  },
+  {
+    "id": 755,
+    "name": "Colombia, Magdalena, Santa Bárbara de Pinto"
+  },
+  {
+    "id": 756,
+    "name": "Colombia, Magdalena, Santa Marta"
+  },
+  {
+    "id": 758,
+    "name": "Colombia, Magdalena, Sitionuevo"
+  },
+  {
+    "id": 759,
+    "name": "Colombia, Magdalena, Tenerife"
+  },
+  {
+    "id": 760,
+    "name": "Colombia, Magdalena, Zapayán"
+  },
+  {
+    "id": 761,
+    "name": "Colombia, Magdalena, Zona Bananera"
+  },
+  {
+    "id": 763,
+    "name": "Colombia, Meta, Acacías"
+  },
+  {
+    "id": 764,
+    "name": "Colombia, Meta, Barranca de Upía"
+  },
+  {
+    "id": 765,
+    "name": "Colombia, Meta, Cabuyaro"
+  },
+  {
+    "id": 766,
+    "name": "Colombia, Meta, Castilla La Nueva"
+  },
+  {
+    "id": 767,
+    "name": "Colombia, Meta, Cubarral"
+  },
+  {
+    "id": 768,
+    "name": "Colombia, Meta, Cumaral"
+  },
+  {
+    "id": 769,
+    "name": "Colombia, Meta, El Calvario"
+  },
+  {
+    "id": 770,
+    "name": "Colombia, Meta, El Castillo"
+  },
+  {
+    "id": 771,
+    "name": "Colombia, Meta, El Dorado"
+  },
+  {
+    "id": 772,
+    "name": "Colombia, Meta, Fuente de Oro"
+  },
+  {
+    "id": 773,
+    "name": "Colombia, Meta, Granada"
+  },
+  {
+    "id": 774,
+    "name": "Colombia, Meta, Guamal"
+  },
+  {
+    "id": 775,
+    "name": "Colombia, Meta, La Macarena"
+  },
+  {
+    "id": 778,
+    "name": "Colombia, Meta, La Uribe"
+  },
+  {
+    "id": 779,
+    "name": "Colombia, Meta, Lejanías"
+  },
+  {
+    "id": 780,
+    "name": "Colombia, Meta, Mapiripán"
+  },
+  {
+    "id": 781,
+    "name": "Colombia, Meta, Mesetas"
+  },
+  {
+    "id": 782,
+    "name": "Colombia, Meta, Puerto Concordia"
+  },
+  {
+    "id": 783,
+    "name": "Colombia, Meta, Puerto Gaitán"
+  },
+  {
+    "id": 784,
+    "name": "Colombia, Meta, Puerto Lleras"
+  },
+  {
+    "id": 785,
+    "name": "Colombia, Meta, Puerto López"
+  },
+  {
+    "id": 786,
+    "name": "Colombia, Meta, Puerto Rico"
+  },
+  {
+    "id": 787,
+    "name": "Colombia, Meta, Restrepo"
+  },
+  {
+    "id": 788,
+    "name": "Colombia, Meta, San Carlos de Guaroa"
+  },
+  {
+    "id": 789,
+    "name": "Colombia, Meta, San Juan de Arama"
+  },
+  {
+    "id": 790,
+    "name": "Colombia, Meta, San Juanito"
+  },
+  {
+    "id": 791,
+    "name": "Colombia, Meta, San Martín"
+  },
+  {
+    "id": 792,
+    "name": "Colombia, Meta, Villavicencio"
+  },
+  {
+    "id": 793,
+    "name": "Colombia, Meta, Vista Hermosa"
+  },
+  {
+    "id": 819,
+    "name": "Colombia, Nariño, Albán"
+  },
+  {
+    "id": 806,
+    "name": "Colombia, Nariño, Aldana"
+  },
+  {
+    "id": 845,
+    "name": "Colombia, Nariño, Ancuya"
+  },
+  {
+    "id": 820,
+    "name": "Colombia, Nariño, Arboleda"
+  },
+  {
+    "id": 796,
+    "name": "Colombia, Nariño, Barbacoas"
+  },
+  {
+    "id": 821,
+    "name": "Colombia, Nariño, Belén"
+  },
+  {
+    "id": 834,
+    "name": "Colombia, Nariño, Buesaco"
+  },
+  {
+    "id": 835,
+    "name": "Colombia, Nariño, Chachagüí"
+  },
+  {
+    "id": 822,
+    "name": "Colombia, Nariño, Colón"
+  },
+  {
+    "id": 836,
+    "name": "Colombia, Nariño, Consacá"
+  },
+  {
+    "id": 807,
+    "name": "Colombia, Nariño, Contadero"
+  },
+  {
+    "id": 808,
+    "name": "Colombia, Nariño, Córdoba"
+  },
+  {
+    "id": 809,
+    "name": "Colombia, Nariño, Cuaspud"
+  },
+  {
+    "id": 810,
+    "name": "Colombia, Nariño, Cumbal"
+  },
+  {
+    "id": 846,
+    "name": "Colombia, Nariño, Cumbitara"
+  },
+  {
+    "id": 797,
+    "name": "Colombia, Nariño, El Charco"
+  },
+  {
+    "id": 837,
+    "name": "Colombia, Nariño, El Peñol"
+  },
+  {
+    "id": 823,
+    "name": "Colombia, Nariño, El Rosario"
+  },
+  {
+    "id": 824,
+    "name": "Colombia, Nariño, El Tablón de Gómez"
+  },
+  {
+    "id": 838,
+    "name": "Colombia, Nariño, El Tambo"
+  },
+  {
+    "id": 798,
+    "name": "Colombia, Nariño, Francisco Pizarro"
+  },
+  {
+    "id": 811,
+    "name": "Colombia, Nariño, Funes"
+  },
+  {
+    "id": 812,
+    "name": "Colombia, Nariño, Guachucal"
+  },
+  {
+    "id": 847,
+    "name": "Colombia, Nariño, Guaitarilla"
+  },
+  {
+    "id": 813,
+    "name": "Colombia, Nariño, Gualmatán"
+  },
+  {
+    "id": 814,
+    "name": "Colombia, Nariño, Iles"
+  },
+  {
+    "id": 848,
+    "name": "Colombia, Nariño, Imués"
+  },
+  {
+    "id": 815,
+    "name": "Colombia, Nariño, Ipiales"
+  },
+  {
+    "id": 825,
+    "name": "Colombia, Nariño, La Cruz"
+  },
+  {
+    "id": 839,
+    "name": "Colombia, Nariño, La Florida"
+  },
+  {
+    "id": 849,
+    "name": "Colombia, Nariño, La Llanada"
+  },
+  {
+    "id": 799,
+    "name": "Colombia, Nariño, La Tola"
+  },
+  {
+    "id": 826,
+    "name": "Colombia, Nariño, La Unión"
+  },
+  {
+    "id": 827,
+    "name": "Colombia, Nariño, Leiva"
+  },
+  {
+    "id": 850,
+    "name": "Colombia, Nariño, Linares"
+  },
+  {
+    "id": 851,
+    "name": "Colombia, Nariño, Los Andes"
+  },
+  {
+    "id": 800,
+    "name": "Colombia, Nariño, Magüí Payán"
+  },
+  {
+    "id": 852,
+    "name": "Colombia, Nariño, Mallama"
+  },
+  {
+    "id": 801,
+    "name": "Colombia, Nariño, Mosquera"
+  },
+  {
+    "id": 840,
+    "name": "Colombia, Nariño, Nariño"
+  },
+  {
+    "id": 802,
+    "name": "Colombia, Nariño, Olaya Herrera"
+  },
+  {
+    "id": 853,
+    "name": "Colombia, Nariño, Ospina"
+  },
+  {
+    "id": 841,
+    "name": "Colombia, Nariño, Pasto"
+  },
+  {
+    "id": 828,
+    "name": "Colombia, Nariño, Policarpa"
+  },
+  {
+    "id": 816,
+    "name": "Colombia, Nariño, Potosí"
+  },
+  {
+    "id": 854,
+    "name": "Colombia, Nariño, Providencia"
+  },
+  {
+    "id": 817,
+    "name": "Colombia, Nariño, Puerres"
+  },
+  {
+    "id": 818,
+    "name": "Colombia, Nariño, Pupiales"
+  },
+  {
+    "id": 855,
+    "name": "Colombia, Nariño, Ricaurte"
+  },
+  {
+    "id": 803,
+    "name": "Colombia, Nariño, Roberto Payán"
+  },
+  {
+    "id": 856,
+    "name": "Colombia, Nariño, Samaniego"
+  },
+  {
+    "id": 829,
+    "name": "Colombia, Nariño, San Bernardo"
+  },
+  {
+    "id": 830,
+    "name": "Colombia, Nariño, San Lorenzo"
+  },
+  {
+    "id": 831,
+    "name": "Colombia, Nariño, San Pablo"
+  },
+  {
+    "id": 832,
+    "name": "Colombia, Nariño, San Pedro de Cartago"
+  },
+  {
+    "id": 842,
+    "name": "Colombia, Nariño, Sandoná"
+  },
+  {
+    "id": 804,
+    "name": "Colombia, Nariño, Santa Bárbara"
+  },
+  {
+    "id": 857,
+    "name": "Colombia, Nariño, Santacruz"
+  },
+  {
+    "id": 858,
+    "name": "Colombia, Nariño, Sapuyes"
+  },
+  {
+    "id": 833,
+    "name": "Colombia, Nariño, Taminango"
+  },
+  {
+    "id": 843,
+    "name": "Colombia, Nariño, Tangua"
+  },
+  {
+    "id": 805,
+    "name": "Colombia, Nariño, Tumaco"
+  },
+  {
+    "id": 859,
+    "name": "Colombia, Nariño, Túquerres"
+  },
+  {
+    "id": 844,
+    "name": "Colombia, Nariño, Yacuanquer"
+  },
+  {
+    "id": 877,
+    "name": "Colombia, Norte de Santander, Ábrego"
+  },
+  {
+    "id": 860,
+    "name": "Colombia, Norte de Santander, Arboledas"
+  },
+  {
+    "id": 893,
+    "name": "Colombia, Norte de Santander, Bochalema"
+  },
+  {
+    "id": 873,
+    "name": "Colombia, Norte de Santander, Bucarasica"
+  },
+  {
+    "id": 878,
+    "name": "Colombia, Norte de Santander, Cáchira"
+  },
+  {
+    "id": 887,
+    "name": "Colombia, Norte de Santander, Cácota"
+  },
+  {
+    "id": 894,
+    "name": "Colombia, Norte de Santander, Chinácota"
+  },
+  {
+    "id": 888,
+    "name": "Colombia, Norte de Santander, Chitagá"
+  },
+  {
+    "id": 879,
+    "name": "Colombia, Norte de Santander, Convención"
+  },
+  {
+    "id": 867,
+    "name": "Colombia, Norte de Santander, Cúcuta"
+  },
+  {
+    "id": 861,
+    "name": "Colombia, Norte de Santander, Cucutilla"
+  },
+  {
+    "id": 895,
+    "name": "Colombia, Norte de Santander, Durania"
+  },
+  {
+    "id": 880,
+    "name": "Colombia, Norte de Santander, El Carmen"
+  },
+  {
+    "id": 874,
+    "name": "Colombia, Norte de Santander, El Tarra"
+  },
+  {
+    "id": 868,
+    "name": "Colombia, Norte de Santander, El Zulia"
+  },
+  {
+    "id": 862,
+    "name": "Colombia, Norte de Santander, Gramalote"
+  },
+  {
+    "id": 881,
+    "name": "Colombia, Norte de Santander, Hacarí"
+  },
+  {
+    "id": 896,
+    "name": "Colombia, Norte de Santander, Herrán"
+  },
+  {
+    "id": 882,
+    "name": "Colombia, Norte de Santander, La Esperanza"
+  },
+  {
+    "id": 883,
+    "name": "Colombia, Norte de Santander, La Playa de Belén"
+  },
+  {
+    "id": 897,
+    "name": "Colombia, Norte de Santander, Labateca"
+  },
+  {
+    "id": 869,
+    "name": "Colombia, Norte de Santander, Los Patios"
+  },
+  {
+    "id": 863,
+    "name": "Colombia, Norte de Santander, Lourdes"
+  },
+  {
+    "id": 889,
+    "name": "Colombia, Norte de Santander, Mutiscua"
+  },
+  {
+    "id": 884,
+    "name": "Colombia, Norte de Santander, Ocaña"
+  },
+  {
+    "id": 890,
+    "name": "Colombia, Norte de Santander, Pamplona"
+  },
+  {
+    "id": 891,
+    "name": "Colombia, Norte de Santander, Pamplonita"
+  },
+  {
+    "id": 870,
+    "name": "Colombia, Norte de Santander, Puerto Santander"
+  },
+  {
+    "id": 898,
+    "name": "Colombia, Norte de Santander, Ragonvalia"
+  },
+  {
+    "id": 864,
+    "name": "Colombia, Norte de Santander, Salazar de Las Palmas"
+  },
+  {
+    "id": 885,
+    "name": "Colombia, Norte de Santander, San Calixto"
+  },
+  {
+    "id": 871,
+    "name": "Colombia, Norte de Santander, San Cayetano"
+  },
+  {
+    "id": 865,
+    "name": "Colombia, Norte de Santander, Santiago"
+  },
+  {
+    "id": 892,
+    "name": "Colombia, Norte de Santander, Santo Domingo de Silos"
+  },
+  {
+    "id": 875,
+    "name": "Colombia, Norte de Santander, Sardinata"
+  },
+  {
+    "id": 886,
+    "name": "Colombia, Norte de Santander, Teorama"
+  },
+  {
+    "id": 876,
+    "name": "Colombia, Norte de Santander, Tibú"
+  },
+  {
+    "id": 899,
+    "name": "Colombia, Norte de Santander, Toledo"
+  },
+  {
+    "id": 866,
+    "name": "Colombia, Norte de Santander, Villa Caro"
+  },
+  {
+    "id": 872,
+    "name": "Colombia, Norte de Santander, Villa del Rosario"
+  },
+  {
+    "id": 900,
+    "name": "Colombia, Putumayo, Colón"
+  },
+  {
+    "id": 901,
+    "name": "Colombia, Putumayo, Mocoa"
+  },
+  {
+    "id": 902,
+    "name": "Colombia, Putumayo, Orito"
+  },
+  {
+    "id": 903,
+    "name": "Colombia, Putumayo, Puerto Asís"
+  },
+  {
+    "id": 904,
+    "name": "Colombia, Putumayo, Puerto Caicedo"
+  },
+  {
+    "id": 905,
+    "name": "Colombia, Putumayo, Puerto Guzmán"
+  },
+  {
+    "id": 906,
+    "name": "Colombia, Putumayo, Puerto Leguízamo"
+  },
+  {
+    "id": 907,
+    "name": "Colombia, Putumayo, San Francisco"
+  },
+  {
+    "id": 908,
+    "name": "Colombia, Putumayo, San Miguel"
+  },
+  {
+    "id": 909,
+    "name": "Colombia, Putumayo, Santiago"
+  },
+  {
+    "id": 910,
+    "name": "Colombia, Putumayo, Sibundoy"
+  },
+  {
+    "id": 911,
+    "name": "Colombia, Putumayo, Valle del Guamuez"
+  },
+  {
+    "id": 912,
+    "name": "Colombia, Putumayo, Villagarzón"
+  },
+  {
+    "id": 913,
+    "name": "Colombia, Quindío, Armenia"
+  },
+  {
+    "id": 914,
+    "name": "Colombia, Quindío, Buenavista"
+  },
+  {
+    "id": 915,
+    "name": "Colombia, Quindío, Calarcá"
+  },
+  {
+    "id": 916,
+    "name": "Colombia, Quindío, Circasia"
+  },
+  {
+    "id": 917,
+    "name": "Colombia, Quindío, Córdoba"
+  },
+  {
+    "id": 918,
+    "name": "Colombia, Quindío, Filandia"
+  },
+  {
+    "id": 919,
+    "name": "Colombia, Quindío, Génova"
+  },
+  {
+    "id": 920,
+    "name": "Colombia, Quindío, La Tebaida"
+  },
+  {
+    "id": 921,
+    "name": "Colombia, Quindío, Montenegro"
+  },
+  {
+    "id": 922,
+    "name": "Colombia, Quindío, Pijao"
+  },
+  {
+    "id": 923,
+    "name": "Colombia, Quindío, Quimbaya"
+  },
+  {
+    "id": 924,
+    "name": "Colombia, Quindío, Salento"
+  },
+  {
+    "id": 925,
+    "name": "Colombia, Risaralda, Apía"
+  },
+  {
+    "id": 926,
+    "name": "Colombia, Risaralda, Balboa"
+  },
+  {
+    "id": 927,
+    "name": "Colombia, Risaralda, Belén de Umbría"
+  },
+  {
+    "id": 928,
+    "name": "Colombia, Risaralda, Dosquebradas"
+  },
+  {
+    "id": 929,
+    "name": "Colombia, Risaralda, Guática"
+  },
+  {
+    "id": 930,
+    "name": "Colombia, Risaralda, La Celia"
+  },
+  {
+    "id": 931,
+    "name": "Colombia, Risaralda, La Virginia"
+  },
+  {
+    "id": 932,
+    "name": "Colombia, Risaralda, Marsella"
+  },
+  {
+    "id": 933,
+    "name": "Colombia, Risaralda, Mistrató"
+  },
+  {
+    "id": 934,
+    "name": "Colombia, Risaralda, Pereira"
+  },
+  {
+    "id": 935,
+    "name": "Colombia, Risaralda, Pueblo Rico"
+  },
+  {
+    "id": 936,
+    "name": "Colombia, Risaralda, Quinchía"
+  },
+  {
+    "id": 937,
+    "name": "Colombia, Risaralda, Santa Rosa de Cabal"
+  },
+  {
+    "id": 938,
+    "name": "Colombia, Risaralda, Santuario"
+  },
+  {
+    "id": 795,
+    "name": "Colombia, San Andrés y Providencia, Providencia y Santa Catalina Islas"
+  },
+  {
+    "id": 794,
+    "name": "Colombia, San Andrés y Providencia, San Andrés"
+  },
+  {
+    "id": 939,
+    "name": "Colombia, Santander, Aguada"
+  },
+  {
+    "id": 940,
+    "name": "Colombia, Santander, Albania"
+  },
+  {
+    "id": 941,
+    "name": "Colombia, Santander, Aratoca"
+  },
+  {
+    "id": 942,
+    "name": "Colombia, Santander, Barbosa"
+  },
+  {
+    "id": 943,
+    "name": "Colombia, Santander, Barichara"
+  },
+  {
+    "id": 944,
+    "name": "Colombia, Santander, Barrancabermeja"
+  },
+  {
+    "id": 945,
+    "name": "Colombia, Santander, Betulia"
+  },
+  {
+    "id": 946,
+    "name": "Colombia, Santander, Bolívar"
+  },
+  {
+    "id": 947,
+    "name": "Colombia, Santander, Bucaramanga"
+  },
+  {
+    "id": 948,
+    "name": "Colombia, Santander, Cabrera"
+  },
+  {
+    "id": 949,
+    "name": "Colombia, Santander, California"
+  },
+  {
+    "id": 950,
+    "name": "Colombia, Santander, Capitanejo"
+  },
+  {
+    "id": 951,
+    "name": "Colombia, Santander, Carcasí"
+  },
+  {
+    "id": 952,
+    "name": "Colombia, Santander, Cepitá"
+  },
+  {
+    "id": 953,
+    "name": "Colombia, Santander, Cerrito"
+  },
+  {
+    "id": 954,
+    "name": "Colombia, Santander, Charalá"
+  },
+  {
+    "id": 955,
+    "name": "Colombia, Santander, Charta"
+  },
+  {
+    "id": 956,
+    "name": "Colombia, Santander, Chima"
+  },
+  {
+    "id": 957,
+    "name": "Colombia, Santander, Chipatá"
+  },
+  {
+    "id": 958,
+    "name": "Colombia, Santander, Cimitarra"
+  },
+  {
+    "id": 959,
+    "name": "Colombia, Santander, Concepción"
+  },
+  {
+    "id": 960,
+    "name": "Colombia, Santander, Confines"
+  },
+  {
+    "id": 961,
+    "name": "Colombia, Santander, Contratación"
+  },
+  {
+    "id": 963,
+    "name": "Colombia, Santander, Coromoro"
+  },
+  {
+    "id": 962,
+    "name": "Colombia, Santander, Curití"
+  },
+  {
+    "id": 964,
+    "name": "Colombia, Santander, El Carmen de Chucurí"
+  },
+  {
+    "id": 965,
+    "name": "Colombia, Santander, El Guacamayo"
+  },
+  {
+    "id": 966,
+    "name": "Colombia, Santander, El Peñón"
+  },
+  {
+    "id": 967,
+    "name": "Colombia, Santander, El Playón"
+  },
+  {
+    "id": 968,
+    "name": "Colombia, Santander, Encino"
+  },
+  {
+    "id": 969,
+    "name": "Colombia, Santander, Enciso"
+  },
+  {
+    "id": 970,
+    "name": "Colombia, Santander, Florián"
+  },
+  {
+    "id": 971,
+    "name": "Colombia, Santander, Floridablanca"
+  },
+  {
+    "id": 972,
+    "name": "Colombia, Santander, Galán"
+  },
+  {
+    "id": 973,
+    "name": "Colombia, Santander, Gámbita"
+  },
+  {
+    "id": 974,
+    "name": "Colombia, Santander, Girón"
+  },
+  {
+    "id": 975,
+    "name": "Colombia, Santander, Guaca"
+  },
+  {
+    "id": 976,
+    "name": "Colombia, Santander, Guadalupe"
+  },
+  {
+    "id": 977,
+    "name": "Colombia, Santander, Guapotá"
+  },
+  {
+    "id": 978,
+    "name": "Colombia, Santander, Guavatá"
+  },
+  {
+    "id": 979,
+    "name": "Colombia, Santander, Güepsa"
+  },
+  {
+    "id": 980,
+    "name": "Colombia, Santander, Hato"
+  },
+  {
+    "id": 981,
+    "name": "Colombia, Santander, Jesús María"
+  },
+  {
+    "id": 982,
+    "name": "Colombia, Santander, Jordán"
+  },
+  {
+    "id": 983,
+    "name": "Colombia, Santander, La Belleza"
+  },
+  {
+    "id": 984,
+    "name": "Colombia, Santander, La Paz"
+  },
+  {
+    "id": 985,
+    "name": "Colombia, Santander, Landázuri"
+  },
+  {
+    "id": 986,
+    "name": "Colombia, Santander, Lebrija"
+  },
+  {
+    "id": 987,
+    "name": "Colombia, Santander, Los Santos"
+  },
+  {
+    "id": 988,
+    "name": "Colombia, Santander, Macaravita"
+  },
+  {
+    "id": 989,
+    "name": "Colombia, Santander, Málaga"
+  },
+  {
+    "id": 990,
+    "name": "Colombia, Santander, Matanza"
+  },
+  {
+    "id": 991,
+    "name": "Colombia, Santander, Mogotes"
+  },
+  {
+    "id": 992,
+    "name": "Colombia, Santander, Molagavita"
+  },
+  {
+    "id": 993,
+    "name": "Colombia, Santander, Ocamonte"
+  },
+  {
+    "id": 994,
+    "name": "Colombia, Santander, Oiba"
+  },
+  {
+    "id": 995,
+    "name": "Colombia, Santander, Onzaga"
+  },
+  {
+    "id": 996,
+    "name": "Colombia, Santander, Palmar"
+  },
+  {
+    "id": 997,
+    "name": "Colombia, Santander, Palmas del Socorro"
+  },
+  {
+    "id": 998,
+    "name": "Colombia, Santander, Páramo"
+  },
+  {
+    "id": 999,
+    "name": "Colombia, Santander, Piedecuesta"
+  },
+  {
+    "id": 1000,
+    "name": "Colombia, Santander, Pinchote"
+  },
+  {
+    "id": 1001,
+    "name": "Colombia, Santander, Puente Nacional"
+  },
+  {
+    "id": 1002,
+    "name": "Colombia, Santander, Puerto Parra"
+  },
+  {
+    "id": 1003,
+    "name": "Colombia, Santander, Puerto Wilches"
+  },
+  {
+    "id": 1004,
+    "name": "Colombia, Santander, Rionegro"
+  },
+  {
+    "id": 1005,
+    "name": "Colombia, Santander, Sabana de Torres"
+  },
+  {
+    "id": 1006,
+    "name": "Colombia, Santander, San Andrés"
+  },
+  {
+    "id": 1007,
+    "name": "Colombia, Santander, San Benito"
+  },
+  {
+    "id": 1008,
+    "name": "Colombia, Santander, San Gil"
+  },
+  {
+    "id": 1009,
+    "name": "Colombia, Santander, San Joaquín"
+  },
+  {
+    "id": 1010,
+    "name": "Colombia, Santander, San José de Miranda"
+  },
+  {
+    "id": 1011,
+    "name": "Colombia, Santander, San Miguel"
+  },
+  {
+    "id": 1012,
+    "name": "Colombia, Santander, San Vicente de Chucurí"
+  },
+  {
+    "id": 1013,
+    "name": "Colombia, Santander, Santa Bárbara"
+  },
+  {
+    "id": 1014,
+    "name": "Colombia, Santander, Santa Helena del Opón"
+  },
+  {
+    "id": 1015,
+    "name": "Colombia, Santander, Simacota"
+  },
+  {
+    "id": 1016,
+    "name": "Colombia, Santander, Socorro"
+  },
+  {
+    "id": 1017,
+    "name": "Colombia, Santander, Suaita"
+  },
+  {
+    "id": 1018,
+    "name": "Colombia, Santander, Sucre"
+  },
+  {
+    "id": 1019,
+    "name": "Colombia, Santander, Suratá"
+  },
+  {
+    "id": 1020,
+    "name": "Colombia, Santander, Tona"
+  },
+  {
+    "id": 1021,
+    "name": "Colombia, Santander, Valle de San José"
+  },
+  {
+    "id": 1022,
+    "name": "Colombia, Santander, Vélez"
+  },
+  {
+    "id": 1023,
+    "name": "Colombia, Santander, Vetas"
+  },
+  {
+    "id": 1024,
+    "name": "Colombia, Santander, Villanueva"
+  },
+  {
+    "id": 1025,
+    "name": "Colombia, Santander, Zapatoca"
+  },
+  {
+    "id": 1039,
+    "name": "Colombia, Sucre, Buenavista"
+  },
+  {
+    "id": 1048,
+    "name": "Colombia, Sucre, Caimito"
+  },
+  {
+    "id": 1029,
+    "name": "Colombia, Sucre, Chalán"
+  },
+  {
+    "id": 1030,
+    "name": "Colombia, Sucre, Colosó"
+  },
+  {
+    "id": 1040,
+    "name": "Colombia, Sucre, Corozal"
+  },
+  {
+    "id": 1034,
+    "name": "Colombia, Sucre, Coveñas"
+  },
+  {
+    "id": 1041,
+    "name": "Colombia, Sucre, El Roble"
+  },
+  {
+    "id": 1042,
+    "name": "Colombia, Sucre, Galeras"
+  },
+  {
+    "id": 1026,
+    "name": "Colombia, Sucre, Guaranda"
+  },
+  {
+    "id": 1049,
+    "name": "Colombia, Sucre, La Unión"
+  },
+  {
+    "id": 1043,
+    "name": "Colombia, Sucre, Los Palmitos"
+  },
+  {
+    "id": 1027,
+    "name": "Colombia, Sucre, Majagual"
+  },
+  {
+    "id": 1031,
+    "name": "Colombia, Sucre, Morroa"
+  },
+  {
+    "id": 1032,
+    "name": "Colombia, Sucre, Ovejas"
+  },
+  {
+    "id": 1035,
+    "name": "Colombia, Sucre, Palmito"
+  },
+  {
+    "id": 1044,
+    "name": "Colombia, Sucre, Sampués"
+  },
+  {
+    "id": 1050,
+    "name": "Colombia, Sucre, San Benito Abad"
+  },
+  {
+    "id": 1045,
+    "name": "Colombia, Sucre, San Juan de Betulia"
+  },
+  {
+    "id": 1051,
+    "name": "Colombia, Sucre, San Marcos"
+  },
+  {
+    "id": 1036,
+    "name": "Colombia, Sucre, San Onofre"
+  },
+  {
+    "id": 1046,
+    "name": "Colombia, Sucre, San Pedro"
+  },
+  {
+    "id": 1037,
+    "name": "Colombia, Sucre, Santiago de Tolú"
+  },
+  {
+    "id": 1047,
+    "name": "Colombia, Sucre, Sincé"
+  },
+  {
+    "id": 1033,
+    "name": "Colombia, Sucre, Sincelejo"
+  },
+  {
+    "id": 1028,
+    "name": "Colombia, Sucre, Sucre"
+  },
+  {
+    "id": 1038,
+    "name": "Colombia, Sucre, Tolúviejo"
+  },
+  {
+    "id": 1092,
+    "name": "Colombia, Tolima, Alpujarra"
+  },
+  {
+    "id": 1052,
+    "name": "Colombia, Tolima, Alvarado"
+  },
+  {
+    "id": 1071,
+    "name": "Colombia, Tolima, Ambalema"
+  },
+  {
+    "id": 1053,
+    "name": "Colombia, Tolima, Anzoátegui"
+  },
+  {
+    "id": 1072,
+    "name": "Colombia, Tolima, Armero"
+  },
+  {
+    "id": 1083,
+    "name": "Colombia, Tolima, Ataco"
+  },
+  {
+    "id": 1054,
+    "name": "Colombia, Tolima, Cajamarca"
+  },
+  {
+    "id": 1078,
+    "name": "Colombia, Tolima, Carmen de Apicalá"
+  },
+  {
+    "id": 1063,
+    "name": "Colombia, Tolima, Casabianca"
+  },
+  {
+    "id": 1084,
+    "name": "Colombia, Tolima, Chaparral"
+  },
+  {
+    "id": 1055,
+    "name": "Colombia, Tolima, Coello"
+  },
+  {
+    "id": 1085,
+    "name": "Colombia, Tolima, Coyaima"
+  },
+  {
+    "id": 1079,
+    "name": "Colombia, Tolima, Cunday"
+  },
+  {
+    "id": 1093,
+    "name": "Colombia, Tolima, Dolores"
+  },
+  {
+    "id": 1056,
+    "name": "Colombia, Tolima, Espinal"
+  },
+  {
+    "id": 1073,
+    "name": "Colombia, Tolima, Falan"
+  },
+  {
+    "id": 1057,
+    "name": "Colombia, Tolima, Flandes"
+  },
+  {
+    "id": 1074,
+    "name": "Colombia, Tolima, Fresno"
+  },
+  {
+    "id": 1094,
+    "name": "Colombia, Tolima, Guamo"
+  },
+  {
+    "id": 1064,
+    "name": "Colombia, Tolima, Herveo"
+  },
+  {
+    "id": 1075,
+    "name": "Colombia, Tolima, Honda"
+  },
+  {
+    "id": 1058,
+    "name": "Colombia, Tolima, Ibagué"
+  },
+  {
+    "id": 1080,
+    "name": "Colombia, Tolima, Icononzo"
+  },
+  {
+    "id": 1065,
+    "name": "Colombia, Tolima, Lérida"
+  },
+  {
+    "id": 1066,
+    "name": "Colombia, Tolima, Líbano"
+  },
+  {
+    "id": 1076,
+    "name": "Colombia, Tolima, Mariquita"
+  },
+  {
+    "id": 1081,
+    "name": "Colombia, Tolima, Melgar"
+  },
+  {
+    "id": 1067,
+    "name": "Colombia, Tolima, Murillo"
+  },
+  {
+    "id": 1086,
+    "name": "Colombia, Tolima, Natagaima"
+  },
+  {
+    "id": 1087,
+    "name": "Colombia, Tolima, Ortega"
+  },
+  {
+    "id": 1077,
+    "name": "Colombia, Tolima, Palocabildo"
+  },
+  {
+    "id": 1059,
+    "name": "Colombia, Tolima, Piedras"
+  },
+  {
+    "id": 1088,
+    "name": "Colombia, Tolima, Planadas"
+  },
+  {
+    "id": 1095,
+    "name": "Colombia, Tolima, Prado"
+  },
+  {
+    "id": 1096,
+    "name": "Colombia, Tolima, Purificación"
+  },
+  {
+    "id": 1089,
+    "name": "Colombia, Tolima, Rioblanco"
+  },
+  {
+    "id": 1090,
+    "name": "Colombia, Tolima, Roncesvalles"
+  },
+  {
+    "id": 1060,
+    "name": "Colombia, Tolima, Rovira"
+  },
+  {
+    "id": 1097,
+    "name": "Colombia, Tolima, Saldaña"
+  },
+  {
+    "id": 1091,
+    "name": "Colombia, Tolima, San Antonio"
+  },
+  {
+    "id": 1061,
+    "name": "Colombia, Tolima, San Luis"
+  },
+  {
+    "id": 1068,
+    "name": "Colombia, Tolima, Santa Isabel"
+  },
+  {
+    "id": 1098,
+    "name": "Colombia, Tolima, Suárez"
+  },
+  {
+    "id": 1062,
+    "name": "Colombia, Tolima, Valle de San Juan"
+  },
+  {
+    "id": 1069,
+    "name": "Colombia, Tolima, Venadillo"
+  },
+  {
+    "id": 1070,
+    "name": "Colombia, Tolima, Villahermosa"
+  },
+  {
+    "id": 1082,
+    "name": "Colombia, Tolima, Villarrica"
+  },
+  {
+    "id": 1099,
+    "name": "Colombia, Valle del Cauca, Alcalá"
+  },
+  {
+    "id": 1100,
+    "name": "Colombia, Valle del Cauca, Andalucía"
+  },
+  {
+    "id": 1101,
+    "name": "Colombia, Valle del Cauca, Ansermanuevo"
+  },
+  {
+    "id": 1102,
+    "name": "Colombia, Valle del Cauca, Argelia"
+  },
+  {
+    "id": 1103,
+    "name": "Colombia, Valle del Cauca, Bolívar"
+  },
+  {
+    "id": 1104,
+    "name": "Colombia, Valle del Cauca, Buenaventura"
+  },
+  {
+    "id": 1105,
+    "name": "Colombia, Valle del Cauca, Buga"
+  },
+  {
+    "id": 1106,
+    "name": "Colombia, Valle del Cauca, Bugalagrande"
+  },
+  {
+    "id": 1107,
+    "name": "Colombia, Valle del Cauca, Caicedonia"
+  },
+  {
+    "id": 1108,
+    "name": "Colombia, Valle del Cauca, Cali"
+  },
+  {
+    "id": 1109,
+    "name": "Colombia, Valle del Cauca, Calima - El Darién"
+  },
+  {
+    "id": 1110,
+    "name": "Colombia, Valle del Cauca, Candelaria"
+  },
+  {
+    "id": 1111,
+    "name": "Colombia, Valle del Cauca, Cartago"
+  },
+  {
+    "id": 1112,
+    "name": "Colombia, Valle del Cauca, Dagua"
+  },
+  {
+    "id": 1113,
+    "name": "Colombia, Valle del Cauca, El Águila"
+  },
+  {
+    "id": 1114,
+    "name": "Colombia, Valle del Cauca, El Cairo"
+  },
+  {
+    "id": 1115,
+    "name": "Colombia, Valle del Cauca, El Cerrito"
+  },
+  {
+    "id": 1116,
+    "name": "Colombia, Valle del Cauca, El Dovio"
+  },
+  {
+    "id": 1117,
+    "name": "Colombia, Valle del Cauca, Florida"
+  },
+  {
+    "id": 1118,
+    "name": "Colombia, Valle del Cauca, Ginebra"
+  },
+  {
+    "id": 1119,
+    "name": "Colombia, Valle del Cauca, Guacarí"
+  },
+  {
+    "id": 1120,
+    "name": "Colombia, Valle del Cauca, Jamundí"
+  },
+  {
+    "id": 1121,
+    "name": "Colombia, Valle del Cauca, La Cumbre"
+  },
+  {
+    "id": 1122,
+    "name": "Colombia, Valle del Cauca, La Unión"
+  },
+  {
+    "id": 1123,
+    "name": "Colombia, Valle del Cauca, La Victoria"
+  },
+  {
+    "id": 1124,
+    "name": "Colombia, Valle del Cauca, Obando"
+  },
+  {
+    "id": 1125,
+    "name": "Colombia, Valle del Cauca, Palmira"
+  },
+  {
+    "id": 1126,
+    "name": "Colombia, Valle del Cauca, Pradera"
+  },
+  {
+    "id": 1127,
+    "name": "Colombia, Valle del Cauca, Restrepo"
+  },
+  {
+    "id": 1128,
+    "name": "Colombia, Valle del Cauca, Riofrío"
+  },
+  {
+    "id": 1129,
+    "name": "Colombia, Valle del Cauca, Roldanillo"
+  },
+  {
+    "id": 1130,
+    "name": "Colombia, Valle del Cauca, San Pedro"
+  },
+  {
+    "id": 1131,
+    "name": "Colombia, Valle del Cauca, Sevilla"
+  },
+  {
+    "id": 1132,
+    "name": "Colombia, Valle del Cauca, Toro"
+  },
+  {
+    "id": 1133,
+    "name": "Colombia, Valle del Cauca, Trujillo"
+  },
+  {
+    "id": 1134,
+    "name": "Colombia, Valle del Cauca, Tuluá"
+  },
+  {
+    "id": 1135,
+    "name": "Colombia, Valle del Cauca, Ulloa"
+  },
+  {
+    "id": 1136,
+    "name": "Colombia, Valle del Cauca, Versalles"
+  },
+  {
+    "id": 1137,
+    "name": "Colombia, Valle del Cauca, Vijes"
+  },
+  {
+    "id": 1138,
+    "name": "Colombia, Valle del Cauca, Yotoco"
+  },
+  {
+    "id": 1139,
+    "name": "Colombia, Valle del Cauca, Yumbo"
+  },
+  {
+    "id": 1140,
+    "name": "Colombia, Valle del Cauca, Zarzal"
+  },
+  {
+    "id": 1142,
+    "name": "Colombia, Vaupés, Carurú"
+  },
+  {
+    "id": 1143,
+    "name": "Colombia, Vaupés, Mitú"
+  },
+  {
+    "id": 1144,
+    "name": "Colombia, Vaupés, Pacoa"
+  },
+  {
+    "id": 1145,
+    "name": "Colombia, Vaupés, Papunaua"
+  },
+  {
+    "id": 1146,
+    "name": "Colombia, Vaupés, Taraira"
+  },
+  {
+    "id": 1147,
+    "name": "Colombia, Vaupés, Yavaraté"
+  },
+  {
+    "id": 1148,
+    "name": "Colombia, Vichada, Cumaribo"
+  },
+  {
+    "id": 1149,
+    "name": "Colombia, Vichada, La Primavera"
+  },
+  {
+    "id": 1150,
+    "name": "Colombia, Vichada, Puerto Carreño"
+  },
+  {
+    "id": 1151,
+    "name": "Colombia, Vichada, Santa Rosalía"
+  }
+]

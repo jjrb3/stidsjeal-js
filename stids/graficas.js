@@ -1,0 +1,4 @@
+
+Api.Graficas = {
+    permisos: []
+};
