@@ -228,6 +228,33 @@ Api.Territorio.Departamento = {
         this.tabla(1,10,idPais);
     },
 
+    tabla: function(pagina,tamanhio,idPais) {
+
+        this.$ajaxC(this.nombreTabla,pagina,tamanhio);
+
+        this._ConsultarPorPais['id_pais']
+            = Api.Territorio.idPais
+            = parseInt(idPais) > 0 ? idPais : Api.Territorio.idPais;
+
+        this.$ajaxT(
+            this.nombreTabla,
+            this.uri,
+            this._ConsultarPorPais,
+            {
+                objecto: 'Territorio.Departamento',
+                metodo: 'tabla',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: this.opciones(),
+                checkbox: false,
+                columnas: [
+                    {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'}
+                ]
+            }
+        );
+
+        $(Api.Herramientas.verificarId(Api.Territorio.Municipio.nombreTabla,true)).html('');
+    },
+
     editar: function(id,objeto) {
 
         this.id = id;
@@ -318,33 +345,6 @@ Api.Territorio.Departamento = {
         return parametros;
     },
 
-    tabla: function(pagina,tamanhio,idPais) {
-
-        this.$ajaxC(this.nombreTabla,pagina,tamanhio);
-
-        this._ConsultarPorPais['id_pais']
-            = Api.Territorio.idPais
-            = parseInt(idPais) > 0 ? idPais : Api.Territorio.idPais;
-
-        this.$ajaxT(
-            this.nombreTabla,
-            this.uri,
-            this._ConsultarPorPais,
-            {
-                objecto: 'Territorio.Departamento',
-                metodo: 'tabla',
-                funcionalidades: this.$funcionalidadesT,
-                opciones: this.opciones(),
-                checkbox: false,
-                columnas: [
-                    {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'}
-                ]
-            }
-        );
-
-        $(Api.Herramientas.verificarId(Api.Territorio.Municipio.nombreTabla,true)).html('');
-    },
-
     opciones: function() {
         return {
             parametrizacion: [
@@ -381,6 +381,7 @@ Api.Territorio.Departamento = {
 };
 
 Api.Territorio.Municipio = {
+    id: null,
     uri: null,
     carpeta: 'Parametrizacion',
     controlador: 'Municipio',
@@ -394,16 +395,21 @@ Api.Territorio.Municipio = {
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
 
     _ConsultarPorDepartamento: null,
+    _Guardar: null,
+    _Actualizar: null,
+    _Eliminar: null,
 
     constructor: function(idDepartamento) {
         this._ConsultarPorDepartamento  = this.$uriCrudObjecto('ConsultarPorDepartamento',this.controlador,this.carpeta);
+        this._Guardar		            = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
+        this._Actualizar	            = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
+        this._Eliminar                  = this.$uriCrudObjecto('Eliminar',this.controlador,this.carpeta);
 
         str             		        = this.controlador;
         this.uri        		        = str.toLowerCase();
 
         this.tabla(1,10,idDepartamento);
     },
-
 
     tabla: function(pagina,tamanhio,idDepartamento) {
 
@@ -430,22 +436,113 @@ Api.Territorio.Municipio = {
         );
     },
 
+    editar: function(id,objeto) {
+
+        this.id = id;
+
+        console.log(objeto);
+        $('#municipio-nombre').val(objeto.nombre).focus();
+    },
+
+    guardarActualizar: function(evento) {
+
+        if (Api.Herramientas.presionarEnter(evento)) {
+
+            var parametros  = '';
+
+            this.id ? parametros = this.verificarFormulario(this._Actualizar) : parametros = this.verificarFormulario(this._Guardar);
+
+            if (parametros) {
+
+                this.$ajaxS(
+                    this.idRetorno,
+                    this.uri,
+                    parametros,
+
+                    function (json) {
+
+                        var ATM = Api.Territorio.Municipio;
+
+                        Api.Mensaje.json(json,ATM.idMensaje);
+
+                        if (json.resultado === 1) {
+
+                            ATM.id = null;
+                            ATM.tabla();
+
+                            $('#municipio-nombre').val('');
+                        }
+                    }
+                );
+            }
+        }
+    },
+
+    eliminar: function(id) {
+
+        this._Eliminar['id'] = id;
+
+        swal({
+            title: "¿Seguro que desea eliminarlo?",
+            text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, deseo eliminarlo",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        }, function () {
+
+            Api.Ajax.ajaxSimple(
+                '',
+                Api.Territorio.Municipio.uri,
+                Api.Territorio.Municipio._Eliminar,
+
+                function (json) {
+
+                    if (json.resultado === 1) {
+
+                        swal("Eliminado!", json.mensaje, "success");
+                        Api.Territorio.Municipio.tabla();
+                    }
+                    else {
+                        swal("Error", json.mensaje , "error");
+                    }
+                }
+            );
+        });
+    },
+
+    verificarFormulario: function(parametros) {
+
+        parametros['nombre']  = $('#municipio-nombre').val().trim();
+        parametros['id']      = this.id;
+        parametros['id_departamento'] = Api.Territorio.idDepartamento;
+
+        if (!parametros['nombre']) {
+            this.$mensajeP('advertencia',this.idMensaje,'Debe digitar un nombre para continuar');
+            return false;
+        }
+
+        return parametros;
+    },
+
     opciones: function() {
         return {
             parametrizacion: [
                 {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
-                    accion: 'Api.Territorio.Departamento.editar',
+                    accion: 'Api.Territorio.Municipio.editar',
                     color: '#1a7bb9',
                     estado: false,
                     permiso: 'actualizar',
-                    informacion: false
+                    informacion: true
                 },
                 {
                     nombre: 'Eliminar',
                     icono: 'fa-trash',
-                    accion: 'Api.Territorio.Departamento.eliminar',
+                    accion: 'Api.Territorio.Municipio.eliminar',
                     color: '#ec4758',
                     estado: false,
                     permiso: 'eliminar',
