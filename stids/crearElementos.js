@@ -3,6 +3,7 @@
  */
 
 Api.Elementos = {
+    tamanhioPaginacion: 5,
     paginas: [10, 25, 50, 100, 200, 500, 750, 1000],
     botonActivo: '<span class="label label-primary">ACTIVO</span>',
     botonInactivo: '<span class="label label-default">INACTIVO</span>',
@@ -141,12 +142,14 @@ Api.Elementos = {
 
         if (cantidad > 1) {
 
+            var rango = Api.Elementos.rangoPaginacion(paginaActual, cantidad);
+
             if (parseInt(paginaActual) - 1 > 0) {
 
                 paginacion += '<li class="apuntar"><a onclick="Api.' + objecto + '.tabla(' + (parseInt(paginaActual) - 1) + ',' + tamanhio + ",'" + buscar + "'" + ')">«</a></li>';
             }
 
-            for (var i=1;i<=cantidad;i++) {
+            for (var i=rango.inicio;i<=rango.fin;i++) {
 
                 if (i === paginaActual) {
                     activo = ' class="active default" '
@@ -166,6 +169,35 @@ Api.Elementos = {
         paginacion += '</ul>';
 
         $(Api.Herramientas.verificarId(div,true)).html(paginacion);
+    },
+
+    rangoPaginacion: function(pagina, cantidad) {
+
+        var limite	 = Api.Elementos.tamanhioPaginacion - 1;
+        var rango 	 = null;
+        var distancia = Math.round(limite / 2);
+
+        if (cantidad > limite) {
+
+            if (pagina + limite > cantidad) {
+
+                rango = {inicio: (cantidad - limite), fin: cantidad};
+            }
+            else {
+
+                if (pagina - distancia < 1 || limite - distancia < 1) {
+                    rango = {inicio: 1, fin: limite + 1};
+                }
+                else {
+                    rango = {inicio: pagina - distancia, fin: (pagina + limite - distancia)};
+                }
+            }
+        }
+        else {
+            rango = {inicio: pagina, fin: cantidad};
+        }
+
+        return rango;
     },
 
     crearTablaJson: function(div,json,$tabla) {
