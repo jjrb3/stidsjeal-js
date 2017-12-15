@@ -124,16 +124,26 @@ Api.Herramientas = {
         return string.charAt(0).toUpperCase() + string.slice(1);
     },
 
-    buscarTablaEnter: function(evento, objecto, metodo, id) {
+    buscarTablaEnter: function(evento, objeto, metodo, id) {
 
         var $herramientas = Api.Herramientas;
 
         if ($herramientas.presionarEnter(evento)) {
 
-            Api[objecto.trim()][metodo.trim()](
-                1,
-                parseInt($($herramientas.verificarId(id,true) + '-resultados > select').val())
-            );
+            objeto = objeto.split('.');
+
+            if (objeto.length === 2) {
+                Api[objeto[0].trim()][objeto[1].trim()][metodo.trim()](
+                    1,
+                    parseInt($($herramientas.verificarId(id, true) + '-resultados > select').val())
+                );
+            }
+            else {
+                Api[objeto[0].trim()][metodo.trim()](
+                    1,
+                    parseInt($($herramientas.verificarId(id, true) + '-resultados > select').val())
+                );
+            }
         }
     },
 
