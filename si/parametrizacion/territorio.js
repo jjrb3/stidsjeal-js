@@ -306,8 +306,9 @@ Api.Territorio.Departamento = {
 
     verificarFormulario: function(parametros) {
 
-        parametros['nombre'] = $('#departamento-nombre').val().trim();
-        parametros['id']     = this.id;
+        parametros['nombre']  = $('#departamento-nombre').val().trim();
+        parametros['id']      = this.id;
+        parametros['id_pais'] = Api.Territorio.idPais;
 
         if (!parametros['nombre']) {
             this.$mensajeP('advertencia',this.idMensaje,'Debe digitar un nombre para continuar');
