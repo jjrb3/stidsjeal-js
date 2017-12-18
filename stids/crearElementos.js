@@ -194,7 +194,7 @@ Api.Elementos = {
             }
         }
         else {
-            rango = {inicio: pagina, fin: cantidad};
+            rango = {inicio: 1, fin: cantidad};
         }
 
         return rango;
