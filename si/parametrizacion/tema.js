@@ -138,7 +138,7 @@ Api.Temas = {
         }, function () {
 
             Api.Ajax.ajaxSimple(
-                '',
+                '', 
                 Api.Temas.uri,
                 Api.Temas._Eliminar,
 
