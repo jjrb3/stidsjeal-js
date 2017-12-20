@@ -51,7 +51,7 @@ Api.Sexo = {
                     {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'estado',  edicion: false,	formato: '', alineacion:'centrado'}
                 ],
-                automatico: true
+                automatico: false
             }
         );
     },
@@ -174,14 +174,14 @@ Api.Sexo = {
                 {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
-                    accion: 'Api.Rol.editar',
+                    accion: 'Api.Sexo.editar',
                     color: '#1a7bb9',
                     estado: false,
                     permiso: 'actualizar',
                     informacion: true
                 },
                 {
-                    accion: 'Api.Rol.cambiarEstado',
+                    accion: 'Api.Sexo.cambiarEstado',
                     color: '#f7a54a',
                     estado: true,
                     condicion: {
@@ -202,7 +202,7 @@ Api.Sexo = {
                 {
                     nombre: 'Eliminar',
                     icono: 'fa-trash',
-                    accion: 'Api.Rol.eliminar',
+                    accion: 'Api.Sexo.eliminar',
                     color: '#ec4758',
                     estado: false,
                     permiso: 'eliminar',
