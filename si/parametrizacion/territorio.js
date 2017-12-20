@@ -65,7 +65,8 @@ Api.Territorio.Pais = {
                 checkbox: false,
                 columnas: [
                     {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'},
-                ]
+                ],
+                automatico: false
             }
         );
     },
@@ -248,7 +249,8 @@ Api.Territorio.Departamento = {
                 checkbox: false,
                 columnas: [
                     {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'}
-                ]
+                ],
+                automatico: false
             }
         );
 
@@ -431,7 +433,8 @@ Api.Territorio.Municipio = {
                 checkbox: false,
                 columnas: [
                     {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'}
-                ]
+                ],
+                automatico: false
             }
         );
     },

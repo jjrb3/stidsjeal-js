@@ -153,7 +153,8 @@ Api.Identificacion = {
                 columnas: [
                     {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'estado',  edicion: false,	formato: '', alineacion:'centrado'}
-                ]
+                ],
+                automatico: false
             }
         );
     },

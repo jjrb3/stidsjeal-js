@@ -102,7 +102,8 @@ Api.Dashboard = {
                     {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
                     {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'},
                     {nombre: 'descripcion',  edicion: false,	formato: false,     alineacion: 'justificado'},
-                ]
+                ],
+                automatico: false
             }
         );
     },
@@ -125,7 +126,8 @@ Api.Dashboard = {
                     {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
                     {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'},
                     {nombre: 'descripcion',  edicion: false,	formato: false,     alineacion: 'justificado'},
-                ]
+                ],
+                automatico: false
             }
         );
     },
@@ -292,7 +294,8 @@ Api.Dashboard = {
                     {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
                     {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'},
                     {nombre: 'modulo',  edicion: false,	formato: false,     alineacion: 'justificado'},
-                ]
+                ],
+                automatico: false
             }
         );
     },
@@ -315,7 +318,8 @@ Api.Dashboard = {
                     {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
                     {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'},
                     {nombre: 'modulo',  edicion: false,	formato: false,     alineacion: 'justificado'},
-                ]
+                ],
+                automatico: false
             }
         );
     },

@@ -52,7 +52,8 @@ Api.Temas = {
                     {nombre: 'nombre_usuario',  		edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'nombre_administrador',  	edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'nombre_logueo',  			edicion: false,	formato: '', alineacion:'izquierda'}
-                ]
+                ],
+                automatico: false
             }
         );
     },

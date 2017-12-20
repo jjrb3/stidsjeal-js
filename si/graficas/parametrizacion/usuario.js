@@ -95,33 +95,6 @@ Api.Graficas.Usuario = {
 
                     var ctx4 = document.getElementById("grafica-usuario-total").getContext("2d");
                     new Chart(ctx4, {type: 'doughnut', data: doughnutData, options:doughnutOptions});
-
-                    /*
-                    var polarData = {
-                        datasets: [{
-                            data: [
-                                12,61,30
-                            ],
-                            backgroundColor: [
-                                "#a3e1d4", "#dedede", "#b5b8cf"
-                            ],
-                            label: [
-                                "Radar"
-                            ]
-                        }],
-                        labels: [
-                            "Activos","Eliminados","Inactivos"
-                        ]
-                    };
-
-                    var polarOptions = {
-                        segmentStrokeWidth: 2,
-                        responsive: true
-
-                    };
-
-                    var ctx3 = document.getElementById("grafica-usuario-total").getContext("2d");
-                    new Chart(ctx3, {type: 'polarArea', data: polarData, options:polarOptions});*/
                 }
             }
         );

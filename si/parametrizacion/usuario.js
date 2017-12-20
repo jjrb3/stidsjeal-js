@@ -69,7 +69,8 @@ Api.Usuario = {
                     {nombre: 'rol',             edicion: false,	formato: '',         alineacion:'centrado'},
                     {nombre: 'correo',          edicion: true,	formato: '',         alineacion:'izquierda'},
                     {nombre: 'estado',          edicion: false,	formato: '',         alineacion:'centrado'}
-                ]
+                ],
+                automatico: false
             }
 		);
 	},

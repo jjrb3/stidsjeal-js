@@ -10,7 +10,6 @@ Api.Rol = {
     $ajaxC: Api.Ajax.constructor,
     $ajaxT: Api.Ajax.ajaxTabla,
     $ajaxS: Api.Ajax.ajaxSimple,
-    $objeto: Api.Rol,
     $mensajeP: Api.Mensaje.publicar,
     $uriCrudObjecto: Api.Uri.crudObjecto,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
@@ -43,7 +42,7 @@ Api.Rol = {
             this.uri,
             this._Consultar,
             {
-                objecto: 'Rol',
+                objecto: this.controlador,
                 metodo: 'tabla',
                 funcionalidades: this.$funcionalidadesT,
                 opciones: this.opciones(),
@@ -51,7 +50,8 @@ Api.Rol = {
                 columnas: [
                     {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'estado',  edicion: false,	formato: '', alineacion:'centrado'}
-                ]
+                ],
+                automatico: true
             }
         );
     },
@@ -61,7 +61,7 @@ Api.Rol = {
         if (Api.Herramientas.presionarEnter(evento)) {
 
             var id          = this.id;
-            var $objeto     = Api.Rol;
+            var $objeto     = Api[this.controlador];
             var parametros  = '';
 
             id ? parametros = this.verificarFormulario(this._Actualizar) : parametros = this.verificarFormulario(this._Guardar);
@@ -102,6 +102,8 @@ Api.Rol = {
 
     cambiarEstado: function(id) {
 
+        var $objeto = Api[this.controlador];
+
         this._CambiarEstado['id'] = id;
 
         this.$ajaxS(
@@ -111,12 +113,14 @@ Api.Rol = {
 
             function () {
 
-                Api.Rol.tabla();
+                $objeto.tabla();
             }
         );
     },
 
     eliminar: function(id) {
+
+        var $objeto = Api[this.controlador];
 
         this._Eliminar['id'] = id;
 
@@ -130,8 +134,6 @@ Api.Rol = {
             cancelButtonText: "Cancelar",
             closeOnConfirm: false,
         }, function () {
-
-            var $objeto = Api.Rol;
 
             $objeto.$ajaxS(
                 '',
