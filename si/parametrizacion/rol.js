@@ -10,6 +10,7 @@ Api.Rol = {
     $ajaxC: Api.Ajax.constructor,
     $ajaxT: Api.Ajax.ajaxTabla,
     $ajaxS: Api.Ajax.ajaxSimple,
+    $objeto: Api.Rol,
     $mensajeP: Api.Mensaje.publicar,
     $uriCrudObjecto: Api.Uri.crudObjecto,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
@@ -32,7 +33,6 @@ Api.Rol = {
 
         this.tabla();
     },
-
 
     tabla: function(pagina,tamanhio) {
 
@@ -60,7 +60,8 @@ Api.Rol = {
 
         if (Api.Herramientas.presionarEnter(evento)) {
 
-            var id          = $('#id').val().trim();
+            var id          = this.id;
+            var $objeto     = Api.Rol;
             var parametros  = '';
 
             id ? parametros = this.verificarFormulario(this._Actualizar) : parametros = this.verificarFormulario(this._Guardar);
@@ -68,20 +69,22 @@ Api.Rol = {
             if (parametros) {
 
                 this.$ajaxS(
-                    this.idRetorno,
+                    this.idMensaje,
                     this.uri,
                     parametros,
 
                     function (json) {
 
-                        Api.Mensaje.json(json,'mensaje');
+                        Api.Mensaje.json(json,$objeto.idMensaje);
 
                         if (json.resultado === 1) {
-                            Api.Identificacion.tabla();
+
+                            $objeto.tabla();
+
                             $('#nombre').val('');
 
                             if (id) {
-                                $('#id').val('');
+                                $objeto.id = null;
                             }
                         }
                     }
@@ -92,7 +95,8 @@ Api.Rol = {
 
     editar: function(id,objeto) {
 
-        $('#id').val(id);
+        this.id = id;
+
         $('#nombre').val(objeto.nombre).focus();
     },
 
@@ -105,9 +109,9 @@ Api.Rol = {
             this.uri,
             this._CambiarEstado,
 
-            function (json) {
+            function () {
 
-                Api.Identificacion.tabla();
+                Api.Rol.tabla();
             }
         );
     },
@@ -127,17 +131,19 @@ Api.Rol = {
             closeOnConfirm: false,
         }, function () {
 
-            Api.Ajax.ajaxSimple(
+            var $objeto = Api.Rol;
+
+            $objeto.$ajaxS(
                 '',
-                Api.Identificacion.uri,
-                Api.Identificacion._Eliminar,
+                $objeto.uri,
+                $objeto._Eliminar,
 
                 function (json) {
 
                     if (json.resultado === 1) {
 
                         swal("Eliminado!", json.mensaje, "success");
-                        Api.Identificacion.tabla();
+                        $objeto.tabla();
                     }
                     else {
                         swal("Error", json.mensaje , "error");
@@ -150,7 +156,7 @@ Api.Rol = {
     verificarFormulario: function(parametros) {
 
         parametros['nombre'] = $('#nombre').val().trim();
-        parametros['id']     = $('#id').val().trim();
+        parametros['id']     = this.id;
 
         if (!parametros['nombre']) {
             this.$mensajeP('advertencia','mensaje','Debe digitar un nombre para continuar');
@@ -159,8 +165,6 @@ Api.Rol = {
 
         return parametros;
     },
-
-
 
     opciones: function() {
         return {
