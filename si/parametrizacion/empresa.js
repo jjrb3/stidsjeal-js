@@ -142,6 +142,43 @@ Api.Empresa = {
         );
     },
 
+    eliminar: function(id) {
+
+        var $objeto = Api[this.controlador];
+
+        this._Eliminar['id'] = id;
+
+        swal({
+            title: "¿Seguro que desea eliminarlo?",
+            text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, deseo eliminarlo",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false,
+        }, function () {
+
+            $objeto.$ajaxS(
+                '',
+                $objeto.uri,
+                $objeto._Eliminar,
+
+                function (json) {
+
+                    if (json.resultado === 1) {
+
+                        swal("Eliminado!", json.mensaje, "success");
+                        $objeto.tabla();
+                    }
+                    else {
+                        swal("Error", json.mensaje , "error");
+                    }
+                }
+            );
+        });
+    },
+
     verificarFormulario: function($objeto) {
 
         var contenedor = '#crear-editar ';
@@ -168,7 +205,6 @@ Api.Empresa = {
 
         return $objeto;
     },
-
 
     opcionesGenenciales: function() {
         return {
