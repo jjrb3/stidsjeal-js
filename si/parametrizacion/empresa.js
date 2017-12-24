@@ -17,6 +17,7 @@ Api.Empresa = {
 
     _InicializarFormulario: null,
     _Consultar: null,
+    _ConsultarPorId: null,
     _Guardar: null,
     _Actualizar: null,
     _CambiarEstado: null,
@@ -25,6 +26,7 @@ Api.Empresa = {
     constructor: function() {
         this._InicializarFormulario	= this.$uriCrudObjecto('InicializarFormulario',this.controlador,this.carpeta);
         this._Consultar	            = this.$uriCrudObjecto('Consultar',this.controlador,this.carpeta);
+        this.ConsultarPorId	        = this.$uriCrudObjecto('ConsultarPorId',this.controlador,this.carpeta);
         this._Guardar	            = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
         this._Actualizar            = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
         this._CambiarEstado         = this.$uriCrudObjecto('CambiarEstado',this.controlador,this.carpeta);
@@ -69,10 +71,10 @@ Api.Empresa = {
         );
     },
 
-    crear: function() {
+    crearActualizar: function() {
 
         var $objeto    = Api[this.controlador];
-        var parametros = this.verificarFormulario(this._Guardar);
+        var parametros = this.verificarFormulario(this.id ? this._Actualizar : this._Guardar);
 
         if (parametros) {
             this.$ajaxS(
@@ -86,9 +88,10 @@ Api.Empresa = {
 
                     if (json.resultado === 1) {
 
-                        var AH = Api.Herramientas;
-
+                        $objeto.id = null;
                         $objeto.tabla();
+
+                        var AH = Api.Herramientas;
 
                         AH.cancelarCA('empresa');
 
@@ -101,6 +104,24 @@ Api.Empresa = {
         }
     },
 
+    editar: function(id,$objeto) {
+
+        this.id = id;
+
+        var AH          = Api.Herramientas;
+        var contenedor  = '#crear-editar ';
+
+        $(contenedor + '#nit').val(AH.noNull($objeto.nit));
+        $(contenedor + '#nombre-cabecera').val(AH.noNull($objeto.nombre_cabecera));
+        $(contenedor + '#nombre').val(AH.noNull($objeto.nombre));
+        $(contenedor + '#frase').val(AH.noNull($objeto.frase));
+        $(contenedor + this.idMensaje).html('');
+
+        AH.selectDefault('tema',$objeto.id_tema);
+        AH.mostrarBotonesActualizar('empresa');
+        AH.cambiarPestanhia('pestanhia-empresa','crear-editar');
+    },
+
     verificarFormulario: function($objeto) {
 
         var contenedor = '#crear-editar ';
@@ -111,6 +132,7 @@ Api.Empresa = {
         $objeto['nombre_cabecera']  = $(contenedor + '#nombre-cabecera').val().trim();
         $objeto['nombre']           = $(contenedor + '#nombre').val().trim();
         $objeto['frase']            = $(contenedor + '#frase').val().trim();
+        $objeto['id']               = this.id;
 
         $(idMensaje).html('');
 
@@ -133,14 +155,14 @@ Api.Empresa = {
                 {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
-                    accion: 'Api.Sexo.editar',
+                    accion: 'Api.' + this.controlador + '.editar',
                     color: '#1a7bb9',
                     estado: false,
                     permiso: 'actualizar',
                     informacion: true
                 },
                 {
-                    accion: 'Api.Sexo.cambiarEstado',
+                    accion: 'Api.' + this.controlador + '.cambiarEstado',
                     color: '#f7a54a',
                     estado: true,
                     condicion: {
@@ -161,7 +183,7 @@ Api.Empresa = {
                 {
                     nombre: 'Eliminar',
                     icono: 'fa-trash',
-                    accion: 'Api.Sexo.eliminar',
+                    accion: 'Api.' + this.controlador + '.eliminar',
                     color: '#ec4758',
                     estado: false,
                     permiso: 'eliminar',
@@ -177,7 +199,7 @@ Api.Empresa = {
                 {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
-                    accion: 'Api.Sexo.editar',
+                    accion: 'Api.' + this.controlador + '.editar',
                     color: '#1a7bb9',
                     estado: false,
                     permiso: 'actualizar',

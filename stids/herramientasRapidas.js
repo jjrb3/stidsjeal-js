@@ -261,6 +261,10 @@ Api.Herramientas = {
         return input;
     },
 
+    noNull: function(string) {
+        return string === null ? '' : string;
+    },
+
     validarEmail: function(email) {
 
         if (email.trim()) {
