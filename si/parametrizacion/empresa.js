@@ -17,6 +17,7 @@ Api.Empresa = {
 
     _InicializarFormulario: null,
     _Consultar: null,
+    _ConsultarDetalle: null,
     _Guardar: null,
     _Actualizar: null,
     _CambiarEstado: null,
@@ -25,6 +26,7 @@ Api.Empresa = {
     constructor: function() {
         this._InicializarFormulario	= this.$uriCrudObjecto('InicializarFormulario',this.controlador,this.carpeta);
         this._Consultar	            = this.$uriCrudObjecto('Consultar',this.controlador,this.carpeta);
+        this._ConsultarDetalle	    = this.$uriCrudObjecto('ConsultarDetalle',this.controlador,this.carpeta);
         this._Guardar	            = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
         this._Actualizar            = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
         this._CambiarEstado         = this.$uriCrudObjecto('CambiarEstado',this.controlador,this.carpeta);
@@ -71,6 +73,16 @@ Api.Empresa = {
 
     detalle: function(id) {
 
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._ConsultarDetalle,
+
+            function (json) {
+
+                $('#bloque-detalle').slideDown(300);
+            }
+        );
     },
 
     crearActualizar: function() {
