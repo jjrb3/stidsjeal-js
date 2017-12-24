@@ -17,7 +17,6 @@ Api.Empresa = {
 
     _InicializarFormulario: null,
     _Consultar: null,
-    _ConsultarPorId: null,
     _Guardar: null,
     _Actualizar: null,
     _CambiarEstado: null,
@@ -26,7 +25,6 @@ Api.Empresa = {
     constructor: function() {
         this._InicializarFormulario	= this.$uriCrudObjecto('InicializarFormulario',this.controlador,this.carpeta);
         this._Consultar	            = this.$uriCrudObjecto('Consultar',this.controlador,this.carpeta);
-        this.ConsultarPorId	        = this.$uriCrudObjecto('ConsultarPorId',this.controlador,this.carpeta);
         this._Guardar	            = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
         this._Actualizar            = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
         this._CambiarEstado         = this.$uriCrudObjecto('CambiarEstado',this.controlador,this.carpeta);
@@ -69,6 +67,10 @@ Api.Empresa = {
                 automatico: false
             }
         );
+    },
+
+    detalle: function(id) {
+
     },
 
     crearActualizar: function() {
@@ -122,6 +124,24 @@ Api.Empresa = {
         AH.cambiarPestanhia('pestanhia-empresa','crear-editar');
     },
 
+    cambiarEstado: function(id) {
+
+        var $objeto = Api[this.controlador];
+
+        this._CambiarEstado['id'] = id;
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._CambiarEstado,
+
+            function() {
+
+                $objeto.tabla();
+            }
+        );
+    },
+
     verificarFormulario: function($objeto) {
 
         var contenedor = '#crear-editar ';
@@ -149,9 +169,19 @@ Api.Empresa = {
         return $objeto;
     },
 
+
     opcionesGenenciales: function() {
         return {
             parametrizacion: [
+                {
+                    nombre: 'Ver detalle',
+                    icono: 'fa-eye',
+                    accion: 'Api.' + this.controlador + '.detalle',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: false
+                },
                 {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
@@ -196,6 +226,15 @@ Api.Empresa = {
     opciones: function() {
         return {
             parametrizacion: [
+                {
+                    nombre: 'Ver detalle',
+                    icono: 'fa-eye',
+                    accion: 'Api.' + this.controlador + '.detalle',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: false
+                },
                 {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
