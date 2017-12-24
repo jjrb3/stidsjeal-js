@@ -73,12 +73,23 @@ Api.Empresa = {
 
     detalle: function(id) {
 
+        this._ConsultarDetalle['id_empresa'] = id;
+
         this.$ajaxS(
             '',
             this.uri,
             this._ConsultarDetalle,
 
             function (json) {
+
+                var AS = Api.Sucursal;
+
+                AS.idEmpresa = id;
+
+                if (Object.keys(json.sucursal).length > 0) {
+
+                    AS.inicializarParametros(json.sucursal);
+                }
 
                 $('#bloque-detalle').slideDown(300);
             }
@@ -310,5 +321,97 @@ Api.Empresa = {
                 AH.cargarSelectJSON('#tema',json.temas,true);
             }
         );
+    }
+};
+
+
+Api.Sucursal = {
+    id: null,
+    uri: null,
+    carpeta: 'Parametrizacion',
+    controlador: 'Sucursal',
+    idEmpresa: null,
+
+    $ajaxS: Api.Ajax.ajaxSimple,
+    $mensajeS: Api.Mensaje.superior,
+    $uriCrudObjecto: Api.Uri.crudObjecto,
+
+    _ActualizarPorEmpresa: null,
+
+    constructor: function() {
+        this._ActualizarPorEmpresa  = this.$uriCrudObjecto('ActualizarPorEmpresa',this.controlador,this.carpeta);
+        str         	            = this.controlador;
+        this.uri    	            = str.toLowerCase();
+    },
+
+    actualizar: function() {
+
+        this.constructor();
+
+        var parametros = this.verificarFormulario(this._ActualizarPorEmpresa);
+
+        if (parametros) {
+            this.$ajaxS(
+                '',
+                this.uri,
+                parametros,
+
+                function (json) {
+
+                    Api.Mensaje.jsonSuperior(json);
+                }
+            );
+        }
+    },
+
+    verificarFormulario: function($objeto) {
+
+        var contenedor = '#detalle ';
+
+        $objeto['codigo']           = $(contenedor + '#codigo').val().trim();
+        $objeto['id_municipio']     = $(contenedor + '#id-municipio').val();
+        $objeto['nombre']           = $(contenedor + '#nombre').val().trim();
+        $objeto['telefono']         = $(contenedor + '#telefono').val().trim();
+        $objeto['direccion']        = $(contenedor + '#direccion').val().trim();
+        $objeto['quienes_somos']    = $(contenedor + '#quienes-somos').val().trim();
+        $objeto['que_hacemos']      = $(contenedor + '#que-hacemos').val().trim();
+        $objeto['mision']           = $(contenedor + '#mision').val().trim();
+        $objeto['vision']           = $(contenedor + '#vision').val().trim();
+        $objeto['id_empresa']       = this.idEmpresa;
+
+
+        if (!$objeto.codigo) {
+            this.$mensajeS('advertencia','Digite el codigo de la sucursal para continuar.');
+            return false;
+        }
+
+        if (!$objeto.id_municipio) {
+            this.$mensajeS('advertencia','Seleccione una ciudad para continuar.');
+            return false;
+        }
+
+        if (!$objeto.nombre) {
+            this.$mensajeS('advertencia','Digite un nombre de sucursal para continuar.');
+            return false;
+        }
+
+        return $objeto;
+    },
+
+    inicializarParametros: function(json) {
+
+        var contenedor  = '#detalle ';
+        var AH          = Api.Herramientas;
+
+        $(contenedor + '#codigo').val(json.codigo);
+        $(contenedor + '#ciudad').val(json.ciudad);
+        $(contenedor + '#id-municipio').val(json.id_municipio);
+        $(contenedor + '#nombre').val(json.nombre);
+        $(contenedor + '#telefono').val(AH.noNull(json.telefono));
+        $(contenedor + '#direccion').val(AH.noNull(json.direccion));
+        $(contenedor + '#quienes-somos').val(AH.noNull(json.quienes_somos));
+        $(contenedor + '#que-hacemos').val(AH.noNull(json.que_hacemos));
+        $(contenedor + '#mision').val(AH.noNull(json.mision));
+        $(contenedor + '#vision').val(AH.noNull(json.vision));
     }
 };
