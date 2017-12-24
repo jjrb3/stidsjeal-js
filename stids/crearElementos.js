@@ -18,7 +18,7 @@ Api.Elementos = {
 
     funcionalidadesTabla: function() {
         return {
-            buscador:true,
+            buscador: true,
             resultados: true,
             paginacion: true
         }
