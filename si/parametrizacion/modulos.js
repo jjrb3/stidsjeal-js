@@ -6,7 +6,7 @@ Api.Modulos = {
     controlador: 'Modulo',
     uri: null,
     idRetorno: null,
-    idModulo: null,
+    idModulo: 1,
     idTablaModulo: 'tabla-modulo',
     idTablaSesion: 'tabla-sesion',
 
@@ -18,16 +18,17 @@ Api.Modulos = {
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
 
     _ConsultarCheckearPorEmpresa: null,
-    _ConsultarSesionCheckearPorEmpresa: null,
+    _ConsultarSesionCheckearPorEmpresaModulo: null,
 
     constructor: function () {
-        this._ConsultarCheckearPorEmpresa       = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
-        this._ConsultarSesionCheckearPorEmpresa = this.$uriCrud('ConsultarSesionCheckearPorEmpresa', this.controlador, this.carpeta);
+        this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
+        this._ConsultarSesionCheckearPorEmpresaModulo   = this.$uriCrud('ConsultarSesionCheckearPorEmpresaModulo', this.controlador, this.carpeta);
 
         var  str                            = this.controlador;
         this.uri                            = str.toLowerCase();
 
         this.tablaModulo();
+        this.tablaSesion();
     },
 
     tablaModulo: function(pagina,tamanhio) {
@@ -68,21 +69,21 @@ Api.Modulos = {
 
         this.$ajaxC(this.idTablaSesion,pagina,tamanhio);
 
-        this._ConsultarSesionCheckearPorEmpresa['id_empresa'] = this.ie;
-        this._ConsultarSesionCheckearPorEmpresa['id_modulo'] = this.idModulo;
+        this._ConsultarSesionCheckearPorEmpresaModulo['id_empresa'] = this.ie;
+        this._ConsultarSesionCheckearPorEmpresaModulo['id_modulo'] = this.idModulo;
 
         this.$ajaxT(
             this.idTablaSesion,
             this.uri,
-            this._ConsultarSesionCheckearPorEmpresa,
+            this._ConsultarSesionCheckearPorEmpresaModulo,
             {
                 objecto: 'Modulos',
-                metodo: 'tablaModulo',
+                metodo: 'tablaSesion',
                 funcionalidades: this.$funcionalidadesT,
                 opciones: null,
                 checkbox: true,
                 color: true,
-                seleccionar: true,
+                seleccionar: false,
                 columnas: [
                     {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
                     {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
