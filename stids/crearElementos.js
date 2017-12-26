@@ -281,7 +281,10 @@ Api.Elementos = {
 
             var $cnt,
                 $estado,
-                textoFormateado;
+                textoFormateado,
+                color,
+                seleccion = '',
+                cursor = '';
 
             $.each(json.data, function (kj, ij) {
 
@@ -289,13 +292,22 @@ Api.Elementos = {
 
                 $.each($tabla.columnas, function (kc, ic) {
 
+                    // Si decidimos que la tabla tenga estados de colores
+                    color = $tabla.color ? ij.color_estado : '';
+
+                    // Si habilita que cuando presione click en una fila ejecute una funcion
+                    if ($tabla.seleccionar) {
+                        seleccion   = 'onclick="Api.' + $tabla.objecto + '.' + $tabla.metodo + 'Seleccionado(' + ij.id_seleccionar + ')"';
+                        cursor      = ' apuntar';
+                    }
+
                     // Si existe checkbox
                     if ($tabla.checkbox && kc === 0) {
 
                         $cnt = $contenido
                             .children('tbody')
                             .children('tr:last')
-                            .append('<td class="centrado vertical" width="30px">' + $('#clonar-checkbox')
+                            .append('<td class="centrado vertical ' + color + cursor + '" width="30px" ' + seleccion + '>' + $('#clonar-checkbox')
                                 .children('label')
                                 .addClass('m-left--20')
                                 .children('input')
@@ -305,7 +317,6 @@ Api.Elementos = {
                                 .parent()
                                 .html() + '</td>');
                     }
-
                     if (ic.nombre !== 'opciones' && ic.nombre !== 'estado') {
 
                         textoFormateado = Api.Elementos.crearFormato(ic.formato, ij[ic.nombre]);
@@ -313,7 +324,7 @@ Api.Elementos = {
                         $cnt = $contenido
                             .children('tbody')
                             .children('tr:last')
-                            .append('<td class="vertical">' + textoFormateado + '</td>');
+                            .append('<td class="vertical ' + color + cursor + '" ' + seleccion + '>' + textoFormateado + '</td>');
 
 
                         $cnt.children('td:last').addClass(ic.alineacion);
@@ -331,7 +342,7 @@ Api.Elementos = {
                                 $cnt = $contenido
                                     .children('tbody')
                                     .children('tr:last')
-                                    .append('<td class="vertical">' + $estado.etiqueta + '</td>');
+                                    .append('<td class="vertical ' + color + cursor + '" ' + seleccion + '>' + $estado.etiqueta + '</td>');
 
                                 $cnt.children('td:last').addClass(ic.alineacion);
                             }

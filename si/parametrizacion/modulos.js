@@ -1,87 +1,94 @@
 
-const carpetaControlador  = 'Parametrizacion';
+Api.Modulos = {
+    ie: null,
+    id: null,
+    carpeta: 'Parametrizacion',
+    controlador: 'Modulo',
+    uri: null,
+    idRetorno: null,
+    idModulo: null,
+    idTablaModulo: 'tabla-modulo',
+    idTablaSesion: 'tabla-sesion',
 
-var controlador 		= 'Modulo';
-var nombreTablaGeneral 	= 'tabla'+controlador;
+    $ajaxC: Api.Ajax.constructor,
+    $ajaxT: Api.Ajax.ajaxTabla,
+    $ajaxS: Api.Ajax.ajaxSimple,
+    $uriCrud: Api.Uri.crudObjecto,
+    $mensaje: Api.Mensaje.publicar,
+    $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
 
-function ejecutarBuscador(pagina,tamanhio,buscador,funcion) {
+    _ConsultarCheckearPorEmpresa: null,
+    _ConsultarSesionCheckearPorEmpresa: null,
 
-    switch(funcion)
-    {
-        case 'listado':
-            listado(pagina,tamanhio,buscador);
-            break;
-    }
-}
+    constructor: function () {
+        this._ConsultarCheckearPorEmpresa       = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
+        this._ConsultarSesionCheckearPorEmpresa = this.$uriCrud('ConsultarSesionCheckearPorEmpresa', this.controlador, this.carpeta);
 
+        var  str                            = this.controlador;
+        this.uri                            = str.toLowerCase();
 
-function listado(pagina,tamanhio,buscador) {
+        this.tablaModulo();
+    },
 
-    if (!pagina) {pagina = 1;}
-    if (!tamanhio) {tamanhio = 10;}
-    if (!buscador) {buscador = '';}
+    tablaModulo: function(pagina,tamanhio) {
 
+        this.$ajaxC(this.idTablaModulo,pagina,tamanhio);
 
+        this._ConsultarCheckearPorEmpresa['id_empresa'] = this.ie;
 
-    var enlace 	 	 	 = _urlCrud('Consultar'+$('#tipo-modulo').val(),controlador)+'&buscador='+buscador;
-    var paginacion   	 = ['&pagina='+pagina+'&tamanhioPagina='+tamanhio, 'listado', 'paginacion',tamanhio];
-    var opciones 	 	 = ['actualizacionRapida','estado','actualizar','eliminar','mover','detalle'];
-    var exportarImportar = [];
-    var cabecera 	  	 = ['nombre','descripcion','enlace_'+$('#tipo-modulo').val().toLowerCase(),'es_nuevo','estado'];
-    var edicion 	  	 = [];
-    var estados  	  	 = ['<span class="label label-default ">INACTIVO</span>','<span class="label label-primary ">ACTIVO</span>'];
-
-
-    _ajaxTabla(controlador,enlace,'tabla',opciones,cabecera,edicion,estados,nombreTablaGeneral,paginacion,exportarImportar);
-
-    setTimeout(function(){
-        $(".table tbody tr").each(function (index) {
-            var campo1, campo2, campo3;
-            $(this).children("td").each(function (index2)
+        this.$ajaxT(
+            this.idTablaModulo,
+            this.uri,
+            this._ConsultarCheckearPorEmpresa,
             {
-                switch (index2)
-                {
-                    case 1:
-                        $(this).text() == 'null' ? $(this).html('') : ''
-                        break;
+                objecto: 'Modulos',
+                metodo: 'tablaModulo',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: null,
+                checkbox: true,
+                color: true,
+                seleccionar: true,
+                columnas: [
+                    {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
+                    {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
+                ],
+                automatico: false
+            }
+        );
+    },
 
-                    case 2:
-                        $(this).text() == 'null' ? $(this).html('') : ''
-                        break;
+    tablaModuloSeleccionado: function(id) {
 
-                    case 3:
-                        $(this).html($(this).text() == 1 ? 'Sí' : 'No')
-                        break;
-                }
-            })
-        })
+        this.idModulo = id;
 
-    }, 1000);
-}
+        this.tablaSesion();
+    },
 
+    tablaSesion: function(pagina,tamanhio) {
 
-function guardar(actualizar,id) {
+        this.$ajaxC(this.idTablaSesion,pagina,tamanhio);
 
-    var data = _urlCrud((actualizar ? 'Actualizar' : 'Guardar'),controlador)+'&'+$('#formulario').serialize()+'&id='+id;
+        this._ConsultarSesionCheckearPorEmpresa['id_empresa'] = this.ie;
+        this._ConsultarSesionCheckearPorEmpresa['id_modulo'] = this.idModulo;
 
-    _ajax(controlador,data,'mensajeGuardar','formulario',false);
-
-    setTimeout(function(){ listado(); }, 1500);
-}
-
-
-function eliminarNivelConocimiento(id,confirmacion){
-
-    if (!confirmacion) {
-        $('#modal-eliminar #siModalEliminar').attr('onClick','eliminar'+controlador+'('+id+',true)');
-        $('#modal-eliminar').modal('show');
-    }
-    else {
-
-        var data = _urlCrud('Eliminar',controlador)+'&id='+id;
-
-        _ajax(controlador,data,'mensajeTabla');
-
-        setTimeout(function(){ listado(); }, 1500);
-    }
-}
+        this.$ajaxT(
+            this.idTablaSesion,
+            this.uri,
+            this._ConsultarSesionCheckearPorEmpresa,
+            {
+                objecto: 'Modulos',
+                metodo: 'tablaModulo',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: null,
+                checkbox: true,
+                color: true,
+                seleccionar: true,
+                columnas: [
+                    {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
+                    {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
+                ],
+                automatico: false
+            }
+        );
+    },
+};

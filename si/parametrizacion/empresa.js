@@ -83,8 +83,11 @@ Api.Empresa = {
             function (json) {
 
                 var AS = Api.Sucursal;
+                var AM = Api.Modulos;
 
-                AS.idEmpresa = id;
+                AS.idEmpresa = AM.ie = id;
+
+                AM.constructor();
 
                 if (Object.keys(json.sucursal).length > 0) {
 
