@@ -19,11 +19,13 @@ Api.Modulos = {
 
     _ConsultarCheckearPorEmpresa: null,
     _GuardarIdsModulosPorEmpresa: null,
+    _EliminarIdsModulosPorEmpresa: null,
 
     constructor: function () {
         this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
         this._ConsultarSesionCheckearPorEmpresaModulo   = this.$uriCrud('ConsultarSesionCheckearPorEmpresaModulo', this.controlador, this.carpeta);
         this._GuardarIdsModulosPorEmpresa               = this.$uriCrud('GuardarIdsModulosPorEmpresa', this.controlador, this.carpeta);
+        this._EliminarIdsModulosPorEmpresa              = this.$uriCrud('EliminarIdsModulosPorEmpresa', this.controlador, this.carpeta);
 
         var  str                            = this.controlador;
         this.uri                            = str.toLowerCase();
@@ -122,6 +124,48 @@ Api.Modulos = {
 
     quitar: function() {
 
+        var AM  = Api.Modulos;
+        var ids = this.obtenerIdsTablas();
+
+
+        if (ids) {
+
+            this._EliminarIdsModulosPorEmpresa['id_empresa'] = this.ie;
+            this._EliminarIdsModulosPorEmpresa['ids']        = ids;
+
+            swal({
+                title: "¿Seguro que desea eliminarlo?",
+                text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sí, deseo eliminarlo",
+                cancelButtonText: "Cancelar",
+                closeOnConfirm: false
+            }, function () {
+
+                Api.Ajax.ajaxSimple(
+                    '',
+                    AM.uri,
+                    AM._EliminarIdsModulosPorEmpresa,
+
+                    function (json) {
+
+                        if (json.resultado === 1) {
+
+                            swal("Eliminado!", json.mensaje, "success");
+                            Api.Modulos.constructor();
+                        }
+                        else {
+                            swal("Error", json.mensaje , "error");
+                        }
+                    }
+                );
+            });
+        }
+        else {
+            Api.Mensaje.superior('informacion','Información','Debe seleccionar algun módulo o sesión para continuar');
+        }
     },
 
     obtenerIdsTablas: function() {
