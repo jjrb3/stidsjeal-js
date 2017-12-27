@@ -172,14 +172,14 @@ Api.Herramientas = {
             checkeados = 'not(:checked)';
         }
 
-        $(this.verificarId(id,true) + ' :input:checkbox:' + checkeados).each(function() {
+        $(Api.Herramientas.verificarId(id,true) + ' :input:checkbox:' + checkeados).each(function() {
 
             if ($(this).val()) {
                 ids += $(this).val() + ',';
             }
         });
 
-        return ids.substr(0,ids.length - 1);
+        return ids.substr(0,ids.length - 1).trim();
     },
 
     cambiarPestanhia: function(id,idPestanhia) {

@@ -18,11 +18,12 @@ Api.Modulos = {
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
 
     _ConsultarCheckearPorEmpresa: null,
-    _ConsultarSesionCheckearPorEmpresaModulo: null,
+    _GuardarIdsModulosPorEmpresa: null,
 
     constructor: function () {
         this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
         this._ConsultarSesionCheckearPorEmpresaModulo   = this.$uriCrud('ConsultarSesionCheckearPorEmpresaModulo', this.controlador, this.carpeta);
+        this._GuardarIdsModulosPorEmpresa               = this.$uriCrud('GuardarIdsModulosPorEmpresa', this.controlador, this.carpeta);
 
         var  str                            = this.controlador;
         this.uri                            = str.toLowerCase();
@@ -92,4 +93,54 @@ Api.Modulos = {
             }
         );
     },
+
+    agregar: function() {
+
+        var ids = this.obtenerIdsTablas();
+
+        if (ids) {
+
+            this._GuardarIdsModulosPorEmpresa['id_empresa'] = this.ie;
+            this._GuardarIdsModulosPorEmpresa['ids']        = ids;
+
+            this.$ajaxS(
+                this.idRetorno,
+                this.uri,
+                this._GuardarIdsModulosPorEmpresa,
+
+                function (json) {
+
+                    Api.Mensaje.jsonSuperior(json);
+                    Api.Modulos.constructor();
+                }
+            );
+        }
+        else {
+            Api.Mensaje.superior('informacion','Información','Debe seleccionar algun módulo o sesión para continuar');
+        }
+    },
+
+    quitar: function() {
+
+    },
+
+    obtenerIdsTablas: function() {
+
+        var AHoC        = Api.Herramientas.obtenerCheck,
+            ids         = '',
+            idsModulos  = '',
+            idsSesiones = '';
+
+        idsModulos  = AHoC('tabla-modulo-contenido',true);
+        idsSesiones = AHoC('tabla-sesion-contenido',true);
+
+        if (idsModulos) {
+            ids = idsModulos + (idsSesiones ? ',' + idsSesiones : idsSesiones);
+        }
+        else {
+            ids = idsSesiones;
+        }
+
+        return ids;
+    }
 };
