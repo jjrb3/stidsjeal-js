@@ -13,5 +13,6 @@ var Api = {
         exportar: 5,
         importa: 6
     },
-    permisos: null
+    permisos: null,
+    ie: null
 };

@@ -1,9 +1,9 @@
 
-Api.Modulos = {
+Api.ModuloEmpresa = {
     ie: null,
     id: null,
     carpeta: 'Parametrizacion',
-    controlador: 'Modulo',
+    controlador: 'ModuloEmpresa',
     uri: null,
     idRetorno: null,
     idModulo: 1,
@@ -22,6 +22,7 @@ Api.Modulos = {
     _EliminarIdsModulosPorEmpresa: null,
 
     constructor: function () {
+        this._ConsultarPorEmpresa                       = this.$uriCrud('ConsultarPorEmpresa', this.controlador, this.carpeta);
         this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
         this._ConsultarSesionCheckearPorEmpresaModulo   = this.$uriCrud('ConsultarSesionCheckearPorEmpresaModulo', this.controlador, this.carpeta);
         this._GuardarIdsModulosPorEmpresa               = this.$uriCrud('GuardarIdsModulosPorEmpresa', this.controlador, this.carpeta);
@@ -38,27 +39,55 @@ Api.Modulos = {
 
         this.$ajaxC(this.idTablaModulo,pagina,tamanhio);
 
-        this._ConsultarCheckearPorEmpresa['id_empresa'] = this.ie;
+        console.log(Api.ie)
+        if (Api.ie === 1) {
 
-        this.$ajaxT(
-            this.idTablaModulo,
-            this.uri,
-            this._ConsultarCheckearPorEmpresa,
-            {
-                objecto: 'Modulos',
-                metodo: 'tablaModulo',
-                funcionalidades: this.$funcionalidadesT,
-                opciones: null,
-                checkbox: true,
-                color: true,
-                seleccionar: true,
-                columnas: [
-                    {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
-                    {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
-                ],
-                automatico: false
-            }
-        );
+            this._ConsultarPorEmpresa['id_empresa'] = this.ie;
+
+            this.$ajaxT(
+                this.idTablaModulo,
+                this.uri,
+                this._ConsultarPorEmpresa,
+                {
+                    objecto: this.controlador,
+                    metodo: 'tablaModulo',
+                    funcionalidades: this.$funcionalidadesT,
+                    opciones: null,
+                    checkbox: false,
+                    color: false,
+                    seleccionar: true,
+                    columnas: [
+                        {nombre: 'icono', edicion: false, formato: 'icono', alineacion: 'centrado'},
+                        {nombre: 'nombre', edicion: false, formato: false, alineacion: 'justificado'}
+                    ],
+                    automatico: false
+                }
+            );
+        }
+        else {
+
+            this._ConsultarCheckearPorEmpresa['id_empresa'] = this.ie;
+
+            this.$ajaxT(
+                this.idTablaModulo,
+                this.uri,
+                this._ConsultarCheckearPorEmpresa,
+                {
+                    objecto: this.controlador,
+                    metodo: 'tablaModulo',
+                    funcionalidades: this.$funcionalidadesT,
+                    opciones: null,
+                    checkbox: true,
+                    color: true,
+                    seleccionar: true,
+                    columnas: [
+                        {nombre: 'icono', edicion: false, formato: 'icono', alineacion: 'centrado'},
+                        {nombre: 'nombre', edicion: false, formato: false, alineacion: 'justificado'}
+                    ],
+                    automatico: false
+                }
+            );
+        }
     },
 
     tablaModuloSeleccionado: function(id) {
@@ -80,7 +109,7 @@ Api.Modulos = {
             this.uri,
             this._ConsultarSesionCheckearPorEmpresaModulo,
             {
-                objecto: 'Modulos',
+                objecto: this.controlador,
                 metodo: 'tablaSesion',
                 funcionalidades: this.$funcionalidadesT,
                 opciones: null,

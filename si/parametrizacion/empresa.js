@@ -83,7 +83,7 @@ Api.Empresa = {
             function (json) {
 
                 var AS = Api.Sucursal;
-                var AM = Api.Modulos;
+                var AM = Api.ModuloEmpresa;
 
                 AS.idEmpresa = AM.ie = id;
 
