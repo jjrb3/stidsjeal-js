@@ -43,7 +43,7 @@ Api.Empresa = {
 
         this.$ajaxC(this.nombreTabla,pagina,tamanhio);
 
-        if (this.ie > 1) {
+        if (Api.ie > 1) {
             this.$funcionalidadesT.buscador = false;
             this.$funcionalidadesT.paginacion = false;
         }
@@ -56,7 +56,7 @@ Api.Empresa = {
                 objecto: this.controlador,
                 metodo: 'tabla',
                 funcionalidades: this.$funcionalidadesT,
-                opciones: this.ie > 1 ? this.opciones() : this.opcionesGenenciales(),
+                opciones: Api.ie > 1 ? this.opciones() : this.opcionesGenenciales(),
                 checkbox: false,
                 columnas: [
                     {nombre: 'tema',            edicion: false,	formato: '', alineacion:'centrado'},
@@ -82,12 +82,14 @@ Api.Empresa = {
 
             function (json) {
 
-                var AS = Api.Sucursal;
-                var AM = Api.ModuloEmpresa;
+                var AS = Api.Sucursal,
+                    AM = Api.ModuloEmpresa,
+                    AR = Api.Rol;
 
-                AS.idEmpresa = AM.ie = id;
+                AS.idEmpresa = AM.ie = AR.ie = id;
 
                 AM.constructor();
+                AR.constructor();
 
                 if (Object.keys(json.sucursal).length > 0) {
 

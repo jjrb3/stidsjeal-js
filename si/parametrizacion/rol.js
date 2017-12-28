@@ -1,11 +1,12 @@
 
 Api.Rol = {
+    ie: null,
     id: null,
     uri: null,
     carpeta: 'Parametrizacion',
     controlador: 'Rol',
-    nombreTabla: 'tabla',
-    idMensaje: 'mensaje',
+    nombreTabla: 'rol-tabla',
+    idMensaje: 'rol-mensaje',
 
     $ajaxC: Api.Ajax.constructor,
     $ajaxT: Api.Ajax.ajaxTabla,
@@ -36,6 +37,8 @@ Api.Rol = {
     tabla: function(pagina,tamanhio) {
 
         this.$ajaxC(this.nombreTabla,pagina,tamanhio);
+
+        this._Consultar['id_empresa'] = this.ie;
 
         this.$ajaxT(
             this.nombreTabla,
@@ -81,7 +84,7 @@ Api.Rol = {
 
                             $objeto.tabla();
 
-                            $('#nombre').val('');
+                            $('#rol-nombre').val('');
 
                             if (id) {
                                 $objeto.id = null;
@@ -97,7 +100,7 @@ Api.Rol = {
 
         this.id = id;
 
-        $('#nombre').val(objeto.nombre).focus();
+        $('#rol-nombre').val(objeto.nombre).focus();
     },
 
     cambiarEstado: function(id) {
@@ -132,7 +135,7 @@ Api.Rol = {
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Sí, deseo eliminarlo",
             cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
+            closeOnConfirm: false
         }, function () {
 
             $objeto.$ajaxS(
@@ -157,11 +160,12 @@ Api.Rol = {
 
     verificarFormulario: function(parametros) {
 
-        parametros['nombre'] = $('#nombre').val().trim();
-        parametros['id']     = this.id;
+        parametros['nombre']        = $('#rol-nombre').val().trim();
+        parametros['id']            = this.id;
+        parametros['id_empresa']    = this.ie;
 
         if (!parametros['nombre']) {
-            this.$mensajeP('advertencia','mensaje','Debe digitar un nombre para continuar');
+            this.$mensajeP('advertencia','rol-mensaje','Debe digitar un nombre para continuar');
             return false;
         }
 
