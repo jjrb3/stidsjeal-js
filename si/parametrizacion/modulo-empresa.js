@@ -20,9 +20,12 @@ Api.ModuloEmpresa = {
     _ConsultarCheckearPorEmpresa: null,
     _GuardarIdsModulosPorEmpresa: null,
     _EliminarIdsModulosPorEmpresa: null,
+    _ConsultarPorEmpresa: null,
+    _ConsultarSesionPorEmpresaModulo: null,
 
     constructor: function () {
         this._ConsultarPorEmpresa                       = this.$uriCrud('ConsultarPorEmpresa', this.controlador, this.carpeta);
+        this._ConsultarSesionPorEmpresaModulo           = this.$uriCrud('ConsultarSesionPorEmpresaModulo', this.controlador, this.carpeta);
         this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
         this._ConsultarSesionCheckearPorEmpresaModulo   = this.$uriCrud('ConsultarSesionCheckearPorEmpresaModulo', this.controlador, this.carpeta);
         this._GuardarIdsModulosPorEmpresa               = this.$uriCrud('GuardarIdsModulosPorEmpresa', this.controlador, this.carpeta);
@@ -39,8 +42,7 @@ Api.ModuloEmpresa = {
 
         this.$ajaxC(this.idTablaModulo,pagina,tamanhio);
 
-        console.log(Api.ie)
-        if (Api.ie === 1) {
+        if (Api.ie > 1) {
 
             this._ConsultarPorEmpresa['id_empresa'] = this.ie;
 
@@ -101,28 +103,56 @@ Api.ModuloEmpresa = {
 
         this.$ajaxC(this.idTablaSesion,pagina,tamanhio);
 
-        this._ConsultarSesionCheckearPorEmpresaModulo['id_empresa'] = this.ie;
-        this._ConsultarSesionCheckearPorEmpresaModulo['id_modulo'] = this.idModulo;
+        if (Api.ie > 1) {
 
-        this.$ajaxT(
-            this.idTablaSesion,
-            this.uri,
-            this._ConsultarSesionCheckearPorEmpresaModulo,
-            {
-                objecto: this.controlador,
-                metodo: 'tablaSesion',
-                funcionalidades: this.$funcionalidadesT,
-                opciones: null,
-                checkbox: true,
-                color: true,
-                seleccionar: false,
-                columnas: [
-                    {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
-                    {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
-                ],
-                automatico: false
-            }
-        );
+            this._ConsultarSesionPorEmpresaModulo['id_empresa'] = this.ie;
+            this._ConsultarSesionPorEmpresaModulo['id_modulo'] = this.idModulo;
+
+            this.$ajaxT(
+                this.idTablaSesion,
+                this.uri,
+                this._ConsultarSesionPorEmpresaModulo,
+                {
+                    objecto: this.controlador,
+                    metodo: 'tablaSesion',
+                    funcionalidades: this.$funcionalidadesT,
+                    opciones: null,
+                    checkbox: false,
+                    color: false,
+                    seleccionar: false,
+                    columnas: [
+                        {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
+                        {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
+                    ],
+                    automatico: false
+                }
+            );
+        }
+        else {
+
+            this._ConsultarSesionCheckearPorEmpresaModulo['id_empresa'] = this.ie;
+            this._ConsultarSesionCheckearPorEmpresaModulo['id_modulo'] = this.idModulo;
+
+            this.$ajaxT(
+                this.idTablaSesion,
+                this.uri,
+                this._ConsultarSesionCheckearPorEmpresaModulo,
+                {
+                    objecto: this.controlador,
+                    metodo: 'tablaSesion',
+                    funcionalidades: this.$funcionalidadesT,
+                    opciones: null,
+                    checkbox: true,
+                    color: true,
+                    seleccionar: false,
+                    columnas: [
+                        {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
+                        {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
+                    ],
+                    automatico: false
+                }
+            );
+        }
     },
 
     agregar: function() {
@@ -142,7 +172,7 @@ Api.ModuloEmpresa = {
                 function (json) {
 
                     Api.Mensaje.jsonSuperior(json);
-                    Api.Modulos.constructor();
+                    Api.ModuloEmpresa.constructor();
                 }
             );
         }
@@ -153,7 +183,7 @@ Api.ModuloEmpresa = {
 
     quitar: function() {
 
-        var AM  = Api.Modulos;
+        var AM  = Api.ModuloEmpresa;
         var ids = this.obtenerIdsTablas();
 
 
@@ -183,7 +213,7 @@ Api.ModuloEmpresa = {
                         if (json.resultado === 1) {
 
                             swal("Eliminado!", json.mensaje, "success");
-                            Api.Modulos.constructor();
+                            Api.ModuloEmpresa.constructor();
                         }
                         else {
                             swal("Error", json.mensaje , "error");
