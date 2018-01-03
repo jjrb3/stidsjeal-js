@@ -87,6 +87,8 @@ Api.Empresa = {
 
             function (json) {
 
+                $('#formulario-reporte-permiso #id-empresa').val(id);
+
                 var AS = Api.Sucursal,
                     AM = Api.ModuloEmpresa,
                     AR = Api.Rol,
