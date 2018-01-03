@@ -23,17 +23,19 @@ Api.Empresa = {
     _CambiarEstado: null,
     _Eliminar: null,
     _ConsultarSesion: null,
+    _GuardarPermisosRapidos: null,
 
     constructor: function() {
-        this._InicializarFormulario	= this.$uriCrudObjecto('InicializarFormulario',this.controlador,this.carpeta);
-        this._Consultar	            = this.$uriCrudObjecto('Consultar',this.controlador,this.carpeta);
-        this._ConsultarDetalle	    = this.$uriCrudObjecto('ConsultarDetalle',this.controlador,this.carpeta);
-        this._Guardar	            = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
-        this._Actualizar            = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
-        this._CambiarEstado         = this.$uriCrudObjecto('CambiarEstado',this.controlador,this.carpeta);
-        this._Eliminar              = this.$uriCrudObjecto('Eliminar',this.controlador,this.carpeta);
+        this._InicializarFormulario	 = this.$uriCrudObjecto('InicializarFormulario',this.controlador,this.carpeta);
+        this._Consultar	             = this.$uriCrudObjecto('Consultar',this.controlador,this.carpeta);
+        this._ConsultarDetalle	     = this.$uriCrudObjecto('ConsultarDetalle',this.controlador,this.carpeta);
+        this._Guardar	             = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
+        this._Actualizar             = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
+        this._CambiarEstado          = this.$uriCrudObjecto('CambiarEstado',this.controlador,this.carpeta);
+        this._Eliminar               = this.$uriCrudObjecto('Eliminar',this.controlador,this.carpeta);
 
-        this._ConsultarSesion       = this.$uriCrudObjecto('ConsultarSesion','ModuloEmpresa',this.carpeta);
+        this._ConsultarSesion        = this.$uriCrudObjecto('ConsultarSesion','ModuloEmpresa',this.carpeta);
+        this._GuardarPermisosRapidos = this.$uriCrudObjecto('GuardarPermisosRapido','ModuloRol',this.carpeta);
 
         str         	= this.controlador;
         this.uri    	= str.toLowerCase();
@@ -352,6 +354,65 @@ Api.Empresa = {
                 Api.Herramientas.cargarSelectJSON(apuntador,json,false);
             }
         );
+    },
+
+    guardarPermiso: function() {
+
+        var formulario  = this.verificarFormularioPermiso(this._GuardarPermisosRapidos),
+            mensaje     = '#permiso-mensaje',
+            apuntador = '#permisos #id-sesion';
+
+        if (formulario) {
+
+            this.$ajaxS(
+                mensaje,
+                this.uri,
+                formulario,
+
+                function (json) {
+
+                    var AE = Api.Empresa;
+
+                    Api.Mensaje.json(json,mensaje);
+
+                    AE.detalle(AE.ie);
+
+                    $(apuntador).html('');
+
+                    $(apuntador)
+                        .find('option:first-child')
+                        .prop('selected', true)
+                        .end()
+                        .trigger("chosen:updated");
+                }
+            );
+        }
+    },
+
+    verificarFormularioPermiso: function($objeto) {
+
+        var contenedor = '#permiso-mensaje';
+
+        $objeto['id_rol']     = $('#id-rol').val();
+        $objeto['id_modulo']  = $('#id-modulo').val();
+        $objeto['id_sesion']  = $('#id-sesion').val();
+        $objeto['permisos']   = $('#id-permiso').val();
+
+
+        $(contenedor).html('');
+
+        if (!$objeto.id_rol) {
+            this.$mensajeP('advertencia',contenedor,'Seleccione un rol para continuar.');
+            return false;
+        }
+
+        if (!$objeto.id_modulo) {
+            this.$mensajeP('advertencia',contenedor,'Seleccione un módulo para continuar.');
+            return false;
+        }
+
+
+        return $objeto;
     },
 
     inicializarFormulario: function() {
