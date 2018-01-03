@@ -93,12 +93,15 @@ Api.Empresa = {
                     AM = Api.ModuloEmpresa,
                     AR = Api.Rol,
                     AH = Api.Herramientas,
-                    AE = Api.Empresa;
+                    AE = Api.Empresa,
+                    AU = Api.Usuario;
 
-                AS.idEmpresa = AM.ie = AR.ie = AE.ie = id;
+                AS.idEmpresa = AM.ie = AR.ie = AE.ie = AU.ie = id;
 
                 AM.constructor();
                 AR.constructor();
+                AU.constructor('crear-editar-empresa #mensaje');
+
 
                 if (Object.keys(json.sucursal).length > 0) {
 
@@ -158,7 +161,7 @@ Api.Empresa = {
         this.id = id;
 
         var AH          = Api.Herramientas;
-        var contenedor  = '#crear-editar ';
+        var contenedor  = '#crear-editar-empresa ';
 
         $(contenedor + '#nit').val(AH.noNull($objeto.nit));
         $(contenedor + '#nombre-cabecera').val(AH.noNull($objeto.nombre_cabecera));
@@ -168,7 +171,7 @@ Api.Empresa = {
 
         AH.selectDefault('tema',$objeto.id_tema);
         AH.mostrarBotonesActualizar('empresa');
-        AH.cambiarPestanhia('pestanhia-empresa','crear-editar');
+        AH.cambiarPestanhia('pestanhia-empresa','crear-editar-empresa');
     },
 
     cambiarEstado: function(id) {
@@ -228,7 +231,7 @@ Api.Empresa = {
 
     verificarFormulario: function($objeto) {
 
-        var contenedor = '#crear-editar ';
+        var contenedor = '#crear-editar-empresa ';
         var idMensaje  = Api.Herramientas.verificarId(this.idMensaje,true);
 
         $objeto['id_tema']          = $(contenedor + '#tema').val();
@@ -479,7 +482,7 @@ Api.Sucursal = {
         var contenedor = '#detalle ';
 
         $objeto['codigo']           = $(contenedor + '#codigo').val().trim();
-        $objeto['id_municipio']     = $(contenedor + '#id-municipio').val();
+        $objeto['id_municipio']     = $(contenedor + '#ciudad-detalle').val();
         $objeto['nombre']           = $(contenedor + '#nombre').val().trim();
         $objeto['telefono']         = $(contenedor + '#telefono').val().trim();
         $objeto['direccion']        = $(contenedor + '#direccion').val().trim();
@@ -510,7 +513,7 @@ Api.Sucursal = {
 
     inicializarParametros: function(json) {
 
-        var contenedor  = '#detalle ';
+        var contenedor  = '#detalle-general ';
         var AH          = Api.Herramientas;
 
         $(contenedor + '#codigo').val(json.codigo);

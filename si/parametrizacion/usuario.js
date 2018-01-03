@@ -1,5 +1,6 @@
 
 Api.Usuario = {
+    ie: null,
     uri: null,
     carpeta: 'Parametrizacion',
     controlador: 'Usuario',
@@ -50,6 +51,8 @@ Api.Usuario = {
 	tabla: function(pagina,tamanhio) {
 
 	    this.$ajaxC(this.nombreTabla,pagina,tamanhio);
+
+	    this._Consultar['id_empresa'] = this.ie;
 
 		this.$ajaxT(
 			this.nombreTabla,
@@ -253,7 +256,7 @@ Api.Usuario = {
         var contenedor  = '#crear-editar ';
 
         $objeto['id_tipo_identificacion']  = $(contenedor + '#tipo-identificacion').val();
-        $objeto['id_rol']                  = $(contenedor + '#rol').val();
+        $objeto['id_rol']                  = $(contenedor + '#id-rol-usuario').val();
         $objeto['id_municipio']            = $(contenedor + '#id-municipio').val();
         $objeto['id_sexo']                 = $(contenedor + '#sexo').val();
         $objeto['no_documento']            = $(contenedor + '#no-documento').val().trim();
@@ -264,6 +267,7 @@ Api.Usuario = {
         $objeto['fecha_nacimiento']        = $(contenedor + '#fecha-nacimiento').val();
         $objeto['telefono']                = $(contenedor + '#telefono').val().trim();
         $objeto['celular']                 = $(contenedor + '#celular').val().trim();
+        $objeto['id_empresa']              = this.ie;
 
         if (tipo === 'crear') {
             $objeto['clave']               = $(contenedor + '#clave').val();
@@ -271,6 +275,7 @@ Api.Usuario = {
         else {
             $objeto['id']                  = $(contenedor + '#id').val();
         }
+
 
         $(contenedor + '#mensaje').html('');
 
@@ -350,7 +355,7 @@ Api.Usuario = {
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Sí, deseo eliminarlo",
             cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
+            closeOnConfirm: false
         }, function () {
 
             Api.Ajax.ajaxSimple(
@@ -375,6 +380,8 @@ Api.Usuario = {
 
     inicializarFormulario: function() {
 
+        this._InicializarFormulario['id_empresa'] = this.ie;
+
         this.$ajaxS(
             '',
             this.uri,
@@ -386,7 +393,7 @@ Api.Usuario = {
 
                     var AH = Api.Herramientas;
 
-                    AH.cargarSelectJSON('#rol',json.rol,true);
+                    AH.cargarSelectJSON('#id-rol-usuario',json.rol,true);
                     AH.cargarSelectJSON('#tipo-identificacion',json.tipo_identificacion,true);
                     AH.cargarSelectJSON('#sexo',json.sexo,true);
                 }
