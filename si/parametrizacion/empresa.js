@@ -22,6 +22,7 @@ Api.Empresa = {
     _Actualizar: null,
     _CambiarEstado: null,
     _Eliminar: null,
+    _ConsultarSesion: null,
 
     constructor: function() {
         this._InicializarFormulario	= this.$uriCrudObjecto('InicializarFormulario',this.controlador,this.carpeta);
@@ -31,6 +32,8 @@ Api.Empresa = {
         this._Actualizar            = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
         this._CambiarEstado         = this.$uriCrudObjecto('CambiarEstado',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrudObjecto('Eliminar',this.controlador,this.carpeta);
+
+        this._ConsultarSesion       = this.$uriCrudObjecto('ConsultarSesion','ModuloEmpresa',this.carpeta);
 
         str         	= this.controlador;
         this.uri    	= str.toLowerCase();
@@ -84,9 +87,11 @@ Api.Empresa = {
 
                 var AS = Api.Sucursal,
                     AM = Api.ModuloEmpresa,
-                    AR = Api.Rol;
+                    AR = Api.Rol,
+                    AH = Api.Herramientas,
+                    AE = Api.Empresa;
 
-                AS.idEmpresa = AM.ie = AR.ie = id;
+                AS.idEmpresa = AM.ie = AR.ie = AE.ie = id;
 
                 AM.constructor();
                 AR.constructor();
@@ -94,6 +99,16 @@ Api.Empresa = {
                 if (Object.keys(json.sucursal).length > 0) {
 
                     AS.inicializarParametros(json.sucursal);
+                }
+
+                if (Object.keys(json.rol).length > 0) {
+
+                    AH.cargarSelectJSON('#permisos #id-rol',json.rol,true);
+                }
+
+                if (Object.keys(json.modulos).length > 0) {
+
+                    AH.cargarSelectJSON('#permisos #id-modulo',json.modulos,true);
                 }
 
                 $('#bloque-detalle').slideDown(300);
@@ -310,6 +325,33 @@ Api.Empresa = {
                 }
             ]
         };
+    },
+
+    consultarSesion: function(idModulo) {
+
+        var apuntador = '#permisos #id-sesion';
+
+        this._ConsultarSesion['id_empresa'] = this.ie;
+        this._ConsultarSesion['id_modulo']  = idModulo;
+
+        $(apuntador).html('');
+
+        $(apuntador)
+            .find('option:first-child')
+            .prop('selected', true)
+            .end()
+            .trigger("chosen:updated");
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._ConsultarSesion,
+
+            function (json) {
+
+                Api.Herramientas.cargarSelectJSON(apuntador,json,false);
+            }
+        );
     },
 
     inicializarFormulario: function() {
