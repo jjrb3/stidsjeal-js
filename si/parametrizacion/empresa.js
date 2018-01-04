@@ -87,7 +87,7 @@ Api.Empresa = {
 
             function (json) {
 
-                $('#formulario-reporte-permiso #id-empresa').val(id);
+                $('.id-empresa').val(id);
 
                 var AS = Api.Sucursal,
                     AM = Api.ModuloEmpresa,
@@ -511,6 +511,10 @@ Api.Sucursal = {
         }
 
         return $objeto;
+    },
+
+    subirImagen: function() {
+        Api.Empresa.detalle(this.id);
     },
 
     inicializarParametros: function(json) {
