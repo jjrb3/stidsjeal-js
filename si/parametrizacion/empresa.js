@@ -78,6 +78,8 @@ Api.Empresa = {
 
     detalle: function(id) {
 
+        this.limpiarFormularioDetalle();
+
         this._ConsultarDetalle['id_empresa'] = id;
 
         this.$ajaxS(
@@ -371,7 +373,7 @@ Api.Empresa = {
 
         var formulario  = this.verificarFormularioPermiso(this._GuardarPermisosRapidos),
             mensaje     = '#permiso-mensaje',
-            apuntador = '#permisos #id-sesion';
+            apuntador   = '#permisos #id-sesion';
 
         if (formulario) {
 
@@ -424,6 +426,30 @@ Api.Empresa = {
 
 
         return $objeto;
+    },
+
+    limpiarFormularioDetalle: function() {
+
+        var contenedorDetalle = '#detalle-general ';
+        var contenedorPermiso = '#permisos ';
+
+        $(contenedorDetalle + '#codigo').val('');
+        $(contenedorDetalle + '#ciudad').val('');
+        $(contenedorDetalle + '#id-municipio').val('');
+        $(contenedorDetalle + '#nombre').val('');
+        $(contenedorDetalle + '#telefono').val('');
+        $(contenedorDetalle + '#direccion').val('');
+        $(contenedorDetalle + '#quienes-somos').val('');
+        $(contenedorDetalle + '#que-hacemos').val('');
+        $(contenedorDetalle + '#mision').val('');
+        $(contenedorDetalle + '#vision').val('');
+
+        $(contenedorPermiso + '#id-rol').html('');
+        $(contenedorPermiso + '#id-rol').find('option:first-child').prop('selected', true).end().trigger("chosen:updated");
+        $(contenedorPermiso + '#id-modulo').html('');
+        $(contenedorPermiso + '#id-modulo').find('option:first-child').prop('selected', true).end().trigger("chosen:updated");
+        $(contenedorPermiso + '#id-sesion').html('');
+        $(contenedorPermiso + '#id-sesion').find('option:first-child').prop('selected', true).end().trigger("chosen:updated");
     },
 
     inicializarFormulario: function() {
