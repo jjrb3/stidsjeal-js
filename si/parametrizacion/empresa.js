@@ -89,20 +89,24 @@ Api.Empresa = {
 
                 $('.id-empresa').val(id);
 
-                var AS = Api.Sucursal,
-                    AM = Api.ModuloEmpresa,
-                    AR = Api.Rol,
-                    AH = Api.Herramientas,
-                    AE = Api.Empresa,
-                    AU = Api.Usuario,
-                    AI = Api.Identificacion;
+                var AS  = Api.Sucursal,
+                    AM  = Api.ModuloEmpresa,
+                    AR  = Api.Rol,
+                    AH  = Api.Herramientas,
+                    AE  = Api.Empresa,
+                    AU  = Api.Usuario,
+                    AI  = Api.Identificacion,
+                    AV  = Api.Valores,
+                    AEm = Api.Emails;
 
-                AS.idEmpresa = AM.ie = AR.ie = AE.ie = AU.ie = AI.ie = id;
+                AS.idEmpresa = AM.ie = AR.ie = AE.ie = AU.ie = AV.ie = AEm.ie = AI.ie = id;
 
                 AM.constructor();
                 AR.constructor();
                 AU.constructor('crear-editar-empresa #mensaje');
                 AI.constructor();
+                AV.constructor();
+                AEm.constructor();
 
 
                 if (Object.keys(json.sucursal).length > 0) {
@@ -439,7 +443,6 @@ Api.Empresa = {
     }
 };
 
-
 Api.Sucursal = {
     id: null,
     uri: null,
@@ -532,5 +535,370 @@ Api.Sucursal = {
         $(contenedor + '#que-hacemos').val(AH.noNull(json.que_hacemos));
         $(contenedor + '#mision').val(AH.noNull(json.mision));
         $(contenedor + '#vision').val(AH.noNull(json.vision));
+    }
+};
+
+Api.Valores = {
+    ie: null,
+    id: null,
+    uri: null,
+    carpeta: 'Parametrizacion',
+    controlador: 'EmpresaValores',
+    nombreTabla: 'valores-tabla',
+    idMensaje: 'valores-mensaje',
+
+    $ajaxC: Api.Ajax.constructor,
+    $ajaxT: Api.Ajax.ajaxTabla,
+    $ajaxS: Api.Ajax.ajaxSimple,
+    $mensajeP: Api.Mensaje.publicar,
+    $uriCrudObjecto: Api.Uri.crudObjecto,
+    $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
+
+    _Consultar: null,
+    _Guardar: null,
+    _Actualizar: null,
+    _CambiarEstado: null,
+    _Eliminar: null,
+
+    constructor: function() {
+        this._Consultar	    = this.$uriCrudObjecto('Consultar',this.controlador,this.carpeta);
+        this._Guardar	    = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
+        this._Actualizar    = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
+        this._Eliminar      = this.$uriCrudObjecto('Eliminar',this.controlador,this.carpeta);
+
+        str         	= this.controlador;
+        this.uri    	= str.toLowerCase();
+
+        this.tabla();
+    },
+
+    tabla: function(pagina,tamanhio) {
+
+        this.$ajaxC(this.nombreTabla,pagina,tamanhio);
+
+        this._Consultar['id_empresa'] = this.ie;
+
+        this.$ajaxT(
+            this.nombreTabla,
+            this.uri,
+            this._Consultar,
+            {
+                objecto: this.controlador,
+                metodo: 'tabla',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: this.opcionesTabla(),
+                checkbox: false,
+                columnas: [
+                    {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'}
+                ],
+                automatico: false
+            }
+        );
+    },
+
+    guardarActualizar: function(evento) {
+
+        if (Api.Herramientas.presionarEnter(evento)) {
+
+            var parametros  = '';
+
+            this.id ? parametros = this.verificarFormulario(this._Actualizar) : parametros = this.verificarFormulario(this._Guardar);
+
+            if (parametros) {
+
+                this.$ajaxS(
+                    this.idRetorno,
+                    this.uri,
+                    parametros,
+
+                    function (json) {
+
+                        var AV = Api.Valores;
+
+                        Api.Mensaje.json(json,'valores-mensaje');
+
+                        if (json.resultado === 1) {
+
+                            AV.tabla();
+                            AV.id ? AV.id = '' : '';
+
+                            $('#valores-nombre').val('');
+                        }
+                    }
+                );
+            }
+        }
+    },
+
+    verificarFormulario: function(parametros) {
+
+        parametros['nombre']     = $('#valores-nombre').val().trim();
+        parametros['id']         = this.id;
+        parametros['id_empresa'] = this.ie;
+
+        if (!parametros['nombre']) {
+            this.$mensajeP('advertencia','valores-mensaje','Debe digitar un nombre para continuar');
+            return false;
+        }
+
+        return parametros;
+    },
+
+    editar: function(id,objeto) {
+
+        this.id = id;
+
+        $('#valores-nombre').val(objeto.nombre).focus();
+    },
+
+    eliminar: function(id) {
+
+        this._Eliminar['id'] = id;
+
+        swal({
+            title: "¿Seguro que desea eliminarlo?",
+            text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, deseo eliminarlo",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        }, function () {
+
+            Api.Ajax.ajaxSimple(
+                '',
+                Api.Valores.uri,
+                Api.Valores._Eliminar,
+
+                function (json) {
+
+                    if (json.resultado === 1) {
+
+                        Api.Valores.constructor();
+                        swal("Eliminado!", json.mensaje, "success");
+                    }
+                    else {
+                        swal("Error", json.mensaje , "error");
+                    }
+                }
+            );
+        });
+    },
+
+    opcionesTabla: function() {
+        return {
+            parametrizacion: [
+                {
+                    nombre: 'Actualizar',
+                    icono: 'fa-pencil-square-o',
+                    accion: 'Api.Valores.editar',
+                    color: '#1a7bb9',
+                    estado: false,
+                    permiso: 'actualizar',
+                    informacion: true
+                },
+                {
+                    nombre: 'Eliminar',
+                    icono: 'fa-trash',
+                    accion: 'Api.Valores.eliminar',
+                    color: '#ec4758',
+                    estado: false,
+                    permiso: 'eliminar',
+                    informacion: false
+                }
+            ]
+        };
+    }
+};
+
+Api.Emails = {
+    ie: null,
+    id: null,
+    uri: null,
+    carpeta: 'Parametrizacion',
+    controlador: 'EmpresaValores',
+    nombreTabla: 'valores-tabla',
+    idMensaje: 'valores-mensaje',
+
+    $ajaxC: Api.Ajax.constructor,
+    $ajaxT: Api.Ajax.ajaxTabla,
+    $ajaxS: Api.Ajax.ajaxSimple,
+    $mensajeP: Api.Mensaje.publicar,
+    $uriCrudObjecto: Api.Uri.crudObjecto,
+    $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
+
+    _Consultar: null,
+    _Guardar: null,
+    _Actualizar: null,
+    _CambiarEstado: null,
+    _Eliminar: null,
+
+    constructor: function() {
+        this._Consultar	    = this.$uriCrudObjecto('Consultar',this.controlador,this.carpeta);
+        this._Guardar	    = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
+        this._Actualizar    = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
+        this._CambiarEstado = this.$uriCrudObjecto('CambiarEstado',this.controlador,this.carpeta);
+        this._Eliminar      = this.$uriCrudObjecto('Eliminar',this.controlador,this.carpeta);
+
+        str         	= this.controlador;
+        this.uri    	= str.toLowerCase();
+
+        //this.tabla();
+    },
+
+    tabla: function(pagina,tamanhio) {
+
+        this.$ajaxC(this.nombreTabla,pagina,tamanhio);
+
+        this._Consultar['id_empresa'] = this.ie;
+
+        this.$ajaxT(
+            this.nombreTabla,
+            this.uri,
+            this._Consultar,
+            {
+                objecto: 'Identificacion',
+                metodo: 'tabla',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: this.opciones(),
+                checkbox: false,
+                columnas: [
+                    {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'},
+                    {nombre: 'estado',  edicion: false,	formato: '', alineacion:'centrado'}
+                ],
+                automatico: false
+            }
+        );
+    },
+
+    guardarActualizar: function(evento) {
+
+        if (Api.Herramientas.presionarEnter(evento)) {
+
+            var id          = $('#id').val().trim();
+            var parametros  = '';
+
+            id ? parametros = this.verificarFormulario(this._Actualizar) : parametros = this.verificarFormulario(this._Guardar);
+
+            if (parametros) {
+
+                this.$ajaxS(
+                    this.idRetorno,
+                    this.uri,
+                    parametros,
+
+                    function (json) {
+
+                        Api.Mensaje.json(json,'identificacion-mensaje');
+
+                        if (json.resultado === 1) {
+                            Api.Identificacion.tabla();
+                            $('#nombre-identificacion').val('');
+
+                            if (id) {
+                                $('#id').val('');
+                            }
+                        }
+                    }
+                );
+            }
+        }
+    },
+
+    editar: function(id,objeto) {
+
+        $('#id').val(id);
+        $('#nombre-identificacion').val(objeto.nombre).focus();
+    },
+
+    cambiarEstado: function(id) {
+
+        this._CambiarEstado['id'] = id;
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._CambiarEstado,
+
+            function (json) {
+
+                Api.Identificacion.tabla();
+            }
+        );
+    },
+
+    eliminar: function(id) {
+
+        this._Eliminar['id'] = id;
+
+        swal({
+            title: "¿Seguro que desea eliminarlo?",
+            text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, deseo eliminarlo",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false,
+        }, function () {
+
+            Api.Ajax.ajaxSimple(
+                '',
+                Api.Identificacion.uri,
+                Api.Identificacion._Eliminar,
+
+                function (json) {
+
+                    if (json.resultado === 1) {
+
+                        swal("Eliminado!", json.mensaje, "success");
+                        Api.Identificacion.tabla();
+                    }
+                    else {
+                        swal("Error", json.mensaje , "error");
+                    }
+                }
+            );
+        });
+    },
+
+    verificarFormulario: function(parametros) {
+
+        parametros['nombre']     = $('#nombre-identificacion').val().trim();
+        parametros['id']         = $('#id').val().trim();
+        parametros['id_empresa'] = this.ie;
+
+        if (!parametros['nombre']) {
+            this.$mensajeP('advertencia','mensaje','Debe digitar un nombre para continuar');
+            return false;
+        }
+
+        return parametros;
+    },
+
+    opciones: function() {
+        return {
+            parametrizacion: [
+                {
+                    nombre: 'Actualizar',
+                    icono: 'fa-pencil-square-o',
+                    accion: 'Api.Identificacion.editar',
+                    color: '#1a7bb9',
+                    estado: false,
+                    permiso: 'actualizar',
+                    informacion: true
+                },
+                {
+                    nombre: 'Eliminar',
+                    icono: 'fa-trash',
+                    accion: 'Api.Identificacion.eliminar',
+                    color: '#ec4758',
+                    estado: false,
+                    permiso: 'eliminar',
+                    informacion: false
+                }
+            ]
+        };
     }
 };
