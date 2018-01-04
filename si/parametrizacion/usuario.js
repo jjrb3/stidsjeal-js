@@ -1,6 +1,7 @@
 
 Api.Usuario = {
     ie: null,
+    id: null,
     uri: null,
     carpeta: 'Parametrizacion',
     controlador: 'Usuario',
@@ -169,7 +170,7 @@ Api.Usuario = {
                         var AU = Api.Usuario;
                         var id = $('#crear-editar #id').val();
 
-                        AU.constructor('crear-editar #mensaje');
+                        AU.constructor('crear-editar #mensaje-crear-editar');
                         Api.Herramientas.cancelarCA('usuario');
 
                         setTimeout(function(){
@@ -193,18 +194,18 @@ Api.Usuario = {
                 parametros,
 
                 function (json) {
-                    Api.Mensaje.json(json,Api.Usuario.idRetorno);
+
+                    Api.Mensaje.jsonSuperior(json);
 
                     if (json.resultado === 1) {
 
                         var AU = Api.Usuario;
-                        var id = $('#crear-editar #id').val();
 
-                        AU.constructor('crear-editar #mensaje');
+                        AU.constructor('crear-editar #mensaje-crear-editar');
                         Api.Herramientas.cancelarCA('usuario');
 
                         setTimeout(function(){
-                            AU.detalle(id);
+                            AU.detalle(AU.id);
                         }, 2000);
                     }
                 }
@@ -214,7 +215,7 @@ Api.Usuario = {
 
     editar: function(id) {
 
-        this._ConsultarDetalle['id'] = id;
+        this.id = this._ConsultarDetalle['id'] = id;
 
         this.$ajaxS(
             '',
@@ -228,7 +229,7 @@ Api.Usuario = {
                     var AH = Api.Herramientas;
 
                     AH.selectDefault('tipo-identificacion',json.usuario.id_tipo_identificacion);
-                    AH.selectDefault('rol',json.usuario.id_rol);
+                    AH.selectDefault('#id-rol-usuario',json.usuario.id_rol);
                     AH.selectDefault('sexo',json.usuario.id_sexo);
 
                     $('#id').val(id);
@@ -237,8 +238,8 @@ Api.Usuario = {
                     $('#clave').val('');
                     $('#nombres').val(json.usuario.nombres);
                     $('#apellidos').val(json.usuario.apellidos);
-                    $('#ciudad').val(json.usuario.ciudad);
-                    $('#id-municipio').val(json.usuario.id_municipio);
+                    $('#pestanhia-usuario #ciudad').val(json.usuario.ciudad);
+                    $('#pestanhia-usuario #id-municipio').val(json.usuario.id_municipio);
                     $('#email').val(json.usuario.correo);
                     $('#fecha-nacimiento').val(json.usuario.fecha_nacimiento);
                     $('#telefono').val(json.usuario.telefono);
@@ -254,6 +255,7 @@ Api.Usuario = {
     verificarFormulario: function(tipo, $objeto) {
 
         var contenedor  = '#crear-editar ';
+        var AMS         = Api.Mensaje.superior;
 
         $objeto['id_tipo_identificacion']  = $(contenedor + '#tipo-identificacion').val();
         $objeto['id_rol']                  = $(contenedor + '#id-rol-usuario').val();
@@ -273,54 +275,54 @@ Api.Usuario = {
             $objeto['clave']               = $(contenedor + '#clave').val();
         }
         else {
-            $objeto['id']                  = $(contenedor + '#id').val();
+            $objeto['id']                  = this.id;
         }
 
 
         $(contenedor + '#mensaje').html('');
 
         if (!$objeto.id_tipo_identificacion) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','Seleccione un tipo de identificacion para continuar.');
+            AMS('advertencia','Seleccione un tipo de identificacion para continuar.');
             return false;
         }
 
         if (!$objeto.no_documento) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','Digite su numero de documento para continuar.');
+            AMS('advertencia','Digite su numero de documento para continuar.');
             return false;
         }
 
         if (!$objeto.id_rol) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','Seleccione un rol de identificacion para continuar.');
+            AMS('advertencia','Seleccione un rol de identificacion para continuar.');
             return false;
         }
 
         if (!$objeto.usuario) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','Digite el usuario para continuar.');
+            AMS('advertencia','Digite el usuario para continuar.');
             return false;
         }
 
         if (!$objeto.id_sexo) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','Seleccione un sexo para continuar.');
+            AMS('advertencia','Seleccione un sexo para continuar.');
             return false;
         }
 
         if (!$objeto.id_municipio) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','Digite una ciudad validad para continuar.');
+            AMS('advertencia','Digite una ciudad validad para continuar.');
             return false;
         }
 
         if (!$objeto.nombres) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','Digite sus nombres para continuar.');
+            AMS('advertencia','Digite sus nombres para continuar.');
             return false;
         }
 
         if (!$objeto.apellidos) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','Digite sus apellidos para continuar.');
+            AMS('advertencia','Digite sus apellidos para continuar.');
             return false;
         }
 
         if (!Api.Herramientas.validarEmail($objeto.correo)) {
-            this.$mensaje('advertencia',contenedor + '#mensaje','El Email digitado no es correcto.');
+            AMS('advertencia','El Email digitado no es correcto.');
             return false;
         }
 
@@ -338,7 +340,7 @@ Api.Usuario = {
 
             function (json) {
 
-                Api.Usuario.constructor('crear-editar #mensaje');
+                Api.Usuario.constructor('#mensaje-crear-editar');
             }
         );
     },
@@ -368,7 +370,7 @@ Api.Usuario = {
                     if (json.resultado === 1) {
 
                         swal("Eliminado!", json.mensaje, "success");
-                        Api.Usuario.constructor('crear-editar #mensaje');
+                        Api.Usuario.constructor('#mensaje-crear-editar');
                     }
                     else {
                         swal("Error", json.mensaje , "error");
