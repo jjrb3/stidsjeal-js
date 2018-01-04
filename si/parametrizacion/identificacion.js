@@ -1,5 +1,6 @@
 
 Api.Identificacion = {
+    ie: null,
     uri: null,
     carpeta: 'Parametrizacion',
     controlador: 'TipoIdentificacion',
@@ -50,11 +51,11 @@ Api.Identificacion = {
 
                     function (json) {
 
-                        Api.Mensaje.json(json,'mensaje');
+                        Api.Mensaje.json(json,'identificacion-mensaje');
 
                         if (json.resultado === 1) {
                             Api.Identificacion.tabla();
-                            $('#nombre').val('');
+                            $('#nombre-identificacion').val('');
 
                             if (id) {
                                 $('#id').val('');
@@ -69,7 +70,7 @@ Api.Identificacion = {
     editar: function(id,objeto) {
 
         $('#id').val(id);
-        $('#nombre').val(objeto.nombre).focus();
+        $('#nombre-identificacion').val(objeto.nombre).focus();
     },
 
     cambiarEstado: function(id) {
@@ -125,8 +126,9 @@ Api.Identificacion = {
 
 	verificarFormulario: function(parametros) {
 
-    	parametros['nombre'] = $('#nombre').val().trim();
-    	parametros['id']     = $('#id').val().trim();
+    	parametros['nombre']     = $('#nombre-identificacion').val().trim();
+    	parametros['id']         = $('#id').val().trim();
+        parametros['id_empresa'] = this.ie;
 
     	if (!parametros['nombre']) {
             this.$mensajeP('advertencia','mensaje','Debe digitar un nombre para continuar');
@@ -139,6 +141,8 @@ Api.Identificacion = {
     tabla: function(pagina,tamanhio) {
 
         this.$ajaxC(this.nombreTabla,pagina,tamanhio);
+
+        this._Consultar['id_empresa'] = this.ie;
 
         this.$ajaxT(
             this.nombreTabla,

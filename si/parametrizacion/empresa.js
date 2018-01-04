@@ -94,13 +94,15 @@ Api.Empresa = {
                     AR = Api.Rol,
                     AH = Api.Herramientas,
                     AE = Api.Empresa,
-                    AU = Api.Usuario;
+                    AU = Api.Usuario,
+                    AI = Api.Identificacion;
 
-                AS.idEmpresa = AM.ie = AR.ie = AE.ie = AU.ie = id;
+                AS.idEmpresa = AM.ie = AR.ie = AE.ie = AU.ie = AI.ie = id;
 
                 AM.constructor();
                 AR.constructor();
                 AU.constructor('crear-editar-empresa #mensaje');
+                AI.constructor();
 
 
                 if (Object.keys(json.sucursal).length > 0) {
