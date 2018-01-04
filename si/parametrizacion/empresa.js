@@ -717,9 +717,9 @@ Api.Emails = {
     id: null,
     uri: null,
     carpeta: 'Parametrizacion',
-    controlador: 'EmpresaValores',
-    nombreTabla: 'valores-tabla',
-    idMensaje: 'valores-mensaje',
+    controlador: 'EmpresaEmails',
+    nombreTabla: 'emails-tabla',
+    idMensaje: 'emails-mensaje',
 
     $ajaxC: Api.Ajax.constructor,
     $ajaxT: Api.Ajax.ajaxTabla,
@@ -738,13 +738,12 @@ Api.Emails = {
         this._Consultar	    = this.$uriCrudObjecto('Consultar',this.controlador,this.carpeta);
         this._Guardar	    = this.$uriCrudObjecto('Guardar',this.controlador,this.carpeta);
         this._Actualizar    = this.$uriCrudObjecto('Actualizar',this.controlador,this.carpeta);
-        this._CambiarEstado = this.$uriCrudObjecto('CambiarEstado',this.controlador,this.carpeta);
         this._Eliminar      = this.$uriCrudObjecto('Eliminar',this.controlador,this.carpeta);
 
         str         	= this.controlador;
         this.uri    	= str.toLowerCase();
 
-        //this.tabla();
+        this.tabla();
     },
 
     tabla: function(pagina,tamanhio) {
@@ -758,14 +757,13 @@ Api.Emails = {
             this.uri,
             this._Consultar,
             {
-                objecto: 'Identificacion',
+                objecto: this.controlador,
                 metodo: 'tabla',
                 funcionalidades: this.$funcionalidadesT,
-                opciones: this.opciones(),
+                opciones: this.opcionesTabla(),
                 checkbox: false,
                 columnas: [
-                    {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'},
-                    {nombre: 'estado',  edicion: false,	formato: '', alineacion:'centrado'}
+                    {nombre: 'nombre',  edicion: false,	formato: '', alineacion:'izquierda'}
                 ],
                 automatico: false
             }
@@ -776,10 +774,9 @@ Api.Emails = {
 
         if (Api.Herramientas.presionarEnter(evento)) {
 
-            var id          = $('#id').val().trim();
             var parametros  = '';
 
-            id ? parametros = this.verificarFormulario(this._Actualizar) : parametros = this.verificarFormulario(this._Guardar);
+            this.id ? parametros = this.verificarFormulario(this._Actualizar) : parametros = this.verificarFormulario(this._Guardar);
 
             if (parametros) {
 
@@ -790,15 +787,16 @@ Api.Emails = {
 
                     function (json) {
 
-                        Api.Mensaje.json(json,'identificacion-mensaje');
+                        Api.Mensaje.json(json,'emails-mensaje');
 
                         if (json.resultado === 1) {
-                            Api.Identificacion.tabla();
-                            $('#nombre-identificacion').val('');
 
-                            if (id) {
-                                $('#id').val('');
-                            }
+                            var AE = Api.Emails;
+
+                            AE.tabla();
+                            AE.id ? AE.id = '' : '';
+
+                            $('#emails-nombre').val('');
                         }
                     }
                 );
@@ -806,26 +804,30 @@ Api.Emails = {
         }
     },
 
-    editar: function(id,objeto) {
+    verificarFormulario: function(parametros) {
 
-        $('#id').val(id);
-        $('#nombre-identificacion').val(objeto.nombre).focus();
+        parametros['nombre']     = $('#emails-nombre').val().trim();
+        parametros['id']         = this.id;
+        parametros['id_empresa'] = this.ie;
+
+        if (!parametros['nombre']) {
+            this.$mensajeP('advertencia','emails-mensaje','Debe digitar un nombre para continuar');
+            return false;
+        }
+
+        if (!Api.Herramientas.validarEmail(parametros['nombre'])) {
+            this.$mensajeP('advertencia','emails-mensaje','El email digitado no es valido');
+            return false;
+        }
+
+        return parametros;
     },
 
-    cambiarEstado: function(id) {
+    editar: function(id,objeto) {
 
-        this._CambiarEstado['id'] = id;
+        this.id = id;
 
-        this.$ajaxS(
-            '',
-            this.uri,
-            this._CambiarEstado,
-
-            function (json) {
-
-                Api.Identificacion.tabla();
-            }
-        );
+        $('#emails-nombre').val(objeto.nombre).focus();
     },
 
     eliminar: function(id) {
@@ -840,20 +842,20 @@ Api.Emails = {
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Sí, deseo eliminarlo",
             cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
+            closeOnConfirm: false
         }, function () {
 
             Api.Ajax.ajaxSimple(
                 '',
-                Api.Identificacion.uri,
-                Api.Identificacion._Eliminar,
+                Api.Emails.uri,
+                Api.Emails._Eliminar,
 
                 function (json) {
 
                     if (json.resultado === 1) {
 
+                        Api.Emails.constructor();
                         swal("Eliminado!", json.mensaje, "success");
-                        Api.Identificacion.tabla();
                     }
                     else {
                         swal("Error", json.mensaje , "error");
@@ -863,27 +865,13 @@ Api.Emails = {
         });
     },
 
-    verificarFormulario: function(parametros) {
-
-        parametros['nombre']     = $('#nombre-identificacion').val().trim();
-        parametros['id']         = $('#id').val().trim();
-        parametros['id_empresa'] = this.ie;
-
-        if (!parametros['nombre']) {
-            this.$mensajeP('advertencia','mensaje','Debe digitar un nombre para continuar');
-            return false;
-        }
-
-        return parametros;
-    },
-
-    opciones: function() {
+    opcionesTabla: function() {
         return {
             parametrizacion: [
                 {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
-                    accion: 'Api.Identificacion.editar',
+                    accion: 'Api.Emails.editar',
                     color: '#1a7bb9',
                     estado: false,
                     permiso: 'actualizar',
@@ -892,7 +880,7 @@ Api.Emails = {
                 {
                     nombre: 'Eliminar',
                     icono: 'fa-trash',
-                    accion: 'Api.Identificacion.eliminar',
+                    accion: 'Api.Emails.eliminar',
                     color: '#ec4758',
                     estado: false,
                     permiso: 'eliminar',
