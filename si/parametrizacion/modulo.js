@@ -29,9 +29,9 @@ Api.Modulo = {
     _ConsultarSesionPorEmpresaModulo: null,
 
     constructor: function () {
-        this._ConsultarPadrePorTipo                     = this.$uriCrud('ConsultarPadrePorTipo', this.controlador, this.carpeta);
-        this._InicializarParametros                     = this.$uriCrud('InicializarParametros', this.controlador, this.carpeta);
-        this._CrearActualizar	                        = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
+        this._ConsultarPadrePorTipo     = this.$uriCrud('ConsultarPadrePorTipo', this.controlador, this.carpeta);
+        this._InicializarParametros     = this.$uriCrud('InicializarParametros', this.controlador, this.carpeta);
+        this._CrearActualizar	        = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
         this._ConsultarModulo           = this.$uriCrud('ConsultarModulos', this.controlador, this.carpeta);
         this._ConsultarSesion           = this.$uriCrud('ConsultarSesion', this.controlador, this.carpeta);
 
@@ -58,13 +58,14 @@ Api.Modulo = {
                 metodo: 'tablaModulo',
                 funcionalidades: this.$funcionalidadesT,
                 opciones: this.opcionesModulo(),
-                checkbox: true,
+                checkbox: false,
                 color: false,
                 seleccionar: true,
                 columnas: [
-                    {nombre: 'icono',  edicion: false, formato: 'icono', alineacion: 'centrado'},
-                    {nombre: 'nombre', edicion: false, formato: false, alineacion: 'justificado'},
-                    {nombre: 'estado', edicion: false, formato: false, alineacion: 'centrado'}
+                    {nombre: 'icono',    edicion: false, formato: 'icono',      alineacion: 'centrado'},
+                    {nombre: 'nombre',   edicion: false, formato: false,        alineacion: 'justificado'},
+                    {nombre: 'etiqueta', edicion: false, formato: 'etiqueta',   alineacion: 'justificado'},
+                    {nombre: 'estado',   edicion: false, formato: false,        alineacion: 'centrado'}
                 ],
                 automatico: false
             }
@@ -93,13 +94,14 @@ Api.Modulo = {
                 metodo: 'tablaSesion',
                 funcionalidades: this.$funcionalidadesT,
                 opciones: this.opcionesModulo(),
-                checkbox: true,
+                checkbox: false,
                 color: false,
-                seleccionar: true,
+                seleccionar: false,
                 columnas: [
-                    {nombre: 'icono',  edicion: false, formato: 'icono', alineacion: 'centrado'},
-                    {nombre: 'nombre', edicion: false, formato: false, alineacion: 'justificado'},
-                    {nombre: 'estado', edicion: false, formato: false, alineacion: 'centrado'}
+                    {nombre: 'icono',    edicion: false, formato: 'icono',      alineacion: 'centrado'},
+                    {nombre: 'nombre',   edicion: false, formato: false,        alineacion: 'justificado'},
+                    {nombre: 'etiqueta', edicion: false, formato: 'etiqueta',   alineacion: 'justificado'},
+                    {nombre: 'estado',   edicion: false, formato: false,        alineacion: 'centrado'}
                 ],
                 automatico: false
             }
@@ -128,11 +130,11 @@ Api.Modulo = {
 
                         var AH = Api.Herramientas;
 
-                        /*AH.cancelarCA('modulo-sesion');
+                        AH.cancelarCA('modulo-sesion');
 
                         setTimeout(function(){
                             AH.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-modulos-sesiones','modulos-sesiones');
-                        }, 2000);*/
+                        }, 2000);
                     }
                 }
             );

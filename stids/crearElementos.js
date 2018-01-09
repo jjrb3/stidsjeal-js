@@ -317,7 +317,7 @@ Api.Elementos = {
                                 .parent()
                                 .html() + '</td>');
                     }
-                    if (ic.nombre !== 'opciones' && ic.nombre !== 'estado') {
+                    if (ic.nombre !== 'opciones' && ic.nombre !== 'estado' && ic.nombre !== 'etiqueta') {
 
                         textoFormateado = Api.Elementos.crearFormato(ic.formato, ij[ic.nombre]);
 
@@ -347,6 +347,24 @@ Api.Elementos = {
                                 $cnt.children('td:last').addClass(ic.alineacion);
                             }
                         });
+                    }
+                    if (ic.nombre === 'etiqueta') {
+
+                        var etiquetaSistema = '';
+
+                        if (ij.etiqueta_clase) {
+
+                            etiquetaSistema = '<span class="label label-' + ij.etiqueta_clase
+                                + '" title="Diminutivo. ' + ij.etiqueta_diminutivo
+                                + '">' + ij.etiqueta_nombre + '</span>';
+                        }
+
+                        $cnt = $contenido
+                            .children('tbody')
+                            .children('tr:last')
+                            .append('<td class="vertical centrado' + color + cursor + '" ' + seleccion + '>' + etiquetaSistema + '</td>');
+
+                        $cnt.children('td:last').addClass(ic.alineacion);
                     }
                 });
 
