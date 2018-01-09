@@ -23,6 +23,7 @@ Api.Modulo = {
     _CrearActualizar: null,
 
     _ConsultarModulo: null,
+    _ConsultarSesion: null,
     _GuardarIdsModulosPorEmpresa: null,
     _EliminarIdsModulosPorEmpresa: null,
     _ConsultarSesionPorEmpresaModulo: null,
@@ -32,10 +33,8 @@ Api.Modulo = {
         this._InicializarParametros                     = this.$uriCrud('InicializarParametros', this.controlador, this.carpeta);
         this._CrearActualizar	                        = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
         this._ConsultarModulo           = this.$uriCrud('ConsultarModulos', this.controlador, this.carpeta);
+        this._ConsultarSesion           = this.$uriCrud('ConsultarSesion', this.controlador, this.carpeta);
 
-        this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
-        this._ConsultarSesionCheckearPorEmpresaModulo   = this.$uriCrud('ConsultarSesionCheckearPorEmpresaModulo', this.controlador, this.carpeta);
-        this._GuardarIdsModulosPorEmpresa               = this.$uriCrud('GuardarIdsModulosPorEmpresa', this.controlador, this.carpeta);
         this._EliminarIdsModulosPorEmpresa              = this.$uriCrud('EliminarIdsModulosPorEmpresa', this.controlador, this.carpeta);
 
         var  str                            = this.controlador;
@@ -81,58 +80,30 @@ Api.Modulo = {
 
     tablaSesion: function(pagina,tamanhio) {
 
-        this.$ajaxC(this.idTablaSesion,pagina,tamanhio);
+        this.$ajaxC(this.idContenedor + ' ' + this.idTablaSesion,pagina,tamanhio);
 
-        if (Api.ie > 1) {
+        this._ConsultarSesion['id_modulo'] = this.idModulo;
 
-            this._ConsultarSesionPorEmpresaModulo['id_empresa'] = this.ie;
-            this._ConsultarSesionPorEmpresaModulo['id_modulo'] = this.idModulo;
-
-            this.$ajaxT(
-                this.idTablaSesion,
-                this.uri,
-                this._ConsultarSesionPorEmpresaModulo,
-                {
-                    objecto: this.controlador,
-                    metodo: 'tablaSesion',
-                    funcionalidades: this.$funcionalidadesT,
-                    opciones: null,
-                    checkbox: false,
-                    color: false,
-                    seleccionar: false,
-                    columnas: [
-                        {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
-                        {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
-                    ],
-                    automatico: false
-                }
-            );
-        }
-        else {
-
-            this._ConsultarSesionCheckearPorEmpresaModulo['id_empresa'] = this.ie;
-            this._ConsultarSesionCheckearPorEmpresaModulo['id_modulo'] = this.idModulo;
-
-            this.$ajaxT(
-                this.idTablaSesion,
-                this.uri,
-                this._ConsultarSesionCheckearPorEmpresaModulo,
-                {
-                    objecto: this.controlador,
-                    metodo: 'tablaSesion',
-                    funcionalidades: this.$funcionalidadesT,
-                    opciones: null,
-                    checkbox: true,
-                    color: true,
-                    seleccionar: false,
-                    columnas: [
-                        {nombre: 'icono',   edicion: false,	formato: 'icono',   alineacion: 'centrado'},
-                        {nombre: 'nombre',  edicion: false,	formato: false,     alineacion: 'justificado'}
-                    ],
-                    automatico: false
-                }
-            );
-        }
+        this.$ajaxT(
+            this.idTablaSesion,
+            this.uri,
+            this._ConsultarSesion,
+            {
+                objecto: this.controlador,
+                metodo: 'tablaSesion',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: this.opcionesModulo(),
+                checkbox: true,
+                color: false,
+                seleccionar: true,
+                columnas: [
+                    {nombre: 'icono',  edicion: false, formato: 'icono', alineacion: 'centrado'},
+                    {nombre: 'nombre', edicion: false, formato: false, alineacion: 'justificado'},
+                    {nombre: 'estado', edicion: false, formato: false, alineacion: 'centrado'}
+                ],
+                automatico: false
+            }
+        );
     },
 
     crearActualizar: function() {

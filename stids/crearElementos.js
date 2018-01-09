@@ -131,7 +131,7 @@ Api.Elementos = {
         Api.Elementos.constructor();
     },
 
-    crearPaginacion: function(div,objecto,json,tamanhio,buscar) {
+    crearPaginacion: function(div,objecto,metodo,json,tamanhio,buscar) {
 
         var cantidad        = json.last_page;
         var paginaActual    = json.current_page;
@@ -146,7 +146,7 @@ Api.Elementos = {
 
             if (parseInt(paginaActual) - 1 > 0) {
 
-                paginacion += '<li class="apuntar"><a onclick="Api.' + objecto + '.tabla(' + (parseInt(paginaActual) - 1) + ',' + tamanhio + ",'" + buscar + "'" + ')">«</a></li>';
+                paginacion += '<li class="apuntar"><a onclick="Api.' + objecto + '.' + metodo + '(' + (parseInt(paginaActual) - 1) + ',' + tamanhio + ",'" + buscar + "'" + ')">«</a></li>';
             }
 
             for (var i=rango.inicio;i<=rango.fin;i++) {
@@ -157,12 +157,12 @@ Api.Elementos = {
                 else {
                     activo = '';
                 }
-                paginacion += '<li '+activo+' class="apuntar"><a onclick="Api.' + objecto + '.tabla(' + i + ',' + tamanhio + ",'" + buscar + "'" + ')">' + i + '</a></li>';
+                paginacion += '<li '+activo+' class="apuntar"><a onclick="Api.' + objecto + '.' + metodo + '(' + i + ',' + tamanhio + ",'" + buscar + "'" + ')">' + i + '</a></li>';
             }
 
             if (parseInt(paginaActual) + 1 <= cantidad) {
 
-                paginacion += '<li class="apuntar"><a onclick="Api.' + objecto + '.tabla(' + (parseInt(paginaActual) + 1) + ',' + tamanhio + ",'" + buscar + "'" + ')">»</a></li>';
+                paginacion += '<li class="apuntar"><a onclick="Api.' + objecto + '.' + metodo + '(' + (parseInt(paginaActual) + 1) + ',' + tamanhio + ",'" + buscar + "'" + ')">»</a></li>';
             }
         }
 

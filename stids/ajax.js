@@ -71,6 +71,7 @@ Api.Ajax = {
                     $elementos.crearPaginacion(
                         $herramientas.verificarId(id,false) + '-paginacion',
                         tabla.objecto,
+                        tabla.metodo,
                         json,
                         $ajax.tamanhio,
                         $ajax.buscar
@@ -112,6 +113,7 @@ Api.Ajax = {
             $elementos.crearPaginacion(
                 $elementos.crearDivsTabla(idS,'paginacion'),
                 tabla.objecto,
+                tabla.metodo,
                 json,
                 Api.Ajax.tamanhio,
                 Api.Ajax.buscar
