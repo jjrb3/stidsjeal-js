@@ -8,8 +8,8 @@ Api.Modulo = {
     idModulo: 1,
     idContenedor: '#contenedor-modulos',
     idFormulario: '#formulario-modulo-sesion ',
-    idTablaModulo: 'tabla-modulo',
-    idTablaSesion: 'tabla-sesion',
+    idTablaModulo: '#tabla-modulo',
+    idTablaSesion: '#tabla-sesion',
 
     $ajaxC: Api.Ajax.constructor,
     $ajaxT: Api.Ajax.ajaxTabla,
@@ -21,18 +21,18 @@ Api.Modulo = {
     _ConsultarPadrePorTipo: null,
     _InicializarParametros: null,
     _CrearActualizar: null,
-    _ConsultarCheckearPorEmpresa: null,
+
+    _ConsultarModulo: null,
     _GuardarIdsModulosPorEmpresa: null,
     _EliminarIdsModulosPorEmpresa: null,
-    _ConsultarPorEmpresa: null,
     _ConsultarSesionPorEmpresaModulo: null,
 
     constructor: function () {
-        this._ConsultarPadrePorTipo                       = this.$uriCrud('ConsultarPadrePorTipo', this.controlador, this.carpeta);
+        this._ConsultarPadrePorTipo                     = this.$uriCrud('ConsultarPadrePorTipo', this.controlador, this.carpeta);
         this._InicializarParametros                     = this.$uriCrud('InicializarParametros', this.controlador, this.carpeta);
         this._CrearActualizar	                        = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
-        this._ConsultarPorEmpresa                       = this.$uriCrud('ConsultarPorEmpresa', this.controlador, this.carpeta);
-        this._ConsultarSesionPorEmpresaModulo           = this.$uriCrud('ConsultarSesionPorEmpresaModulo', this.controlador, this.carpeta);
+        this._ConsultarModulo           = this.$uriCrud('ConsultarModulos', this.controlador, this.carpeta);
+
         this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
         this._ConsultarSesionCheckearPorEmpresaModulo   = this.$uriCrud('ConsultarSesionCheckearPorEmpresaModulo', this.controlador, this.carpeta);
         this._GuardarIdsModulosPorEmpresa               = this.$uriCrud('GuardarIdsModulosPorEmpresa', this.controlador, this.carpeta);
@@ -48,56 +48,28 @@ Api.Modulo = {
 
     tablaModulo: function(pagina,tamanhio) {
 
-        this.$ajaxC(this.idTablaModulo,pagina,tamanhio);
+        this.$ajaxC(this.idContenedor + ' ' + this.idTablaModulo,pagina,tamanhio);
 
-        if (Api.ie > 1) {
-
-            this._ConsultarPorEmpresa['id_empresa'] = this.ie;
-
-            this.$ajaxT(
-                this.idTablaModulo,
-                this.uri,
-                this._ConsultarPorEmpresa,
-                {
-                    objecto: this.controlador,
-                    metodo: 'tablaModulo',
-                    funcionalidades: this.$funcionalidadesT,
-                    opciones: null,
-                    checkbox: false,
-                    color: false,
-                    seleccionar: true,
-                    columnas: [
-                        {nombre: 'icono', edicion: false, formato: 'icono', alineacion: 'centrado'},
-                        {nombre: 'nombre', edicion: false, formato: false, alineacion: 'justificado'}
-                    ],
-                    automatico: false
-                }
-            );
-        }
-        else {
-
-            this._ConsultarCheckearPorEmpresa['id_empresa'] = this.ie;
-
-            this.$ajaxT(
-                this.idTablaModulo,
-                this.uri,
-                this._ConsultarCheckearPorEmpresa,
-                {
-                    objecto: this.controlador,
-                    metodo: 'tablaModulo',
-                    funcionalidades: this.$funcionalidadesT,
-                    opciones: null,
-                    checkbox: true,
-                    color: true,
-                    seleccionar: true,
-                    columnas: [
-                        {nombre: 'icono', edicion: false, formato: 'icono', alineacion: 'centrado'},
-                        {nombre: 'nombre', edicion: false, formato: false, alineacion: 'justificado'}
-                    ],
-                    automatico: false
-                }
-            );
-        }
+        this.$ajaxT(
+            this.idTablaModulo,
+            this.uri,
+            this._ConsultarModulo,
+            {
+                objecto: this.controlador,
+                metodo: 'tablaModulo',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: this.opcionesModulo(),
+                checkbox: true,
+                color: false,
+                seleccionar: true,
+                columnas: [
+                    {nombre: 'icono',  edicion: false, formato: 'icono', alineacion: 'centrado'},
+                    {nombre: 'nombre', edicion: false, formato: false, alineacion: 'justificado'},
+                    {nombre: 'estado', edicion: false, formato: false, alineacion: 'centrado'}
+                ],
+                automatico: false
+            }
+        );
     },
 
     tablaModuloSeleccionado: function(id) {
@@ -295,6 +267,95 @@ Api.Modulo = {
         $(formulario + '#icono').parent().find('i').attr('class','fa ' + icono);
     },
 
+    buscarPadre: function() {
+        var AH          = Api.Herramientas;
+        var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
+
+        this._ConsultarPadrePorTipo['tipo'] = $(formulario + '#tipo').val();
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._ConsultarPadrePorTipo,
+
+            function (json) {
+
+                AH.cargarSelectJSON(formulario + '#id-modulo',json,true);
+            }
+        );
+    },
+
+    opcionesModulo: function() {
+        return {
+            parametrizacion: [
+                {
+                    nombre: 'Ver detalle',
+                    icono: 'fa-eye',
+                    accion: 'Api.' + this.controlador + '.detalle',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: false
+                },
+                {
+                    nombre: 'Actualizar',
+                    icono: 'fa-pencil-square-o',
+                    accion: 'Api.' + this.controlador + '.editar',
+                    color: '#1a7bb9',
+                    estado: false,
+                    permiso: 'actualizar',
+                    informacion: true
+                },
+                {
+                    nombre: 'Subir',
+                    icono: 'fa-level-up',
+                    accion: 'Api.' + this.controlador + '.subirGrafica',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: 'actualizar',
+                    informacion: false
+                },
+                {
+                    nombre: 'Bajar',
+                    icono: 'fa-level-down',
+                    accion: 'Api.' + this.controlador + '.bajarGrafica',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: 'actualizar',
+                    informacion: false
+                },
+                {
+                    accion: 'Api.' + this.controlador + '.cambiarEstado',
+                    color: '#f7a54a',
+                    estado: true,
+                    condicion: {
+                        1: {
+                            icono: 'fa-toggle-off',
+                            titulo: 'Desactivar',
+                            etiqueta: '<span class="label label-primary ">ACTIVO</span>'
+                        },
+                        0: {
+                            icono: 'fa-toggle-on',
+                            titulo: 'Activar',
+                            etiqueta: '<span class="label label-default">INACTIVO</span>'
+                        }
+                    },
+                    permiso: 'estado',
+                    informacion: false
+                },
+                {
+                    nombre: 'Eliminar',
+                    icono: 'fa-trash',
+                    accion: 'Api.' + this.controlador + '.eliminar',
+                    color: '#ec4758',
+                    estado: false,
+                    permiso: 'eliminar',
+                    informacion: false
+                }
+            ]
+        };
+    },
+
     verificarFormulario: function($objeto) {
 
         var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
@@ -329,24 +390,6 @@ Api.Modulo = {
         }
 
         return $objeto;
-    },
-
-    buscarPadre: function() {
-        var AH          = Api.Herramientas;
-        var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
-
-        this._ConsultarPadrePorTipo['tipo'] = $(formulario + '#tipo').val();
-
-        this.$ajaxS(
-            '',
-            this.uri,
-            this._ConsultarPadrePorTipo,
-
-            function (json) {
-
-                AH.cargarSelectJSON(formulario + '#id-modulo',json,true);
-            }
-        );
     },
 
     inicializarFormulario: function() {
