@@ -1,13 +1,13 @@
 
 Api.Modulo = {
-    ie: null,
     id: null,
     carpeta: 'Parametrizacion',
     controlador: 'Modulo',
     uri: null,
     idRetorno: null,
     idModulo: 1,
-    idContenedor: 'contenedor-modulos',
+    idContenedor: '#contenedor-modulos',
+    idFormulario: '#formulario-modulo-sesion ',
     idTablaModulo: 'tabla-modulo',
     idTablaSesion: 'tabla-sesion',
 
@@ -15,10 +15,12 @@ Api.Modulo = {
     $ajaxT: Api.Ajax.ajaxTabla,
     $ajaxS: Api.Ajax.ajaxSimple,
     $uriCrud: Api.Uri.crudObjecto,
-    $mensaje: Api.Mensaje.publicar,
+    $mensajeS: Api.Mensaje.superior,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
 
+    _ConsultarPadrePorTipo: null,
     _InicializarParametros: null,
+    _CrearActualizar: null,
     _ConsultarCheckearPorEmpresa: null,
     _GuardarIdsModulosPorEmpresa: null,
     _EliminarIdsModulosPorEmpresa: null,
@@ -26,7 +28,9 @@ Api.Modulo = {
     _ConsultarSesionPorEmpresaModulo: null,
 
     constructor: function () {
+        this._ConsultarPadrePorTipo                       = this.$uriCrud('ConsultarPadrePorTipo', this.controlador, this.carpeta);
         this._InicializarParametros                     = this.$uriCrud('InicializarParametros', this.controlador, this.carpeta);
+        this._CrearActualizar	                        = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
         this._ConsultarPorEmpresa                       = this.$uriCrud('ConsultarPorEmpresa', this.controlador, this.carpeta);
         this._ConsultarSesionPorEmpresaModulo           = this.$uriCrud('ConsultarSesionPorEmpresaModulo', this.controlador, this.carpeta);
         this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
@@ -159,6 +163,39 @@ Api.Modulo = {
         }
     },
 
+    crearActualizar: function() {
+
+        var $objeto    = Api[this.controlador];
+        var parametros = this.verificarFormulario(this._CrearActualizar);
+
+        if (parametros) {
+            this.$ajaxS(
+                this.idMensaje,
+                this.uri,
+                parametros,
+
+                function (json) {
+
+                    Api.Mensaje.jsonSuperior(json);
+
+                    if (json.resultado === 1) {
+
+                        $objeto.id = null;
+                        $objeto.constructor();
+
+                        var AH = Api.Herramientas;
+
+                        /*AH.cancelarCA('modulo-sesion');
+
+                        setTimeout(function(){
+                            AH.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-modulos-sesiones','modulos-sesiones');
+                        }, 2000);*/
+                    }
+                }
+            );
+        }
+    },
+
     agregar: function() {
 
         var ids = this.obtenerIdsTablas();
@@ -251,10 +288,71 @@ Api.Modulo = {
         return ids;
     },
 
+    mostrarIcono: function(icono) {
+
+        var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
+
+        $(formulario + '#icono').parent().find('i').attr('class','fa ' + icono);
+    },
+
+    verificarFormulario: function($objeto) {
+
+        var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
+
+        $objeto['tipo']         = $(formulario + '#tipo').val();
+        $objeto['id_padre']     = $(formulario + '#id-modulo').val();
+        $objeto['nombre']       = $(formulario + '#nombre').val().trim();
+        $objeto['enlace']       = $(formulario + '#enlace').val().trim();
+        $objeto['icono']        = $(formulario + '#icono').val().trim();
+        $objeto['id_etiqueta']  = $(formulario + '#id-etiqueta').val();
+        $objeto['descripcion']  = $(formulario + '#descripcion').val().trim();
+        $objeto['id']           = this.id;
+
+        if (!$objeto.tipo) {
+            this.$mensajeS('advertencia','Advertencia','Seleccione un tipo para continuar.');
+            return false;
+        }
+
+        if (!$objeto.nombre) {
+            this.$mensajeS('advertencia','Advertencia','Digite el nombre para continuar.');
+            return false;
+        }
+
+        if (!$objeto.enlace) {
+            this.$mensajeS('advertencia','Advertencia','Digite el enlace para continuar.');
+            return false;
+        }
+
+        if (!$objeto.icono) {
+            this.$mensajeS('advertencia','Advertencia','Digite el codigo del icono para continuar.');
+            return false;
+        }
+
+        return $objeto;
+    },
+
+    buscarPadre: function() {
+        var AH          = Api.Herramientas;
+        var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
+
+        this._ConsultarPadrePorTipo['tipo'] = $(formulario + '#tipo').val();
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._ConsultarPadrePorTipo,
+
+            function (json) {
+
+                AH.cargarSelectJSON(formulario + '#id-modulo',json,true);
+            }
+        );
+    },
+
     inicializarFormulario: function() {
 
         var AH          = Api.Herramientas;
-        var contenedor  = AH.verificarId(this.idContenedor,true) + ' #formulario-modulos ';
+        var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
 
         this.$ajaxS(
             '',
@@ -263,8 +361,8 @@ Api.Modulo = {
 
             function (json) {
 
-                AH.cargarSelectJSON(contenedor + '#id-modulo',json.modulos,true);
-                AH.cargarSelectJSON(contenedor + '#id-etiqueta',json.etiquetas,true);
+                AH.cargarSelectJSON(formulario + '#id-modulo',json.modulos,true);
+                AH.cargarSelectJSON(formulario + '#id-etiqueta',json.etiquetas,true);
             }
         );
     }
