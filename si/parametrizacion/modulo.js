@@ -7,6 +7,7 @@ Api.Modulo = {
     uri: null,
     idRetorno: null,
     idModulo: 1,
+    idContenedor: 'contenedor-modulos',
     idTablaModulo: 'tabla-modulo',
     idTablaSesion: 'tabla-sesion',
 
@@ -17,6 +18,7 @@ Api.Modulo = {
     $mensaje: Api.Mensaje.publicar,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
 
+    _InicializarParametros: null,
     _ConsultarCheckearPorEmpresa: null,
     _GuardarIdsModulosPorEmpresa: null,
     _EliminarIdsModulosPorEmpresa: null,
@@ -24,6 +26,7 @@ Api.Modulo = {
     _ConsultarSesionPorEmpresaModulo: null,
 
     constructor: function () {
+        this._InicializarParametros                     = this.$uriCrud('InicializarParametros', this.controlador, this.carpeta);
         this._ConsultarPorEmpresa                       = this.$uriCrud('ConsultarPorEmpresa', this.controlador, this.carpeta);
         this._ConsultarSesionPorEmpresaModulo           = this.$uriCrud('ConsultarSesionPorEmpresaModulo', this.controlador, this.carpeta);
         this._ConsultarCheckearPorEmpresa               = this.$uriCrud('ConsultarCheckearPorEmpresa', this.controlador, this.carpeta);
@@ -36,6 +39,7 @@ Api.Modulo = {
 
         this.tablaModulo();
         this.tablaSesion();
+        this.inicializarFormulario();
     },
 
     tablaModulo: function(pagina,tamanhio) {
@@ -245,5 +249,23 @@ Api.Modulo = {
         }
 
         return ids;
+    },
+
+    inicializarFormulario: function() {
+
+        var AH          = Api.Herramientas;
+        var contenedor  = AH.verificarId(this.idContenedor,true) + ' #formulario-modulos ';
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._InicializarParametros,
+
+            function (json) {
+
+                AH.cargarSelectJSON(contenedor + '#id-modulo',json.modulos,true);
+                AH.cargarSelectJSON(contenedor + '#id-etiqueta',json.etiquetas,true);
+            }
+        );
     }
 };

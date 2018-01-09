@@ -56,48 +56,51 @@ Api.Inicializador = {
             });
         });
 
-        var $input2 = $(".autocompletar-ciudades-2")
-            .attr('placeholder','Digite una ciudad')
-            .attr('autocomplete','off');
+        if ($('.autocompletar-ciudades-2').length > 0) {
 
-        $input2
-            .parent()
-            .append('<input>')
-            .children('input:last')
-            .attr('id',$input2.attr('data-id'))
-            .attr('name',$input2.attr('data-name'))
-            .attr('type','hidden');
+            var $input2 = $(".autocompletar-ciudades-2")
+                .attr('placeholder', 'Digite una ciudad')
+                .attr('autocomplete', 'off');
 
-        // Ciudades
-        $.getJSON($json, function(json) {
+            $input2
+                .parent()
+                .append('<input>')
+                .children('input:last')
+                .attr('id', $input2.attr('data-id'))
+                .attr('name', $input2.attr('data-name'))
+                .attr('type', 'hidden');
 
-            $input2.typeahead({
-                source: json,
-                autoSelect: true
-            });
+            // Ciudades
+            $.getJSON($json, function (json) {
 
-            $input2.change(function() {
+                $input2.typeahead({
+                    source: json,
+                    autoSelect: true
+                });
 
-                var current = $input2.typeahead("getActive");
+                $input2.change(function () {
 
-                if (current) {
-                    if (current.name === $input2.val()) {
+                    var current = $input2.typeahead("getActive");
 
-                        console.log($input2.attr('id'));
-                        $input2
-                            .parent()
-                            .children('input:last')
-                            .val(current.id);
+                    if (current) {
+                        if (current.name === $input2.val()) {
+
+                            console.log($input2.attr('id'));
+                            $input2
+                                .parent()
+                                .children('input:last')
+                                .val(current.id);
+                        }
+                        else {
+                            /* Al presionar enter y no estar en la lista */
+                        }
                     }
                     else {
-                        /* Al presionar enter y no estar en la lista */
+                        /* Si esta vacio */
                     }
-                }
-                else {
-                    /* Si esta vacio */
-                }
+                });
             });
-        });
+        }
     },
 
     mascaras: function() {
