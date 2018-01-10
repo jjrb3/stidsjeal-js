@@ -270,6 +270,26 @@ Api.Modulo = {
         });
     },
 
+    detalle: function(id, objeto) {
+
+        var AH         = Api.Herramientas;
+        var pestanhia  = ' #detalle ';
+        var contenedor = this.idContenedor + pestanhia;
+
+        $(contenedor + '#info-tipo').text(objeto.id_padre > 0 ? 'Sesión' : 'Módulo');
+        $(contenedor + '#info-nombre').text(AH.noNull(objeto.nombre));
+        $(contenedor + '#info-enlace').text(AH.noNull(objeto.enlace_administrador) + AH.noNull(objeto.enlace_usuario));
+        $(contenedor + '#info-icono').html('<i class="fa ' + AH.noNull(objeto.icono) + ' size-18"></i>');
+        $(contenedor + '#info-etiqueta').html('<span class="label label-' + objeto.etiqueta_clase + '">' + objeto.etiqueta_nombre + '</span>');
+        $(contenedor + '#info-estado').html(
+            '<span class="label label-' + (objeto.estado == 1 ? 'primary' : 'default') +
+            '">' + (objeto.estado == 1 ? 'ACTIVO' : 'INACTIVO') + '</span>');
+
+        $(contenedor + '#info-descripcion').text(AH.noNull(objeto.descripcion));
+
+        AH.cambiarPestanhia(this.idContenedor + ' #pestanhia-modulos-sesiones','detalle');
+    },
+
     mostrarIcono: function(icono) {
 
         var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
@@ -324,7 +344,7 @@ Api.Modulo = {
                     color: '#428bca',
                     estado: false,
                     permiso: false,
-                    informacion: false
+                    informacion: true
                 },
                 {
                     nombre: 'Actualizar',
