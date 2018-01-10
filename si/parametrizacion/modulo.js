@@ -1,6 +1,7 @@
 
 Api.Modulo = {
     id: null,
+    tipo: 1,
     carpeta: 'Parametrizacion',
     controlador: 'Modulo',
     uri: null,
@@ -49,6 +50,8 @@ Api.Modulo = {
 
         this.$ajaxC(this.idContenedor + ' ' + this.idTablaModulo,pagina,tamanhio);
 
+        this._ConsultarModulo['tipo'] = this.tipo;
+
         this.$ajaxT(
             this.idTablaModulo,
             this.uri,
@@ -83,7 +86,8 @@ Api.Modulo = {
 
         this.$ajaxC(this.idContenedor + ' ' + this.idTablaSesion,pagina,tamanhio);
 
-        this._ConsultarSesion['id_modulo'] = this.idModulo;
+        this._ConsultarSesion['id_modulo']  = this.idModulo;
+        this._ConsultarSesion['tipo']       = this.tipo;
 
         this.$ajaxT(
             this.idTablaSesion,
@@ -256,6 +260,24 @@ Api.Modulo = {
                 AH.cargarSelectJSON(formulario + '#id-modulo',json,true);
             }
         );
+    },
+
+    tipoBusqueda: function(tipo) {
+
+        if (tipo === 1) {
+
+            $('#btn-pagina').removeClass('active');
+            $('#btn-administracion').addClass('active');
+        }
+        else {
+
+            $('#btn-administracion').removeClass('active');
+            $('#btn-pagina').addClass('active');
+        }
+
+        this.tipo = tipo;
+
+        this.constructor();
     },
 
     opcionesModulo: function() {
