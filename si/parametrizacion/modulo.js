@@ -28,6 +28,8 @@ Api.Modulo = {
     _GuardarIdsModulosPorEmpresa: null,
     _EliminarIdsModulosPorEmpresa: null,
     _ConsultarSesionPorEmpresaModulo: null,
+    _Subir: null,
+    _Bajar: null,
 
     constructor: function () {
         this._ConsultarPadrePorTipo     = this.$uriCrud('ConsultarPadrePorTipo', this.controlador, this.carpeta);
@@ -35,6 +37,8 @@ Api.Modulo = {
         this._CrearActualizar	        = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
         this._ConsultarModulo           = this.$uriCrud('ConsultarModulos', this.controlador, this.carpeta);
         this._ConsultarSesion           = this.$uriCrud('ConsultarSesion', this.controlador, this.carpeta);
+        this._Subir                     = this.$uriCrud('Subir', this.controlador, this.carpeta);
+        this._Bajar                     = this.$uriCrud('Bajar', this.controlador, this.carpeta);
 
         this._EliminarIdsModulosPorEmpresa              = this.$uriCrud('EliminarIdsModulosPorEmpresa', this.controlador, this.carpeta);
 
@@ -138,103 +142,77 @@ Api.Modulo = {
 
                         setTimeout(function(){
                             AH.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-modulos-sesiones','modulos-sesiones');
-                        }, 2000);
+                        }, 1000);
                     }
                 }
             );
         }
     },
 
-    agregar: function() {
+    editar: function(id,objeto) {
 
-        var ids = this.obtenerIdsTablas();
+        this.id = id;
 
-        if (ids) {
+        var $objeto = Api[this.controlador];
+        var AH      = Api.Herramientas;
+        var tipo    = objeto.enlace_usuario == null || !objeto.enlace_usuario ? 1 : 2;
 
-            this._GuardarIdsModulosPorEmpresa['id_empresa'] = this.ie;
-            this._GuardarIdsModulosPorEmpresa['ids']        = ids;
+        this.buscarPadre(tipo,objeto.id_padre);
+
+        AH.selectDefault($objeto.idContenedor + ' #id-etiqueta',objeto.id_etiqueta);
+        AH.selectDefault($objeto.idContenedor + ' #tipo',tipo);
+
+        $($objeto.idContenedor + ' #nombre').val(objeto.nombre).focus();
+        $($objeto.idContenedor + ' #enlace').val(tipo === 1 ? objeto.enlace_administrador : objeto.enlace_usuario);
+        $($objeto.idContenedor + ' #icono').val(objeto.icono);
+
+        $($objeto.idContenedor + ' #descripcion').val(objeto.descripcion);
+
+        Api.Herramientas.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-modulos-sesiones','crear-editar');
+    },
+
+    subir: function(id, objeto) {
+
+        if (id) {
+
+            this._Subir['id']       = id;
+            this._Subir['tipo']     = objeto.enlace_usuario == null || !objeto.enlace_usuario ? 1 : 2;
+            this._Subir['id_padre'] = objeto.id_padre;
 
             this.$ajaxS(
                 this.idRetorno,
                 this.uri,
-                this._GuardarIdsModulosPorEmpresa,
+                this._Subir,
 
                 function (json) {
 
                     Api.Mensaje.jsonSuperior(json);
-                    Api.ModuloEmpresa.constructor();
+                    Api.Modulo.constructor();
                 }
             );
         }
-        else {
-            Api.Mensaje.superior('informacion','Información','Debe seleccionar algun módulo o sesión para continuar');
-        }
     },
 
-    quitar: function() {
+    bajar: function(id, objeto) {
 
-        var AM  = Api.ModuloEmpresa;
-        var ids = this.obtenerIdsTablas();
+        if (id) {
 
+            this._Bajar['id']       = id;
+            this._Bajar['tipo']     = objeto.enlace_usuario == null || !objeto.enlace_usuario ? 1 : 2;
+            this._Bajar['id_padre'] = objeto.id_padre;
 
-        if (ids) {
+            this.$ajaxS(
+                this.idRetorno,
+                this.uri,
+                this._Bajar,
 
-            this._EliminarIdsModulosPorEmpresa['id_empresa'] = this.ie;
-            this._EliminarIdsModulosPorEmpresa['ids']        = ids;
+                function (json) {
 
-            swal({
-                title: "¿Seguro que desea eliminarlo?",
-                text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sí, deseo eliminarlo",
-                cancelButtonText: "Cancelar",
-                closeOnConfirm: false
-            }, function () {
-
-                Api.Ajax.ajaxSimple(
-                    '',
-                    AM.uri,
-                    AM._EliminarIdsModulosPorEmpresa,
-
-                    function (json) {
-
-                        if (json.resultado === 1) {
-
-                            swal("Eliminado!", json.mensaje, "success");
-                            Api.ModuloEmpresa.constructor();
-                        }
-                        else {
-                            swal("Error", json.mensaje , "error");
-                        }
-                    }
-                );
-            });
+                    Api.Mensaje.jsonSuperior(json);
+                    Api.Modulo.constructor();
+                }
+            );
         }
-        else {
-            Api.Mensaje.superior('informacion','Información','Debe seleccionar algun módulo o sesión para continuar');
-        }
-    },
-
-    obtenerIdsTablas: function() {
-
-        var AHoC        = Api.Herramientas.obtenerCheck,
-            ids         = '',
-            idsModulos  = '',
-            idsSesiones = '';
-
-        idsModulos  = AHoC('tabla-modulo-contenido',true);
-        idsSesiones = AHoC('tabla-sesion-contenido',true);
-
-        if (idsModulos) {
-            ids = idsModulos + (idsSesiones ? ',' + idsSesiones : idsSesiones);
-        }
-        else {
-            ids = idsSesiones;
-        }
-
-        return ids;
     },
 
     mostrarIcono: function(icono) {
@@ -244,11 +222,12 @@ Api.Modulo = {
         $(formulario + '#icono').parent().find('i').attr('class','fa ' + icono);
     },
 
-    buscarPadre: function() {
+    buscarPadre: function(idPadre,predeterminado) {
+
         var AH          = Api.Herramientas;
         var formulario  = this.idContenedor + ' ' + this.idFormulario + ' ';
 
-        this._ConsultarPadrePorTipo['tipo'] = $(formulario + '#tipo').val();
+        this._ConsultarPadrePorTipo['tipo'] = idPadre;
 
         this.$ajaxS(
             '',
@@ -257,7 +236,7 @@ Api.Modulo = {
 
             function (json) {
 
-                AH.cargarSelectJSON(formulario + '#id-modulo',json,true);
+                AH.cargarSelectJSON(formulario + '#id-modulo',json,true,predeterminado);
             }
         );
     },
@@ -304,20 +283,20 @@ Api.Modulo = {
                 {
                     nombre: 'Subir',
                     icono: 'fa-level-up',
-                    accion: 'Api.' + this.controlador + '.subirGrafica',
+                    accion: 'Api.' + this.controlador + '.subir',
                     color: '#428bca',
                     estado: false,
                     permiso: 'actualizar',
-                    informacion: false
+                    informacion: true
                 },
                 {
                     nombre: 'Bajar',
                     icono: 'fa-level-down',
-                    accion: 'Api.' + this.controlador + '.bajarGrafica',
+                    accion: 'Api.' + this.controlador + '.bajar',
                     color: '#428bca',
                     estado: false,
                     permiso: 'actualizar',
-                    informacion: false
+                    informacion: true
                 },
                 {
                     accion: 'Api.' + this.controlador + '.cambiarEstado',
