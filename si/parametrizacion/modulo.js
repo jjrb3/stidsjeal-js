@@ -32,18 +32,18 @@ Api.Modulo = {
     _Bajar: null,
 
     constructor: function () {
-        this._ConsultarPadrePorTipo     = this.$uriCrud('ConsultarPadrePorTipo', this.controlador, this.carpeta);
-        this._InicializarParametros     = this.$uriCrud('InicializarParametros', this.controlador, this.carpeta);
-        this._CrearActualizar	        = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
-        this._ConsultarModulo           = this.$uriCrud('ConsultarModulos', this.controlador, this.carpeta);
-        this._ConsultarSesion           = this.$uriCrud('ConsultarSesion', this.controlador, this.carpeta);
-        this._Subir                     = this.$uriCrud('Subir', this.controlador, this.carpeta);
-        this._Bajar                     = this.$uriCrud('Bajar', this.controlador, this.carpeta);
+        this._ConsultarPadrePorTipo = this.$uriCrud('ConsultarPadrePorTipo', this.controlador, this.carpeta);
+        this._InicializarParametros = this.$uriCrud('InicializarParametros', this.controlador, this.carpeta);
+        this._CrearActualizar	    = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
+        this._ConsultarModulo       = this.$uriCrud('ConsultarModulos', this.controlador, this.carpeta);
+        this._ConsultarSesion       = this.$uriCrud('ConsultarSesion', this.controlador, this.carpeta);
+        this._Subir                 = this.$uriCrud('Subir', this.controlador, this.carpeta);
+        this._Bajar                 = this.$uriCrud('Bajar', this.controlador, this.carpeta);
+        this._CambiarEstado         = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
+        this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
 
-        this._EliminarIdsModulosPorEmpresa              = this.$uriCrud('EliminarIdsModulosPorEmpresa', this.controlador, this.carpeta);
-
-        var  str                            = this.controlador;
-        this.uri                            = str.toLowerCase();
+        var  str                    = this.controlador;
+        this.uri                    = str.toLowerCase();
 
         this.tablaModulo();
         this.tablaSesion();
@@ -213,6 +213,61 @@ Api.Modulo = {
                 }
             );
         }
+    },
+
+    cambiarEstado: function(id) {
+
+        var $objeto = Api[this.controlador];
+
+        this._CambiarEstado['id'] = id;
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._CambiarEstado,
+
+            function () {
+
+                $objeto.constructor();
+            }
+        );
+    },
+
+    eliminar: function(id) {
+
+        var $objeto = Api[this.controlador];
+
+        this._Eliminar['id'] = id;
+
+        swal({
+            title: "¿Seguro que desea eliminarlo?",
+            text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, deseo eliminarlo",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        }, function () {
+
+            $objeto.$ajaxS(
+                '',
+                $objeto.uri,
+                $objeto._Eliminar,
+
+                function (json) {
+
+                    if (json.resultado === 1) {
+
+                        swal("Eliminado!", json.mensaje, "success");
+                        $objeto.constructor();
+                    }
+                    else {
+                        swal("Error", json.mensaje , "error");
+                    }
+                }
+            );
+        });
     },
 
     mostrarIcono: function(icono) {

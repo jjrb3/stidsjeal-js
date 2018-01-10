@@ -132,7 +132,7 @@ Api.Sexo = {
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Sí, deseo eliminarlo",
             cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
+            closeOnConfirm: false
         }, function () {
 
             $objeto.$ajaxS(
