@@ -252,7 +252,7 @@ Api.Dashboard = {
     // Contenedor de Graficas
     parametrosGrafica: function () {
 
-        return {
+        return null/*{
             parametrizacion: [
                 {
                     nombre: 'Subir',
@@ -273,7 +273,7 @@ Api.Dashboard = {
                     informacion: false
                 }
             ]
-        };
+        };*/
     },
 
     tablaGrafica: function(pagina,tamanhio) {

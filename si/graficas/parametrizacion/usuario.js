@@ -17,13 +17,15 @@ Api.Graficas.Usuario = {
         this.uri        		        = str.toLowerCase();
     },
 
-    transacciones: function() {
+    transacciones: function(url) {
 
         this.constructor();
 
+        $('#bloque-grafica-usuario-transaccion').removeClass('ocultar');
+
         this.$ajaxS(
             '',
-            this.uri,
+            url + this.uri,
             this._ConsultarTransacciones,
 
             function (json) {
@@ -66,18 +68,22 @@ Api.Graficas.Usuario = {
         );
     },
 
-    total: function() {
+    total: function(url) {
 
         this.constructor();
 
+        $('#bloque-grafica-usuario-total').removeClass('ocultar');
+
         this.$ajaxS(
             '',
-            this.uri,
+            url + this.uri,
             this._ConsultarTotalEstado,
 
             function (json) {
 
                 if (json.resultado === 1) {
+
+
 
                     var doughnutData = {
                         labels: ["Activos","Eliminados","Desactivados" ],

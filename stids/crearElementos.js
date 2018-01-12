@@ -468,6 +468,26 @@ Api.Elementos = {
         return html;
     },
 
+    crearEtiqueta: function(url, icono, titulo, descripcion) {
+        var id          = '#clonar-etiqueta';
+        var $id         = $(id);
+        var anterior    = $id.html();
+        var html        = '';
+
+        $id.find('#href').attr('href',url);
+        $id.find('#icono').addClass(icono);
+        $id.find('#titulo').text(titulo);
+        $id.find('#descripcion').text(descripcion);
+
+        html = $id.html();
+
+        $id.html(anterior);
+
+        console.log(html);
+
+        return html;
+    },
+
     iconosDeOpciones: function($menu,accion,id,icono,color,texto,informacion,json) {
 
         var objeto = '';
