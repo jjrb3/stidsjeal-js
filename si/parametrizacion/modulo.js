@@ -168,7 +168,8 @@ Api.Modulo = {
 
         $($objeto.idContenedor + ' #descripcion').val(objeto.descripcion);
 
-        Api.Herramientas.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-modulos-sesiones','crear-editar');
+        AH.mostrarBotonesActualizar('modulo-sesion');
+        AH.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-modulos-sesiones','crear-editar');
     },
 
     subir: function(id, objeto) {
