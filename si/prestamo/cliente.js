@@ -15,21 +15,24 @@ Api.Cliente = {
     $uriCrud: Api.Uri.crudObjecto,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
 
+    _InicializarFormulario: null,
     _Consultar: null,
     _CrearActualizar: null,
     _CambiarEstado: null,
     _Eliminar: null,
 
     constructor: function() {
-        this._Consultar	        = this.$uriCrud('Consultar',this.controlador,this.carpeta);
-        this._CrearActualizar	= this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
-        this._CambiarEstado     = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
-        this._Eliminar          = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
+        this._InicializarFormulario	= this.$uriCrud('InicializarFormulario',this.controlador,this.carpeta);
+        this._Consultar	            = this.$uriCrud('Consultar',this.controlador,this.carpeta);
+        this._CrearActualizar	    = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
+        this._CambiarEstado         = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
+        this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
 
         str         	        = this.controlador;
         this.uri    	        = str.toLowerCase();
 
         this.tabla();
+        this.inicializarFormulario();
     },
 
     tabla: function(pagina,tamanhio) {
@@ -60,34 +63,38 @@ Api.Cliente = {
         );
     },
 
-    crearActualizar: function(evento) {
+    crearActualizar: function() {
 
-        if (Api.Herramientas.presionarEnter(evento)) {
+        var $objeto = Api[this.controlador];
+        var parametros = this.verificarFormulario(this._CrearActualizar);
 
-            var $objeto = Api[this.controlador];
-            var parametros = this.verificarFormulario(this._CrearActualizar);
+        if (parametros) {
+            this.$ajaxS(
+                '',
+                this.uri,
+                parametros,
 
-            if (parametros) {
-                this.$ajaxS(
-                    '',
-                    this.uri,
-                    parametros,
+                function (json) {
 
-                    function (json) {
+                    $objeto.$mensajeS(json);
 
-                        Api.Mensaje.jsonSuperior(json);
+                    if (json.resultado === 1) {
 
-                        if (json.resultado === 1) {
+                        var AH = Api.Herramientas;
 
-                            $($objeto.contenedor).find('#nombre').val('');
+                        $objeto.id = null;
+                        $objeto.constructor();
 
-                            $objeto.id = null;
-                            $objeto.constructor();
-                        }
+                        AH.cancelarCA('cliente');
+
+                        setTimeout(function(){
+                            AH.cambiarPestanhia('pestanhia-cliente','informacion');
+                        }, 1000);
                     }
-                );
-            }
+                }
+            );
         }
+
     },
 
     editar: function(id,objeto) {
@@ -171,6 +178,15 @@ Api.Cliente = {
         return {
             parametrizacion: [
                 {
+                    nombre: 'Codeudor',
+                    icono: 'fa-address-card-o',
+                    accion: 'Api.' + this.controlador + '.codeudor',
+                    color: '#1a7bb9',
+                    estado: false,
+                    permiso: false,
+                    informacion: true
+                },
+                {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
                     accion: 'Api.' + this.controlador + '.editar',
@@ -209,6 +225,27 @@ Api.Cliente = {
                 }
             ]
         };
+    },
+
+    inicializarFormulario: function() {
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._InicializarFormulario,
+
+            function (json) {
+
+                console.log(json);
+
+                var AH = Api.Herramientas;
+
+                AH.cargarSelectJSON('#id-tipo-identificacion',json.tipo_identificacion,true);
+                AH.cargarSelectJSON('#id-estado-civil',json.estado_civil,true);
+                AH.cargarSelectJSON('#id-ocupacion',json.ocupacion,true);
+                AH.cargarSelectJSON('#id-banco-cliente',json.bancos,true);
+            }
+        );
     }
 };
 
@@ -447,45 +484,6 @@ Api.Clientessss = {
 }
 
 
-
-const carpetaControlador = 'Prestamo';
-
-var controlador 		= 'Cliente';
-var nombreTablaGeneral 	= 'tabla'+controlador;
-
-//$('.select2').select2();
-
-function ejecutarBuscador(pagina,tamanhio,buscador,funcion) {
-
-    switch(funcion)
-    {
-        case 'listado':
-            listado(pagina,tamanhio,buscador);
-            break;
-    }
-}
-
-
-function listado(pagina,tamanhio,buscador) {
-
-    if (!pagina) {pagina = 1;}
-    if (!tamanhio) {tamanhio = 10;}
-    if (!buscador) {buscador = '';}
-
-
-    var enlace 	 	 	 = _urlCrud('Consultar',controlador)+'&buscador='+buscador;
-    var paginacion   	 = ['&pagina='+pagina+'&tamanhioPagina='+tamanhio, 'listado', 'paginacion',tamanhio];
-    var opciones 	 	 = ['actualizar','estado', 'eliminar','detalle'];
-    var exportarImportar = [];
-    var cabecera 	 	 = ['identificacion', 'nombres', 'apellidos','direccion','telefono','celular','estado'];
-    var edicion 	 	 = [true, true, true, true, true, true, false];
-    var estados  	 	 = ['<span class="label label-default ">INACTIVO</span>','<span class="label label-primary ">ACTIVO</span>'];
-
-
-    _ajaxTabla(controlador,enlace,'tabla',opciones,cabecera,edicion,estados,nombreTablaGeneral,paginacion,exportarImportar);
-}
-
-
 function guardar(actualizar,id) {
 
     var data = _urlCrud((actualizar ? 'Actualizar' : 'Guardar'),controlador)+'&'+$('#formulario').serialize()+'&id='+id;
@@ -495,53 +493,6 @@ function guardar(actualizar,id) {
     setTimeout(function(){ listado(); }, 2000);
 }
 
-
-function actualizarCliente (id) {
-
-    var data 	 = _urlCrud('ConsultarId',controlador)+'&id='+id;
-    var campos   = [
-        'id_tipo_identificacion',
-        'identificacion',
-        'nombres',
-        'apellidos',
-        'direccion',
-        'telefono',
-        'celular',
-        'id_estado_civil',
-        'fecha_nacimiento',
-        'email_personal',
-        'id_ciudad',
-        'barrio',
-        'id_ocupacion',
-        'empresa_nombre',
-        'empresa_cargo',
-        'empresa_area',
-        'id_municipio_empresa',
-        'empresa_barrio',
-        'empresa_direccion',
-        'empresa_telefono',
-        'empresa_fecha_ingreso',
-        'empresa_antiguedad_meses',
-        'sueldo',
-        'ingresos',
-        'egresos',
-        'ref_personal_nombres',
-        'ref_personal_apellidos',
-        'id_municipio_ref_personal',
-        'ref_personal_barrio',
-        'ref_personal_telefono',
-        'ref_personal_celular',
-        'ref_familiar_nombres',
-        'ref_familiar_apellidos',
-        'id_municipio_ref_familiar',
-        'ref_familiar_barrio',
-        'ref_familiar_telefono',
-        'ref_familiar_celular',
-        'observaciones'
-    ];
-
-    _ajaxLlenarCamposActualizar(controlador,data,campos,'mensajeGuardar','formulario',id,true);
-}
 
 function estadoCliente(id,estado) {
 
