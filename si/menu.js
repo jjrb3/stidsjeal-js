@@ -33,8 +33,6 @@ Api.Menu = {
         }
 
         $(".chosen-select").chosen({disable_search_threshold: 10});
-
-        return true;
     },
 
     menuIzquierdoDinamico: function() {
@@ -108,7 +106,7 @@ Api.Menu = {
 
                     $AM.json(json,idRetorno);
 
-                    if (json.resultado == 1) {
+                    if (json.resultado === 1) {
 
                         if($('#idHijo').length) {
                             redireccion = '../';

@@ -56,7 +56,7 @@ Api.Cliente = {
                     {nombre: 'direccion',       edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'telefono',        edicion: false,	formato: '', alineacion:'centrado'},
                     {nombre: 'celular',         edicion: false,	formato: '', alineacion:'centrado'},
-                    {nombre: 'estado',          edicion: false,	formato: '', alineacion:'izquierda'}
+                    {nombre: 'estado',          edicion: false,	formato: '', alineacion:'centrado'}
                 ],
                 automatico: false
             }

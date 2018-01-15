@@ -214,7 +214,7 @@ Api.Empresa = {
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Sí, deseo eliminarlo",
             cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
+            closeOnConfirm: false
         }, function () {
 
             $objeto.$ajaxS(
@@ -327,6 +327,25 @@ Api.Empresa = {
                     color: '#428bca',
                     estado: false,
                     permiso: false,
+                    informacion: false
+                },
+                {
+                    accion: 'Api.' + this.controlador + '.cambiarEstado',
+                    color: '#f7a54a',
+                    estado: false,
+                    condicion: {
+                        1: {
+                            icono: 'fa-toggle-off',
+                            titulo: 'Desactivar',
+                            etiqueta: '<span class="label label-primary ">ACTIVO</span>'
+                        },
+                        0: {
+                            icono: 'fa-toggle-on',
+                            titulo: 'Activar',
+                            etiqueta: '<span class="label label-default">INACTIVO</span>'
+                        }
+                    },
+                    permiso: 'estado',
                     informacion: false
                 },
                 {

@@ -335,7 +335,7 @@ Api.Elementos = {
 
                         $.each($tabla.opciones.parametrizacion, function (ke, ie) {
 
-                            if (ie.estado) {
+                            if (ie.permiso === 'estado') {
 
                                 $estado = ie.condicion[ij.estado];
 
@@ -414,7 +414,7 @@ Api.Elementos = {
             // Si tiene habilitado el permiso verifica que si puede mostrar la opcion o no
             if (!i.permiso || i.permiso !== false && Api.permisos !== null && Api.permisos.indexOf(Api.descripcionPermisos[i.permiso]) > -1) {
 
-                if (!i.estado) {
+                if (!i.estado && i.permiso !== 'estado') {
 
                     $menu = $elementos.iconosDeOpciones(
                         $menu,
@@ -427,7 +427,7 @@ Api.Elementos = {
                         json
                     );
                 }
-                else if(i.accion){
+                else if(i.accion && i.estado){
 
                     $menu = $elementos.iconosDeOpciones(
                         $menu,
