@@ -76,7 +76,7 @@ Api.Cliente = {
 
                 function (json) {
 
-                    $objeto.$mensajeS(json);
+                    Api.Mensaje.jsonSuperior(json);
 
                     if (json.resultado === 1) {
 
@@ -163,11 +163,69 @@ Api.Cliente = {
 
     verificarFormulario: function($objeto) {
 
-        $objeto['nombre'] = $('#nombre').val().trim();
-        $objeto['id']     = this.id;
+        $objeto['id_tipo_identificacion']   = $('#id-tipo-identificacion').val();
+        $objeto['identificacion']           = $('#identificacion').val().trim();
+        $objeto['nombres']                  = $('#nombres').val().trim();
+        $objeto['apellidos']                = $('#apellidos').val().trim();
+        $objeto['id_estado_civil']          = $('#id-estado-civil').val().trim();
+        $objeto['fecha_nacimiento']         = $('#fecha-nacimiento').val().trim();
+        $objeto['email_personal']           = $('#email-personal').val().trim();
+        $objeto['id_municipio']             = $('#id-municipio').val().trim();
+        $objeto['direccion']                = $('#direccion').val().trim();
+        $objeto['barrio']                   = $('#barrio').val().trim();
+        $objeto['telefono']                 = $('#telefono').val().trim();
+        $objeto['celular']                  = $('#celular').val().trim();
+        $objeto['id_ocupacion']             = $('#id-ocupacion').val();
+        $objeto['empresa_nombre']           = $('#empresa-nombre').val().trim();
+        $objeto['empresa_cargo']            = $('#empresa-cargo').val().trim();
+        $objeto['empresa_area']             = $('#empresa-area').val().trim();
+        $objeto['empresa_barrio']           = $('#empresa-barrio').val().trim();
+        $objeto['empresa_direccion']        = $('#empresa-direccion').val().trim();
+        $objeto['empresa_telefono']         = $('#empresa-telefono').val().trim();
+        $objeto['empresa_fecha_ingreso']    = $('#empresa-fecha-ingreso').val().trim();
+        $objeto['empresa_antiguedad_meses'] = $('#empresa-antiguedad-meses').val().trim();
+        $objeto['id_banco_cliente']         = $('#id-banco-cliente').val();
+        $objeto['no_cuenta']                = $('#no-cuenta').val().trim();
+        $objeto['sueldo']                   = $('#sueldo').val().trim();
+        $objeto['ingresos']                 = $('#ingresos').val().trim();
+        $objeto['egresos']                  = $('#egresos').val().trim();
+        $objeto['ref_personal_nombres']     = $('#ref-personal-nombres').val().trim();
+        $objeto['ref_personal_apellidos']   = $('#ref-personal-apellidos').val().trim();
+        $objeto['ref_personal_barrio']      = $('#ref-personal-barrio').val().trim();
+        $objeto['ref_personal_telefono']    = $('#ref-personal-telefono').val().trim();
+        $objeto['ref_personal_celular']     = $('#ref-personal-celular').val().trim();
+        $objeto['ref_familiar_nombres']     = $('#ref-familiar-nombres').val().trim();
+        $objeto['ref_familiar_apellidos']   = $('#ref-familiar-apellidos').val().trim();
+        $objeto['ref_familiar_barrio']      = $('#ref-familiar-barrio').val().trim();
+        $objeto['ref_familiar_telefono']    = $('#ref-familiar-telefono').val().trim();
+        $objeto['ref_familiar_celular']     = $('#ref-familiar-celular').val().trim();
+        $objeto['observaciones']            = $('#observaciones').val().trim();
 
-        if (!$objeto['nombre']) {
-            this.$mensajeS('advertencia','Advertencia','Debe digitar un nombre para continuar');
+        $objeto['id'] = this.id;
+
+
+        if (!$objeto['id_tipo_identificacion']) {
+            this.$mensajeS('advertencia','Advertencia','Debe seleccionar un tipo de identificación para continuar');
+            return false;
+        }
+
+        if (!$objeto['identificacion']) {
+            this.$mensajeS('advertencia','Advertencia','Debe digitar la identificación para continuar');
+            return false;
+        }
+
+        if (!$objeto['nombres']) {
+            this.$mensajeS('advertencia','Advertencia','Debe digitar los nombres para continuar');
+            return false;
+        }
+
+        if (!$objeto['apellidos']) {
+            this.$mensajeS('advertencia','Advertencia','Debe digitar los apellidos para continuar');
+            return false;
+        }
+
+        if (!$objeto['direccion']) {
+            this.$mensajeS('advertencia','Advertencia','Debe digitar la dirección para continuar');
             return false;
         }
 
@@ -236,8 +294,6 @@ Api.Cliente = {
 
             function (json) {
 
-                console.log(json);
-
                 var AH = Api.Herramientas;
 
                 AH.cargarSelectJSON('#id-tipo-identificacion',json.tipo_identificacion,true);
@@ -246,6 +302,51 @@ Api.Cliente = {
                 AH.cargarSelectJSON('#id-banco-cliente',json.bancos,true);
             }
         );
+    },
+
+    probarFormulario: function() {
+
+        var AH = Api.Herramientas;
+
+        AH.selectDefault('#id-tipo-identificacion',1);
+        AH.selectDefault('#id-estado-civil',1);
+        AH.selectDefault('#id-ocupacion',1);
+        AH.selectDefault('#id-banco-cliente',1);
+
+        $('#identificacion').val('1');
+        $('#nombres').val('1');
+        $('#apellidos').val('1');
+        $('#id-estado-civil').val('1');
+        $('#fecha-nacimiento').val('1990-08-06');
+        $('#email-personal').val('1');
+        $('#id-municipio').val('1');
+        $('#direccion').val('1');
+        $('#barrio').val('1');
+        $('#telefono').val('1');
+        $('#celular').val('1');
+        $('#empresa-nombre').val('1');
+        $('#empresa-cargo').val('1');
+        $('#empresa-area').val('1');
+        $('#empresa-barrio').val('1');
+        $('#empresa-direccion').val('1');
+        $('#empresa-telefono').val('1');
+        $('#empresa-fecha-ingreso').val('2018-01-15');
+        $('#empresa-antiguedad-meses').val('1');
+        $('#no-cuenta').val('1');
+        $('#sueldo').val('1');
+        $('#ingresos').val('1');
+        $('#egresos').val('1');
+        $('#ref-personal-nombres').val('1');
+        $('#ref-personal-apellidos').val('1');
+        $('#ref-personal-barrio').val('1');
+        $('#ref-personal-telefono').val('1');
+        $('#ref-personal-celular').val('1');
+        $('#ref-familiar-nombres').val('1');
+        $('#ref-familiar-apellidos').val('1');
+        $('#ref-familiar-barrio').val('1');
+        $('#ref-familiar-telefono').val('1');
+        $('#ref-familiar-celular').val('1');
+        $('#observaciones').val('1');
     }
 };
 
