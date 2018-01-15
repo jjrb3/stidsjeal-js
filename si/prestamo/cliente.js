@@ -50,12 +50,12 @@ Api.Cliente = {
                 opciones: this.opciones(),
                 checkbox: false,
                 columnas: [
-                    {nombre: 'identificacion',  edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'identificacion',  edicion: false,	formato: 'numerico', alineacion:'centrado'},
                     {nombre: 'nombres',         edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'apellidos',       edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'direccion',       edicion: false,	formato: '', alineacion:'izquierda'},
-                    {nombre: 'telefono',        edicion: false,	formato: '', alineacion:'izquierda'},
-                    {nombre: 'celular',         edicion: false,	formato: '', alineacion:'izquierda'},
+                    {nombre: 'telefono',        edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'celular',         edicion: false,	formato: '', alineacion:'centrado'},
                     {nombre: 'estado',          edicion: false,	formato: '', alineacion:'izquierda'}
                 ],
                 automatico: false
@@ -102,8 +102,50 @@ Api.Cliente = {
         this.id = id;
 
         var $objeto = Api[this.controlador];
+        var AH      = Api.Herramientas;
 
-        $($objeto.contenedor + '#nombre').val(objeto.nombre).focus();
+        AH.selectDefault('#id-tipo-identificacion',objeto.id_tipo_identificacion);
+        AH.selectDefault('#id-estado-civil',objeto.id_estado_civil);
+        AH.selectDefault('#id-ocupacion',objeto.id_ocupacion);
+        AH.selectDefault('#id-banco-cliente',objeto.id_banco_cliente);
+
+        $('#identificacion').val(objeto.identificacion);
+        $('#nombres').val(objeto.nombres);
+        $('#apellidos').val(objeto.apellidos);
+        $('#fecha-nacimiento').val(objeto.fecha_nacimiento);
+        $('#email-personal').val(objeto.email_personal);
+        $('#id-municipio').val(objeto.id_municipio);
+        $('#ciudad').val(objeto.ciudad);
+        $('#direccion').val(objeto.direccion);
+        $('#barrio').val(objeto.barrio);
+        $('#telefono').val(objeto.telefono);
+        $('#celular').val(objeto.cellIndex);
+        $('#empresa-nombre').val(objeto.empresa_nombre);
+        $('#empresa-cargo').val(objeto.empresa_cargo);
+        $('#empresa-area').val(objeto.empresa_area);
+        $('#empresa-barrio').val(objeto.empresa_barrio);
+        $('#empresa-direccion').val(objeto.empresa_direccion);
+        $('#empresa-telefono').val(objeto.empresa_telefono);
+        $('#empresa-fecha-ingreso').val(objeto.empresa_fecha_ingreso);
+        $('#empresa-antiguedad-meses').val(objeto.empresa_antiguedad_meses);
+        $('#no-cuenta').val(objeto.no_cuenta);
+        $('#sueldo').val(objeto.sueldo);
+        $('#ingresos').val(objeto.ingresos);
+        $('#egresos').val(objeto.egresos);
+        $('#ref-personal-nombres').val(objeto.ref_personal_nombres);
+        $('#ref-personal-apellidos').val(objeto.ref_personal_apellidos);
+        $('#ref-personal-barrio').val(objeto.ref_personal_barrio);
+        $('#ref-personal-telefono').val(objeto.ref_personal_telefono);
+        $('#ref-personal-celular').val(objeto.ref_personal_celular);
+        $('#ref-familiar-nombres').val(objeto.ref_familiar_nombres);
+        $('#ref-familiar-apellidos').val(objeto.ref_familiar_apellidos);
+        $('#ref-familiar-barrio').val(objeto.ref_familiar_barrio);
+        $('#ref-familiar-telefono').val(objeto.ref_familiar_telefono);
+        $('#ref-familiar-celular').val(objeto.ref_familiar_celular);
+        $('#observaciones').val(objeto.observaciones);
+
+        AH.mostrarBotonesActualizar('cliente');
+        AH.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-cliente','informacion');
     },
 
     cambiarEstado: function(id) {
@@ -245,6 +287,15 @@ Api.Cliente = {
                     informacion: true
                 },
                 {
+                    nombre: 'Descargar Información',
+                    icono: 'fa-cloud-download',
+                    accion: 'Api.' + this.controlador + '.descargarInformacion',
+                    color: '#1a7bb9',
+                    estado: false,
+                    permiso: false,
+                    informacion: true
+                },
+                {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
                     accion: 'Api.' + this.controlador + '.editar',
@@ -316,7 +367,6 @@ Api.Cliente = {
         $('#identificacion').val('1');
         $('#nombres').val('1');
         $('#apellidos').val('1');
-        $('#id-estado-civil').val('1');
         $('#fecha-nacimiento').val('1990-08-06');
         $('#email-personal').val('1');
         $('#id-municipio').val('1');
