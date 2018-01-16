@@ -143,7 +143,7 @@ Api.Cliente = {
         $('#observaciones').val(objeto.observaciones);
 
         AH.mostrarBotonesActualizar('cliente');
-        AH.cambiarPestanhia(' #pestanhia-cliente','informacion');
+        AH.cambiarPestanhia('pestanhia-cliente','informacion');
     },
 
     cambiarEstado: function(id) {
@@ -204,6 +204,12 @@ Api.Cliente = {
     codeudor: function(id,json) {
 
         Api.Codeudor.constructor(id, json);
+    },
+
+    descargarInformacion: function(id) {
+
+        $('#id-cliente-exportar').val(id);
+        $("#formulario-exportar").submit();
     },
 
     verificarFormulario: function($objeto) {
@@ -296,7 +302,7 @@ Api.Cliente = {
                     color: '#1a7bb9',
                     estado: false,
                     permiso: 'exportar',
-                    informacion: true
+                    informacion: false
                 },
                 {
                     nombre: 'Actualizar',
