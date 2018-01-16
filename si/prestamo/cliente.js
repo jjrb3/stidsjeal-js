@@ -143,7 +143,7 @@ Api.Cliente = {
         $('#observaciones').val(objeto.observaciones);
 
         AH.mostrarBotonesActualizar('cliente');
-        AH.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-cliente','informacion');
+        AH.cambiarPestanhia(' #pestanhia-cliente','informacion');
     },
 
     cambiarEstado: function(id) {

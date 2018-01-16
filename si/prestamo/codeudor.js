@@ -90,12 +90,12 @@ Api.Codeudor = {
                         var AH = Api.Herramientas;
 
                         $objeto.id = null;
-                        $objeto.constructor();
+                        $objeto.tabla();
 
-                        AH.cancelarCA('cliente');
+                        AH.cancelarCA('codeudor');
 
                         setTimeout(function(){
-                            AH.cambiarPestanhia('pestanhia-cliente','informacion');
+                            AH.cambiarPestanhia('pestanhia-codeudor','lista');
                         }, 1000);
                     }
                 }
@@ -106,53 +106,20 @@ Api.Codeudor = {
 
     editar: function(id,objeto) {
 
+        var AH = Api.Herramientas;
+
         this.id = id;
 
-        var $objeto = Api[this.controlador];
-        var AH      = Api.Herramientas;
+        $('#codeudor-cedula').val(objeto.cedula);
+        $('#fecha-expedicion').val(objeto.fecha_expedicion);
+        $('#codeudor-nombres').val(objeto.nombres);
+        $('#codeudor-apellidos').val(objeto.apellidos);
+        $('#codeudor-direccion').val(objeto.direccion);
+        $('#codeudor-telefono').val(objeto.telefono);
+        $('#codeudor-celular').val(objeto.celular);
 
-        AH.selectDefault('#id-tipo-identificacion',objeto.id_tipo_identificacion);
-        AH.selectDefault('#id-estado-civil',objeto.id_estado_civil);
-        AH.selectDefault('#id-ocupacion',objeto.id_ocupacion);
-        AH.selectDefault('#id-banco-cliente',objeto.id_banco_cliente);
-
-        $('#identificacion').val(objeto.identificacion);
-        $('#nombres').val(objeto.nombres);
-        $('#apellidos').val(objeto.apellidos);
-        $('#fecha-nacimiento').val(objeto.fecha_nacimiento);
-        $('#email-personal').val(objeto.email_personal);
-        $('#id-municipio').val(objeto.id_municipio);
-        $('#ciudad').val(objeto.ciudad);
-        $('#direccion').val(objeto.direccion);
-        $('#barrio').val(objeto.barrio);
-        $('#telefono').val(objeto.telefono);
-        $('#celular').val(objeto.cellIndex);
-        $('#empresa-nombre').val(objeto.empresa_nombre);
-        $('#empresa-cargo').val(objeto.empresa_cargo);
-        $('#empresa-area').val(objeto.empresa_area);
-        $('#empresa-barrio').val(objeto.empresa_barrio);
-        $('#empresa-direccion').val(objeto.empresa_direccion);
-        $('#empresa-telefono').val(objeto.empresa_telefono);
-        $('#empresa-fecha-ingreso').val(objeto.empresa_fecha_ingreso);
-        $('#empresa-antiguedad-meses').val(objeto.empresa_antiguedad_meses);
-        $('#no-cuenta').val(objeto.no_cuenta);
-        $('#sueldo').val(objeto.sueldo);
-        $('#ingresos').val(objeto.ingresos);
-        $('#egresos').val(objeto.egresos);
-        $('#ref-personal-nombres').val(objeto.ref_personal_nombres);
-        $('#ref-personal-apellidos').val(objeto.ref_personal_apellidos);
-        $('#ref-personal-barrio').val(objeto.ref_personal_barrio);
-        $('#ref-personal-telefono').val(objeto.ref_personal_telefono);
-        $('#ref-personal-celular').val(objeto.ref_personal_celular);
-        $('#ref-familiar-nombres').val(objeto.ref_familiar_nombres);
-        $('#ref-familiar-apellidos').val(objeto.ref_familiar_apellidos);
-        $('#ref-familiar-barrio').val(objeto.ref_familiar_barrio);
-        $('#ref-familiar-telefono').val(objeto.ref_familiar_telefono);
-        $('#ref-familiar-celular').val(objeto.ref_familiar_celular);
-        $('#observaciones').val(objeto.observaciones);
-
-        AH.mostrarBotonesActualizar('cliente');
-        AH.cambiarPestanhia($objeto.idContenedor + ' #pestanhia-cliente','informacion');
+        AH.mostrarBotonesActualizar('codeudor');
+        AH.cambiarPestanhia('pestanhia-codeudor','crear-actualizar');
     },
 
     cambiarEstado: function(id) {
@@ -212,54 +179,20 @@ Api.Codeudor = {
 
     verificarFormulario: function($objeto) {
 
-        $objeto['id_tipo_identificacion']   = $('#id-tipo-identificacion').val();
-        $objeto['identificacion']           = $('#identificacion').val().trim();
-        $objeto['nombres']                  = $('#nombres').val().trim();
-        $objeto['apellidos']                = $('#apellidos').val().trim();
-        $objeto['id_estado_civil']          = $('#id-estado-civil').val().trim();
-        $objeto['fecha_nacimiento']         = $('#fecha-nacimiento').val().trim();
-        $objeto['email_personal']           = $('#email-personal').val().trim();
-        $objeto['id_municipio']             = $('#id-municipio').val().trim();
-        $objeto['direccion']                = $('#direccion').val().trim();
-        $objeto['barrio']                   = $('#barrio').val().trim();
-        $objeto['telefono']                 = $('#telefono').val().trim();
-        $objeto['celular']                  = $('#celular').val().trim();
-        $objeto['id_ocupacion']             = $('#id-ocupacion').val();
-        $objeto['empresa_nombre']           = $('#empresa-nombre').val().trim();
-        $objeto['empresa_cargo']            = $('#empresa-cargo').val().trim();
-        $objeto['empresa_area']             = $('#empresa-area').val().trim();
-        $objeto['empresa_barrio']           = $('#empresa-barrio').val().trim();
-        $objeto['empresa_direccion']        = $('#empresa-direccion').val().trim();
-        $objeto['empresa_telefono']         = $('#empresa-telefono').val().trim();
-        $objeto['empresa_fecha_ingreso']    = $('#empresa-fecha-ingreso').val().trim();
-        $objeto['empresa_antiguedad_meses'] = $('#empresa-antiguedad-meses').val().trim();
-        $objeto['id_banco_cliente']         = $('#id-banco-cliente').val();
-        $objeto['no_cuenta']                = $('#no-cuenta').val().trim();
-        $objeto['sueldo']                   = $('#sueldo').val().trim();
-        $objeto['ingresos']                 = $('#ingresos').val().trim();
-        $objeto['egresos']                  = $('#egresos').val().trim();
-        $objeto['ref_personal_nombres']     = $('#ref-personal-nombres').val().trim();
-        $objeto['ref_personal_apellidos']   = $('#ref-personal-apellidos').val().trim();
-        $objeto['ref_personal_barrio']      = $('#ref-personal-barrio').val().trim();
-        $objeto['ref_personal_telefono']    = $('#ref-personal-telefono').val().trim();
-        $objeto['ref_personal_celular']     = $('#ref-personal-celular').val().trim();
-        $objeto['ref_familiar_nombres']     = $('#ref-familiar-nombres').val().trim();
-        $objeto['ref_familiar_apellidos']   = $('#ref-familiar-apellidos').val().trim();
-        $objeto['ref_familiar_barrio']      = $('#ref-familiar-barrio').val().trim();
-        $objeto['ref_familiar_telefono']    = $('#ref-familiar-telefono').val().trim();
-        $objeto['ref_familiar_celular']     = $('#ref-familiar-celular').val().trim();
-        $objeto['observaciones']            = $('#observaciones').val().trim();
+        $objeto['cedula']           = $('#codeudor-cedula').val().trim();
+        $objeto['fecha_expedicion'] = $('#fecha-expedicion').val().trim();
+        $objeto['nombres']          = $('#codeudor-nombres').val().trim();
+        $objeto['apellidos']        = $('#codeudor-apellidos').val().trim();
+        $objeto['direccion']        = $('#codeudor-direccion').val().trim();
+        $objeto['telefono']         = $('#codeudor-telefono').val().trim();
+        $objeto['celular']          = $('#codeudor-celular').val().trim();
 
-        $objeto['id'] = this.id;
+        $objeto['id_cliente']   = this.idCliente;
+        $objeto['id']           = this.id;
 
 
-        if (!$objeto['id_tipo_identificacion']) {
-            this.$mensajeS('advertencia','Advertencia','Debe seleccionar un tipo de identificación para continuar');
-            return false;
-        }
-
-        if (!$objeto['identificacion']) {
-            this.$mensajeS('advertencia','Advertencia','Debe digitar la identificación para continuar');
+        if (!$objeto['cedula']) {
+            this.$mensajeS('advertencia','Advertencia','Debe digitar la cedula para continuar');
             return false;
         }
 
@@ -275,6 +208,11 @@ Api.Codeudor = {
 
         if (!$objeto['direccion']) {
             this.$mensajeS('advertencia','Advertencia','Debe digitar la dirección para continuar');
+            return false;
+        }
+
+        if (!$objeto['celular']) {
+            this.$mensajeS('advertencia','Advertencia','Debe digitar el celular para continuar');
             return false;
         }
 
