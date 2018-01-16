@@ -48,11 +48,11 @@ Api.Cliente = {
                 opciones: this.opciones(),
                 checkbox: false,
                 columnas: [
+                    {nombre: 'codigo',          edicion: false,	formato: '', alineacion:'centrado'},
                     {nombre: 'identificacion',  edicion: false,	formato: 'numerico', alineacion:'centrado'},
                     {nombre: 'nombres',         edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'apellidos',       edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'direccion',       edicion: false,	formato: '', alineacion:'izquierda'},
-                    {nombre: 'telefono',        edicion: false,	formato: '', alineacion:'centrado'},
                     {nombre: 'celular',         edicion: false,	formato: '', alineacion:'centrado'},
                     {nombre: 'estado',          edicion: false,	formato: '', alineacion:'centrado'}
                 ],
