@@ -33,7 +33,6 @@ Api.Codeudor = {
         this.idCliente  = id;
 
         this.tabla();
-        /*this.inicializarFormulario();*/
 
         $(this.idModal + '#nombre-completo').text(json.nombres + ' ' + json.apellidos);
         $(this.idModal).modal('show');
@@ -122,24 +121,6 @@ Api.Codeudor = {
         AH.cambiarPestanhia('pestanhia-codeudor','crear-actualizar');
     },
 
-    cambiarEstado: function(id) {
-
-        var $objeto = Api[this.controlador];
-
-        this._CambiarEstado['id'] = id;
-
-        this.$ajaxS(
-            '',
-            this.uri,
-            this._CambiarEstado,
-
-            function () {
-
-                $objeto.tabla();
-            }
-        );
-    },
-
     eliminar: function(id) {
 
         var $objeto = Api[this.controlador];
@@ -167,7 +148,7 @@ Api.Codeudor = {
                     if (json.resultado === 1) {
 
                         swal("Eliminado!", json.mensaje, "success");
-                        $objeto.constructor();
+                        $objeto.tabla();
                     }
                     else {
                         swal("Error", json.mensaje , "error");
@@ -242,24 +223,5 @@ Api.Codeudor = {
                 }
             ]
         };
-    },
-
-    inicializarFormulario: function() {
-
-        this.$ajaxS(
-            '',
-            this.uri,
-            this._InicializarFormulario,
-
-            function (json) {
-
-                var AH = Api.Herramientas;
-
-                AH.cargarSelectJSON('#id-tipo-identificacion',json.tipo_identificacion,true);
-                AH.cargarSelectJSON('#id-estado-civil',json.estado_civil,true);
-                AH.cargarSelectJSON('#id-ocupacion',json.ocupacion,true);
-                AH.cargarSelectJSON('#id-banco-cliente',json.bancos,true);
-            }
-        );
     }
 };
