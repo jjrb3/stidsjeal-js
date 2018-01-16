@@ -212,34 +212,54 @@ Api.Herramientas = {
 
     mostrarBotonesActualizar: function(id) {
 
+        var $boton = $('#ca-botones-' + id);
+
         id = Api.Herramientas.verificarId(id,false);
 
-        $('#ca-botones-' + id)
-            .find('#btn-guardar')
-            .addClass('ocultar')
-            .parent()
+        if ($boton.find('#btn-guardar').length > 0) {
+
+            $boton = $boton
+                .find('#btn-guardar')
+                .addClass('ocultar')
+                .parent();
+        }
+
+        $boton = $boton
             .find('#btn-cancelar')
             .removeClass('ocultar')
-            .parent()
-            .find('#btn-actualizar')
-            .removeClass('ocultar');
+            .parent();
+
+        if ($boton.find('#btn-actualizar').length > 0) {
+
+            $boton.find('#btn-actualizar').removeClass('ocultar');
+        }
     },
 
     cancelarCA: function(id) {
+
+        var $boton = $('#ca-botones-' + id);
 
         id = Api.Herramientas.verificarId(id,false);
 
         document.getElementById('formulario-' + id).reset();
 
-        $('#ca-botones-' + id)
-            .find('#btn-guardar')
-            .removeClass('ocultar')
-            .parent()
+        if ($boton.find('#btn-guardar').length > 0) {
+
+            $boton = $boton
+                .find('#btn-guardar')
+                .removeClass('ocultar')
+                .parent();
+        }
+
+        $boton = $boton
             .find('#btn-cancelar')
             .addClass('ocultar')
-            .parent()
-            .find('#btn-actualizar')
-            .addClass('ocultar');
+            .parent();
+
+        if ($boton.find('#btn-actualizar').length > 0) {
+
+            $boton.find('#btn-actualizar').addClass('ocultar');
+        }
     },
 
     checkboxOnclick: function(onclick,checked) {

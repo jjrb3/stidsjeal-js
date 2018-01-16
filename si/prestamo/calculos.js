@@ -26,7 +26,7 @@ Api.Calculos = {
 
         for(var i=0;i<cuotas;i++) {
 
-            if (tipoPrestamo == 1) {
+            if (tipoPrestamo === 1) {
 
                 abonoInteres = Math.round(montoSolicitado * interes / 100);
                 amortizacion = Math.round(montoSolicitado / cuotas);
