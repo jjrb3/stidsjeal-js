@@ -1,41 +1,70 @@
 Api.Prestamo = {
+    id: null,
+    uri: null,
     carpeta: 'Prestamo',
     controlador: 'Prestamo',
-    ajaxS: Api.Ajax.ajaxSimple,
-    calculos: Api.Calculos,
-    uri: null,
+    nombreTabla: 'prestamo-tabla',
+    totalIntereses: null,
+    total: null,
 
-    consultarRegistroPorId: null,
-    crearRefinanciacion: null,
+    $ajaxC: Api.Ajax.constructor,
+    $ajaxT: Api.Ajax.ajaxTabla,
+    $ajaxS: Api.Ajax.ajaxSimple,
+    $mensajeS: Api.Mensaje.superior,
+    $uriCrud: Api.Uri.crudObjecto,
+    $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
 
-    idRetorno: null,
-    json: null,
-    jsonPrestamo: null,
+    _InicializarFormulario: null,
+    _Consultar: null,
+    _CrearActualizar: null,
+    _CambiarEstado: null,
+    _Eliminar: null,
+    /*consultarRegistroPorId: null,
+    crearRefinanciacion: null,*/
 
-    constructor: function(idRetorno) {
-        this.consultarRegistroPorId = this.uriCrud('ConsultarId',this.controlador,this.carpeta)+'&';
-        this.crearRefinanciacion    = this.uriCrud('GuardarRefinanciacion',this.controlador,this.carpeta)+'&';
-        str                         = this.controlador;
-        this.uri                    = str.toLowerCase();
-        this.idRetorno              = idRetorno;
+    constructor: function() {
+        this._InicializarFormulario	= this.$uriCrud('InicializarFormulario',this.controlador,this.carpeta);
+        this._Consultar	            = this.$uriCrud('Consultar',this.controlador,this.carpeta);
+        this._CrearActualizar	    = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
+        this._CambiarEstado         = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
+        this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
+        /*this.consultarRegistroPorId = this.uriCrud('ConsultarId',this.controlador,this.carpeta)+'&';
+        this.crearRefinanciacion    = this.uriCrud('GuardarRefinanciacion',this.controlador,this.carpeta)+'&';*/
 
-        $('#'+idRetorno).html('');
+        str         = this.controlador;
+        this.uri    = str.toLowerCase();
 
-        return true;
+        this.tabla();
+        //this.inicializarFormulario();
     },
 
-    consultarPorId: function(id) {
+    tabla: function(pagina,tamanhio) {
 
-        this.ajaxS(
-            this.idRetorno,
+        this.$ajaxC(this.nombreTabla,pagina,tamanhio);
+
+        this.$ajaxT(
+            this.nombreTabla,
             this.uri,
-            this.consultarRegistroPorId + '&id='+id,
-
-            function(json){
-
-                Api.Prestamo.jsonPrestamo = json[0];
+            this._Consultar,
+            {
+                objecto: this.controlador,
+                metodo: 'tabla',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: this.opciones(),
+                checkbox: false,
+                columnas: [
+                    {nombre: 'no',              edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'identificacion',  edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'cliente',         edicion: false,	formato: '', alineacion:'izquierda'},
+                    {nombre: 'tipo_prestamo',   edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'forma_pago',      edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'total',           edicion: false,	formato: 'moneda', alineacion:'centrado'},
+                    {nombre: 'total_pagado',    edicion: false,	formato: 'moneda', alineacion:'centrado'},
+                    {nombre: 'estado_pago',     edicion: false,	formato: '', alineacion:''}
+                ],
+                automatico: false
             }
-        )
+        );
     },
 
     guardarRefinanciacion: function(id) {
@@ -135,7 +164,7 @@ Api.Prestamo = {
 
     descargarSimulacionPrestamo: function() {
 
-        var contenedor      = '.formulario-prestamo ';
+        var contenedor      = '#formulario-prestamo ';
         var cliente         = $(contenedor + '#id_cliente option:selected').text();
         var monto           = $(contenedor + '#monto_solicitado').val();
         var intereses       = $(contenedor + '#intereses').val();
@@ -167,44 +196,83 @@ Api.Prestamo = {
         );
     },
 
+    opciones: function() {
+        return {
+            parametrizacion: [
+                {
+                    nombre: 'Detalle del prestamo',
+                    icono: 'fa-list-alt',
+                    accion: 'Api.' + this.controlador + '.detalle',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: true
+                },
+                {
+                    nombre: 'Pagar valor superior',
+                    icono: 'fa-money',
+                    accion: 'Api.' + this.controlador + '.pagoValorSuperior',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: true
+                },
+                {
+                    nombre: 'Refinanciar',
+                    icono: 'fa-refresh',
+                    accion: 'Api.' + this.controlador + '.refinanciar',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: true
+                },
+                {
+                    accion: 'Api.' + this.controlador + '.cambiarEstado',
+                    color: '#f7a54a',
+                    estado: true,
+                    condicion: {
+                        1: {
+                            icono: 'fa-toggle-off',
+                            titulo: 'Desactivar',
+                            etiqueta: '<span class="label label-primary ">ACTIVO</span>'
+                        },
+                        0: {
+                            icono: 'fa-toggle-on',
+                            titulo: 'Activar',
+                            etiqueta: '<span class="label label-default">INACTIVO</span>'
+                        }
+                    },
+                    permiso: 'estado',
+                    informacion: false
+                },
+                {
+                    nombre: 'Eliminar',
+                    icono: 'fa-trash',
+                    accion: 'Api.' + this.controlador + '.eliminar',
+                    color: '#ec4758',
+                    estado: false,
+                    permiso: 'eliminar',
+                    informacion: false
+                }
+            ]
+        };
+    },
+
     asignarValoresPrestamo: function() {
 
-        var contenedor = '.formulario-prestamo ';
+        var contenedor = '#formulario-prestamo ';
 
-        $(contenedor + '#id_cliente').val(6);
-        $(contenedor + '#id_tipo_prestamo').val(2);
-        $(contenedor + '#monto_solicitado').val(100000);
+        $(contenedor + '#id-cliente').val(6);
+        $(contenedor + '#id-tipo-prestamo').val(2);
+        $(contenedor + '#monto-solicitado').val(100000);
         $(contenedor + '#intereses').val(3);
-        $(contenedor + '#id_forma_pago').val(4);
-        $(contenedor + '#no_cuotas').val(24);
+        $(contenedor + '#id-forma-pago').val(4);
+        $(contenedor + '#no-cuotas').val(24);
         $(contenedor + '#total-intereses').html('$20,557');
-        $(contenedor + '#total_intereses').val(20557);
         $(contenedor + '#total-general').html('$120,557');
-        $(contenedor + '#total').val(120557);
-        $(contenedor + '#fecha_pago_inicial').val('2017-12-03');
-    },
+        $(contenedor + '#fecha-pago-inicial').val('2017-12-03');
 
-    uriCrud: function(accion,controlador,carpeta) {
-
-        return 'crud=true&padre='+$('#idPadre').val()
-            +'&hijo='+$('#idHijo').val()
-            +'&funcionesVariables='+accion
-            +'&controlador='+controlador
-            +'&carpetaControlador='+carpeta;
-    },
-
-    messageResultJson: function(json,id) {
-
-        switch (json.resultado) {
-            case 1:
-                _mensaje('realizado',id, json.mensaje);
-                break;
-            case 0:
-                _mensaje('advertencia',id, json.mensaje);
-                break;
-            case -1:
-                _mensaje('error',id, json.mensaje);
-                break;
-        }
+        this.totalIntereses = 20557;
+        this.total = 120557;
     }
-}
+};

@@ -7,7 +7,7 @@ Api.Calculos = {
     totalGeneral: null,
 
 
-    calculosPrestamo: function(montoSolicitado,interes,cuotas,fechaPago,formaPago,tipoPrestamo,callback) {
+    calculosPrestamo: function(montoSolicitado,interes,cuotas,fechaPago,formaPago,tipoPrestamo) {
 
         this.arregloPrestamo = [];
         this.cadenaPrestamo  = '';
@@ -28,14 +28,14 @@ Api.Calculos = {
 
             if (tipoPrestamo === 1) {
 
+                abonoInteres = Math.round(capital * interes / 100);
+                amortizacion = montoFijo - abonoInteres;
+            }
+            else if (tipoPrestamo === 2) {
+
                 abonoInteres = Math.round(montoSolicitado * interes / 100);
                 amortizacion = Math.round(montoSolicitado / cuotas);
                 montoFijo = abonoInteres + amortizacion;
-            }
-            else if (tipoPrestamo == 2) {
-
-                abonoInteres = Math.round(capital * interes / 100);
-                amortizacion = montoFijo - abonoInteres;
             }
 
             fecha = this.obtenerFecha(formaPago,i - 1,fechaPago);
@@ -54,7 +54,7 @@ Api.Calculos = {
                 'capital':capital,
                 'amortizacion':amortizacion,
                 'interes':abonoInteres,
-                'total': montoFijo,
+                'total': montoFijo
             });
 
             this.totalIntereses += abonoInteres;
@@ -63,10 +63,10 @@ Api.Calculos = {
             capital -= amortizacion;
         }
 
-        callback({
+        return {
             'arreglo':this.arregloPrestamo,
             'cadena':this.cadenaPrestamo
-        })
+        };
     },
 
     obtenerFecha: function(formaPago,noCuota,fechaPago) {

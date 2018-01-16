@@ -26,8 +26,8 @@ Api.Cliente = {
         this._CambiarEstado         = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
 
-        str         	        = this.controlador;
-        this.uri    	        = str.toLowerCase();
+        str         = this.controlador;
+        this.uri    = str.toLowerCase();
 
         this.tabla();
         this.inicializarFormulario();

@@ -105,6 +105,8 @@ Api.Inicializador = {
 
     mascaras: function() {
 
+        $('.formato-porcentaje').mask('00.0', {reverse: true});
+        $('.formato-moneda').mask('000,000,000,000,000', {reverse: true});
         $('.formato-numerico').mask('000.000.000.000.000', {reverse: true});
         $('.formato-celular').mask('(000) 000 0000').attr('placeholder','(___) ___ ____');
     },
