@@ -295,7 +295,7 @@ Api.Cliente = {
                     accion: 'Api.' + this.controlador + '.descargarInformacion',
                     color: '#1a7bb9',
                     estado: false,
-                    permiso: false,
+                    permiso: 'exportar',
                     informacion: true
                 },
                 {

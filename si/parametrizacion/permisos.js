@@ -340,8 +340,10 @@ Api.Permisos = {
                     permiso: false,
                     informacion: true
                 },
-				{
-                    estado: true,
+                {
+                    accion: '',
+                    color: '#f7a54a',
+                    estado: false,
                     condicion: {
                         1: {
                             icono: 'fa-toggle-off',
@@ -353,8 +355,10 @@ Api.Permisos = {
                             titulo: 'Activar',
                             etiqueta: '<span class="label label-default">INACTIVO</span>'
                         }
-                    }
-				}
+                    },
+                    permiso: 'estado',
+                    informacion: false
+                },
             ]
         };
 	},
