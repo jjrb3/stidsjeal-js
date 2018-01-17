@@ -94,10 +94,11 @@ Api.Calculos = {
             }
 
             return {
-                arreglo:        $tablaCuotas,
+                lista_cuotas:   $tablaCuotas,
                 cadena:         cadenaCuotas,
                 total_interes:  totalInteres,
-                total_general:  totalGeneral
+                total_general:  totalGeneral,
+                informacion:    $prestamo
             };
         }
 
@@ -106,17 +107,21 @@ Api.Calculos = {
 
     obtenerParametrosPrestamo: function () {
 
-        var cuota   = $('#no-cuotas').val(),
-            interes = $('#intereses').val(),
-            monto   = $('#monto-requerido').val();
+        var cuota           = $('#no-cuotas').val(),
+            interes         = $('#intereses').val(),
+            monto           = $('#monto-requerido').val(),
+            clienteNombre   = $('#id-cliente option:selected').text();
 
         return {
-            forma_pago: $('#id-forma-pago').val(),
-            fecha_pago: $('#fecha-pago-inicial').val(),
-            tipo:       $('#id-tipo-prestamo').val(),
-            monto:      !monto      ? 0 : parseInt(monto.replace(/,/g,'')),
-            interes:    !interes    ? 0 : interes,
-            cuotas:     !cuota      ? 0 : cuota
+            cliente_nombre:     clienteNombre ? clienteNombre.split('-')[1].trim() : '',
+            forma_pago_nombre:  $('#id-forma-pago option:selected').text(),
+            tipo_nombre:        $('#id-tipo-prestamo option:selected').text(),
+            forma_pago:         $('#id-forma-pago').val(),
+            fecha_pago:         $('#fecha-pago-inicial').val(),
+            tipo:               $('#id-tipo-prestamo').val(),
+            monto:              !monto      ? 0 : parseInt(monto.replace(/,/g,'')),
+            interes:            !interes    ? 0 : interes,
+            cuotas:             !cuota      ? 0 : cuota
         };
     },
 

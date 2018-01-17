@@ -83,6 +83,48 @@ Api.Prestamo = {
         }
     },
 
+    simularPrestamo: function() {
+
+        var $calculos = Api.Calculos.calcularPrestamo();
+
+        if (!$calculos) {
+            Api.Mensaje.superior('advertencia','Advertencia','Llene todos los campos del formulario para poder realizar la simulación');
+        }
+        else {
+
+            var modal  = '#modal-simular ',
+                $AH    = Api.Herramientas,
+                $tbody = null;
+
+            $(modal + '#simulacion-nombre-cliente').text($calculos.informacion.cliente_nombre);
+            $(modal + '#simulacion-forma-pago').text($calculos.informacion.forma_pago_nombre);
+            $(modal + '#simulacion-tipo-prestamo').text($calculos.informacion.tipo_nombre);
+            $(modal + '#simulacion-monto').text($AH.formatoMoneda($calculos.informacion.monto));
+            $(modal + '#simulacion-intereses').text($calculos.informacion.interes + '%');
+            $(modal + '#simulacion-cuotas').text($calculos.informacion.cuotas);
+            $(modal + '#simulacion-total-interes').text($AH.formatoMoneda($calculos.total_interes));
+            $(modal + '#simulacion-total-general').text($AH.formatoMoneda($calculos.total_general));
+
+            $tbody = $(modal + '#tabla-simulacion').find('tbody').html('');
+
+            $.each($calculos.lista_cuotas, function(k, i) {
+
+                $tbody.append('<tr></tr>');
+
+                $tbody.find('tr').last()
+                    .append('<td class="centrado">' + i.no_cuota + '</td>')
+                    .append('<td class="centrado">' + i.fecha_pago + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.saldo_inicial) + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.cuota) + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.interes) + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.abono_capital) + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.saldo_final) + '</td>')
+            });
+
+            $(modal).modal('show');
+        }
+    },
+
     guardarRefinanciacion: function(id) {
 
         var $contenedor = '#modal-refinanciacion ';
@@ -292,6 +334,7 @@ Api.Prestamo = {
 
                 Api.Prestamo.cargarPruebasFormulario();
                 Api.Prestamo.calcularPrestamo();
+                Api.Prestamo.simularPrestamo();
             }
         );
     },
