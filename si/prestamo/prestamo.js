@@ -35,7 +35,7 @@ Api.Prestamo = {
         this.uri    = str.toLowerCase();
 
         this.tabla();
-        //this.inicializarFormulario();
+        this.inicializarFormulario();
     },
 
     tabla: function(pagina,tamanhio) {
@@ -209,7 +209,7 @@ Api.Prestamo = {
                     informacion: true
                 },
                 {
-                    nombre: 'Pagar valor superior',
+                    nombre: 'Realizar pago',
                     icono: 'fa-money',
                     accion: 'Api.' + this.controlador + '.pagoValorSuperior',
                     color: '#428bca',
@@ -258,21 +258,22 @@ Api.Prestamo = {
         };
     },
 
-    asignarValoresPrestamo: function() {
+    inicializarFormulario: function() {
 
-        var contenedor = '#formulario-prestamo ';
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._InicializarFormulario,
 
-        $(contenedor + '#id-cliente').val(6);
-        $(contenedor + '#id-tipo-prestamo').val(2);
-        $(contenedor + '#monto-solicitado').val(100000);
-        $(contenedor + '#intereses').val(3);
-        $(contenedor + '#id-forma-pago').val(4);
-        $(contenedor + '#no-cuotas').val(24);
-        $(contenedor + '#total-intereses').html('$20,557');
-        $(contenedor + '#total-general').html('$120,557');
-        $(contenedor + '#fecha-pago-inicial').val('2017-12-03');
+            function (json) {
 
-        this.totalIntereses = 20557;
-        this.total = 120557;
+                var AH          = Api.Herramientas;
+                var contenedor  = 'formulario-prestamo ';
+
+                AH.cargarSelectJSON(contenedor + '#id-cliente',json.clientes,true);
+                AH.cargarSelectJSON(contenedor + '#id-forma-pago',json.forma_pago,true);
+                AH.cargarSelectJSON(contenedor + '#id-tipo-prestamo',json.tipo_prestamo,true);
+            }
+        );
     }
 };
