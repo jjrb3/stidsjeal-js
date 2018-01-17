@@ -67,6 +67,22 @@ Api.Prestamo = {
         );
     },
 
+    calcularPrestamo: function() {
+
+        var $AH         = Api.Herramientas,
+            $calculos   = Api.Calculos.calcularPrestamo();
+
+        if ($calculos) {
+
+            $('#total-intereses').text($AH.formatoMoneda($calculos.total_interes));
+            $('#total-general').text($AH.formatoMoneda($calculos.total_general));
+        }
+        else {
+            $('#total-intereses').text('$0');
+            $('#total-general').text('$0');
+        }
+    },
+
     guardarRefinanciacion: function(id) {
 
         var $contenedor = '#modal-refinanciacion ';
@@ -273,7 +289,24 @@ Api.Prestamo = {
                 AH.cargarSelectJSON(contenedor + '#id-cliente',json.clientes,true);
                 AH.cargarSelectJSON(contenedor + '#id-forma-pago',json.forma_pago,true);
                 AH.cargarSelectJSON(contenedor + '#id-tipo-prestamo',json.tipo_prestamo,true);
+
+                Api.Prestamo.cargarPruebasFormulario();
+                Api.Prestamo.calcularPrestamo();
             }
         );
+    },
+
+    cargarPruebasFormulario: function() {
+
+        var AH = Api.Herramientas;
+
+        AH.selectDefault('#id-cliente',11);
+        AH.selectDefault('#id-forma-pago',4);
+        AH.selectDefault('#id-tipo-prestamo',2);
+
+        $('#fecha-pago-inicial').val('2018-01-17');
+        $('#monto-requerido').val('100,000');
+        $('#intereses').val('3.0');
+        $('#no-cuotas').val(12);
     }
 };

@@ -1,91 +1,143 @@
 
 Api.Calculos = {
-    arregloPrestamo: null,
-    cadenaPrestamo: null,
     totalMonto: null,
     totalIntereses: null,
     totalGeneral: null,
 
+    calcularPrestamo: function() {
 
-    calculosPrestamo: function(montoSolicitado,interes,cuotas,fechaPago,formaPago,tipoPrestamo) {
+        $prestamo = this.obtenerParametrosPrestamo();
 
-        this.arregloPrestamo = [];
-        this.cadenaPrestamo  = '';
-        this.totalMonto      = parseInt(montoSolicitado);
-        this.totalIntereses  = 0;
-        this.totalGeneral    = 0;
+        if ($prestamo.tipo && $prestamo.monto > 0 && $prestamo.interes > 0 && $prestamo.cuotas > 0) {
 
-        var prestamo = [];
+            var abonoInteres    = 0,
+                saldoFinal      = 0,
+                totalInteres    = 0,
+                totalGeneral    = 0,
+                saldoInicial    = $prestamo.monto,
+                fecha           = '',
+                abonoACapital    = 0,
+                porcentaje      = $prestamo.interes / 100,
+                cuota           = Math.round((porcentaje * Math.pow(1 + porcentaje, $prestamo.cuotas) * $prestamo.monto) / (Math.pow(1 + porcentaje, $prestamo.cuotas) - 1)),
+                cadenaCuotas    = '',
+                $tablaCuotas    = [];
 
-        var abonoInteres    = 0;
-        var amortizacion    = 0;
-        var fecha           = '';
-        var capital         = montoSolicitado;
-        var porcentaje      = interes / 100;
-        var montoFijo       = Math.round((porcentaje * Math.pow(1+porcentaje,cuotas)* montoSolicitado)/(Math.pow(1+porcentaje,cuotas)-1));
 
-        for(var i=0;i<cuotas;i++) {
+            for (var i = 0; i < $prestamo.cuotas; i++) {
 
-            if (tipoPrestamo === 1) {
+                // Calculo fijo
+                if ($prestamo.tipo === '1') {
 
-                abonoInteres = Math.round(capital * interes / 100);
-                amortizacion = montoFijo - abonoInteres;
+                    saldoInicial = i === 0 ? $prestamo.monto : saldoFinal;
+
+                    // Si es el ultimo pago entonces realiza un calculo diferente
+                    if (i + 1 === parseInt($prestamo.cuotas)) {
+
+                        abonoInteres    = cuota - saldoInicial;
+                        abonoACapital   = cuota - abonoInteres;
+                        saldoFinal      = 0;
+                    }
+                    else {
+                        abonoInteres    = Math.round(saldoInicial * $prestamo.interes / 100);
+                        abonoACapital   = cuota - abonoInteres;
+                        saldoFinal      = saldoInicial - abonoACapital;
+                    }
+                }
+                // Calculo a capital uniforme
+                else if ($prestamo.tipo === '2') {
+
+                    saldoInicial = i === 0 ? $prestamo.monto : saldoFinal;
+
+                    abonoACapital = Math.round($prestamo.monto / $prestamo.cuotas);
+                    abonoInteres  = Math.round(saldoInicial * $prestamo.interes / 100);
+
+                    // Si es el ultimo pago entonces realiza un calculo diferente
+                    if (i + 1 === parseInt($prestamo.cuotas)) {
+
+                        cuota       = abonoACapital - abonoInteres;
+                        saldoFinal  = 0;
+                    }
+                    else {
+
+                        cuota       = abonoACapital + abonoInteres;
+                        saldoFinal  = saldoInicial - abonoACapital;
+                    }
+                }
+                else {
+                    return false;
+                }
+
+                if ($prestamo.forma_pago && $prestamo.fecha_pago) {
+                    fecha = this.obtenerFecha($prestamo.forma_pago, i - 1, $prestamo.fecha_pago);
+                }
+
+                cadenaCuotas += (i + 1) + ';';
+                cadenaCuotas += fecha + ';';
+                cadenaCuotas += saldoInicial + ';';
+                cadenaCuotas += cuota + ';';
+                cadenaCuotas += abonoInteres + ';';
+                cadenaCuotas += abonoACapital + ';';
+                cadenaCuotas += abonoInteres + ';}';
+
+                $tablaCuotas.push({
+                    no_cuota:      (i + 1),
+                    fecha_pago:    fecha,
+                    saldo_inicial: saldoInicial,
+                    cuota:         cuota,
+                    interes:       abonoInteres,
+                    abono_capital: abonoACapital,
+                    saldo_final:   saldoFinal
+                });
+
+                totalInteres += abonoInteres;
+                totalGeneral += cuota;
             }
-            else if (tipoPrestamo === 2) {
 
-                abonoInteres = Math.round(montoSolicitado * interes / 100);
-                amortizacion = Math.round(montoSolicitado / cuotas);
-                montoFijo = abonoInteres + amortizacion;
-            }
-
-            fecha = this.obtenerFecha(formaPago,i - 1,fechaPago);
-
-
-            this.cadenaPrestamo += (i + 1)      + ';';
-            this.cadenaPrestamo += fecha        + ';';
-            this.cadenaPrestamo += capital      + ';';
-            this.cadenaPrestamo += amortizacion + ';';
-            this.cadenaPrestamo += abonoInteres + ';';
-            this.cadenaPrestamo += montoFijo    + ';}';
-
-            this.arregloPrestamo.push({
-                'no_cuota': (i + 1),
-                'fecha_pago':fecha,
-                'capital':capital,
-                'amortizacion':amortizacion,
-                'interes':abonoInteres,
-                'total': montoFijo
-            });
-
-            this.totalIntereses += abonoInteres;
-            this.totalGeneral   += montoFijo;
-
-            capital -= amortizacion;
+            return {
+                arreglo:        $tablaCuotas,
+                cadena:         cadenaCuotas,
+                total_interes:  totalInteres,
+                total_general:  totalGeneral
+            };
         }
 
+        return false;
+    },
+
+    obtenerParametrosPrestamo: function () {
+
+        var cuota   = $('#no-cuotas').val(),
+            interes = $('#intereses').val(),
+            monto   = $('#monto-requerido').val();
+
         return {
-            'arreglo':this.arregloPrestamo,
-            'cadena':this.cadenaPrestamo
+            forma_pago: $('#id-forma-pago').val(),
+            fecha_pago: $('#fecha-pago-inicial').val(),
+            tipo:       $('#id-tipo-prestamo').val(),
+            monto:      !monto      ? 0 : parseInt(monto.replace(/,/g,'')),
+            interes:    !interes    ? 0 : interes,
+            cuotas:     !cuota      ? 0 : cuota
         };
     },
 
     obtenerFecha: function(formaPago,noCuota,fechaPago) {
 
-        var fecha = '';
+        var fecha   = '',
+            AH      = Api.Herramientas;
 
         switch (parseInt(formaPago))
         {
             case 1:
-                fecha = _sumarDia(noCuota,fechaPago);
+                fecha = AH.sumarDia(noCuota,fechaPago);
                 break;
             case 2:
-                fecha = _sumarDia(noCuota * 7,fechaPago);
+                fecha = AH.sumarDia(noCuota * 7,fechaPago);
                 break;
             case 3:
-                fecha = _sumarDia(noCuota * 15,fechaPago);
+                fecha = AH.sumarDia(noCuota * 15,fechaPago);
                 break;
             case 4:
-                fecha = _sumarMes(noCuota,fechaPago);
+                fecha = AH.sumarMes(noCuota,fechaPago);
                 break;
         }
 

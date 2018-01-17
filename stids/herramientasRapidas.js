@@ -115,6 +115,11 @@ Api.Herramientas = {
         return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
 
+    formatoMoneda: function(numero) {
+
+        return '$' + numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
     tablaExiste: function(id) {
 
         return parseInt($(Api.Herramientas.verificarId(id,true)).children('div').length) > 0 ? true : false;
@@ -285,6 +290,38 @@ Api.Herramientas = {
         return string === null ? '' : string;
     },
 
+    sumarDia: function(dias, fecha) {
+
+        fecha = new Date(fecha);
+
+        fecha.setDate(fecha.getDate() + parseInt(dias) + 1);
+
+        var anhio   = fecha.getFullYear();
+        var mes     = fecha.getMonth() + 1;
+        var dia     = fecha.getDate();
+
+        mes = (mes < 10) ? ("0" + mes) : mes;
+        dia = (dia < 10) ? ("0" + dia) : dia;
+
+        return anhio + '-' + mes + '-' + dia;
+    },
+
+    sumarMes: function(meses, fecha) {
+
+        fecha = new Date(fecha);
+
+        fecha.setMonth(fecha.getMonth() + parseInt(meses) + 1);
+
+        var anhio   = fecha.getFullYear();
+        var mes     = fecha.getMonth() + 1;
+        var dia     = fecha.getDate() + 1;
+
+        mes = (mes < 10) ? ("0" + mes) : mes;
+        dia = (dia < 10) ? ("0" + dia) : dia;
+
+        return anhio + '-' + mes + '-' + dia;
+    },
+
     validarEmail: function(email) {
 
         if (email.trim()) {
@@ -296,107 +333,6 @@ Api.Herramientas = {
     }
 };
 
-
-/**
- * @autor Jeremy Reyes B.
- * @version 1.0
- *
- * Oculta botones para crear registro y limpia el formulario.
- *
- * @param string formulario: nombre del formulario.
- */
-function cancelarGuardar(formulario) {
-    $('#botonCancelar').slideUp('300');
-    $('#botonActualizar').slideUp('300',function(){
-        if (globalPermisos.indexOf(1) > -1) {
-            $('#botonGuardar').slideDown('300');
-        }
-    });
-    document.getElementById(formulario).reset();
-}
-
-
-/**
- * @autor Jeremy Reyes B.
- * @version 1.0
- *
- * Reemplaza datos internos de un String
- *
- * @param string: Texto.
- * @param string: Valor a buscar.
- * @param string: Valor se se colocará.
- *
- * @return string reemplazada.
- */
-function _reemplazar(text, busca, reemplaza ){
-
-    while (text.toString().indexOf(busca) != -1) {
-
-        text = text.toString().replace(/busca/g, reemplaza);
-    }
-
-    return text;
-}
-
-
-/**
- * @autor Jeremy Reyes B.
- * @version 1.0
- *
- * Sumar dias a una fecha
- *
- * @param string dias:  Dias a sumar.
- * @param string fecha: Fecha a sumar.
- *
- * @return string fecha sumada.
- */
-function _sumarDia(dias, fecha)
-{
-    fecha= new Date(fecha);
-    fecha.setDate(fecha.getDate()+parseInt(dias)+1);
-
-    var anno=fecha.getFullYear();
-    var mes= fecha.getMonth()+1;
-    var dia= fecha.getDate();
-
-    mes = (mes < 10) ? ("0" + mes) : mes;
-    dia = (dia < 10) ? ("0" + dia) : dia;
-
-    var rFecha = anno+'-'+mes+'-'+dia;
-
-    return rFecha;
-}
-
-
-/**
- * @autor Jeremy Reyes B.
- * @version 1.0
- *
- * Sumar dias a una fecha
- *
- * @param string dias:  Dias a sumar.
- * @param string fecha: Fecha a sumar.
- *
- * @return string fecha sumada.
- */
-function _sumarMes(mes, fecha)
-{
-    fecha= new Date(fecha);
-
-    fecha.setMonth(fecha.getMonth()+parseInt(mes)+1);
-
-    var anno=fecha.getFullYear();
-    var mes= fecha.getMonth() + 1;
-    var dia= fecha.getDate() + 1;
-
-    mes = (mes < 10) ? ("0" + mes) : mes;
-    dia = (dia < 10) ? ("0" + dia) : dia;
-
-    var rFecha = anno+'-'+mes+'-'+dia;
-
-
-    return rFecha;
-}
 
 function _diferenciaEntreFechas(fechaInicial,fechaFinal,tipo) {
 
