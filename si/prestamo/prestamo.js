@@ -13,6 +13,7 @@ Api.Prestamo = {
     $mensajeS: Api.Mensaje.superior,
     $uriCrud: Api.Uri.crudObjecto,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
+    $calculos: null,
 
     _InicializarFormulario: null,
     _Consultar: null,
@@ -88,7 +89,10 @@ Api.Prestamo = {
         var $calculos = Api.Calculos.calcularPrestamo();
 
         if (!$calculos) {
+
             Api.Mensaje.superior('advertencia','Advertencia','Llene todos los campos del formulario para poder realizar la simulación');
+
+            this.$calculos = null;
         }
         else {
 
@@ -122,9 +126,37 @@ Api.Prestamo = {
             });
 
             $(modal).modal('show');
+
+            this.$calculos = $calculos;
         }
     },
 
+    descargarSimulacion: function() {
+
+        if (this.$calculos) {
+
+            var encabezadoPDF   = '',
+                contenedor      = '#formulario-exportar-simulacion ';
+
+            encabezadoPDF =
+                this.$calculos.informacion.cliente_nombre + ';' +
+                this.$calculos.informacion.tipo_nombre + ';' +
+                this.$calculos.informacion.forma_pago_nombre + ';' +
+                this.$calculos.informacion.monto + ';' +
+                this.$calculos.informacion.cuotas + ';' +
+                this.$calculos.informacion.interes + ';' +
+                this.$calculos.total_interes + ';' +
+                this.$calculos.total_general + ';' +
+                this.$calculos.informacion.fecha_pago;
+
+            $(contenedor + '#encabezado').val(encabezadoPDF);
+            $(contenedor + '#tabla').val(this.$calculos.cadena);
+
+            $(contenedor).submit();
+        }
+    },
+
+    // Revisar ----------------------------
     guardarRefinanciacion: function(id) {
 
         var $contenedor = '#modal-refinanciacion ';
@@ -164,7 +196,9 @@ Api.Prestamo = {
             }
         )
     },
+    // Revisar ----------------------------
 
+    // Revisar ----------------------------
     simularRefinanciacion: function() {
 
         var nuevaCuota      = 0;
@@ -219,40 +253,7 @@ Api.Prestamo = {
             }
         );
     },
-
-    descargarSimulacionPrestamo: function() {
-
-        var contenedor      = '#formulario-prestamo ';
-        var cliente         = $(contenedor + '#id_cliente option:selected').text();
-        var monto           = $(contenedor + '#monto_solicitado').val();
-        var intereses       = $(contenedor + '#intereses').val();
-        var cuotas          = $(contenedor + '#no_cuotas').val();
-        var fecha_pago      = $(contenedor + '#fecha_pago_inicial').val();
-        var forma_pago      = $(contenedor + '#id_forma_pago option:selected').text();
-        var tipo_prestamo   = $(contenedor + '#id_tipo_prestamo option:selected').text();
-        var total_intereses = $(contenedor + '#total_intereses').val();
-        var total           = $(contenedor + '#total').val();
-        var encabezadoPDF   = cliente + ';' + tipo_prestamo + ';' + forma_pago + ';' + monto + ';' + cuotas + ';' + intereses + ';' + total_intereses + ';' + total + ';' + fecha_pago;
-
-        this.calculos.calculosPrestamo(
-            monto,
-            intereses,
-            cuotas,
-            fecha_pago,
-            $(contenedor + '#id_forma_pago').val(),
-            $(contenedor + '#id_tipo_prestamo').val(),
-
-            function(data){
-
-                contenedor = '#form-descargar-simulacion ';
-
-                $(contenedor + '#encabezado').val(encabezadoPDF);
-                $(contenedor + '#tabla').val(data.cadena);
-
-                $(contenedor).submit();
-            }
-        );
-    },
+    // Revisar ----------------------------
 
     opciones: function() {
         return {

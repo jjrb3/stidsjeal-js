@@ -48,20 +48,12 @@ Api.Calculos = {
 
                     saldoInicial = i === 0 ? $prestamo.monto : saldoFinal;
 
-                    abonoACapital = Math.round($prestamo.monto / $prestamo.cuotas);
-                    abonoInteres  = Math.round(saldoInicial * $prestamo.interes / 100);
+                    abonoACapital   = Math.round($prestamo.monto / $prestamo.cuotas);
+                    abonoInteres    = Math.round(saldoInicial * $prestamo.interes / 100);
+                    cuota           = abonoACapital + abonoInteres;
 
                     // Si es el ultimo pago entonces realiza un calculo diferente
-                    if (i + 1 === parseInt($prestamo.cuotas)) {
-
-                        cuota       = abonoACapital - abonoInteres;
-                        saldoFinal  = 0;
-                    }
-                    else {
-
-                        cuota       = abonoACapital + abonoInteres;
-                        saldoFinal  = saldoInicial - abonoACapital;
-                    }
+                    saldoFinal =  i + 1 === parseInt($prestamo.cuotas) ? 0 : saldoInicial - abonoACapital;
                 }
                 else {
                     return false;
@@ -77,7 +69,7 @@ Api.Calculos = {
                 cadenaCuotas += cuota + ';';
                 cadenaCuotas += abonoInteres + ';';
                 cadenaCuotas += abonoACapital + ';';
-                cadenaCuotas += abonoInteres + ';}';
+                cadenaCuotas += saldoFinal + ';}';
 
                 $tablaCuotas.push({
                     no_cuota:      (i + 1),
@@ -90,14 +82,13 @@ Api.Calculos = {
                 });
 
                 totalInteres += abonoInteres;
-                totalGeneral += cuota;
             }
 
             return {
                 lista_cuotas:   $tablaCuotas,
                 cadena:         cadenaCuotas,
                 total_interes:  totalInteres,
-                total_general:  totalGeneral,
+                total_general:  totalInteres + $prestamo.monto,
                 informacion:    $prestamo
             };
         }
