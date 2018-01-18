@@ -11,6 +11,7 @@ Api.Prestamo = {
     $ajaxT: Api.Ajax.ajaxTabla,
     $ajaxS: Api.Ajax.ajaxSimple,
     $mensajeS: Api.Mensaje.superior,
+    $mensajeP: Api.Mensaje.publicar,
     $uriCrud: Api.Uri.crudObjecto,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
     $calculos: null,
@@ -37,6 +38,7 @@ Api.Prestamo = {
 
         this.tabla();
         this.inicializarFormulario();
+        this.$mensajeP('informacion','#prestamo-detalle-tabla','Seleccione un prestamo para ver el listado de cuotas que debe pagar el cliente');
     },
 
     tabla: function(pagina,tamanhio) {
@@ -196,6 +198,7 @@ Api.Prestamo = {
 
                         $('#total-intereses').text('$0');
                         $('#total-general').text('$0');
+                        $('#informacion-prestamo-detalle').addClass('ocultar');
 
                         setTimeout(function(){
                             AH.cambiarPestanhia('pestanhia-prestamo','lista-prestamos');
@@ -259,6 +262,16 @@ Api.Prestamo = {
                 }
             );
         });
+    },
+
+    detalle: function(id, $informacion) {
+
+        var $AP = Api.PrestamoDetalle;
+
+        $AP.id = id;
+        $AP.$informacion = $informacion;
+
+        $AP.constructor();
     },
 
     // Revisar ----------------------------

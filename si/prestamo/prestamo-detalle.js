@@ -1,3 +1,198 @@
+Api.PrestamoDetalle = {
+    id: null,
+    uri: null,
+    carpeta: 'Prestamo',
+    controlador: 'PrestamoDetalle',
+    nombreTabla: 'prestamo-detalle-tabla',
+
+    $ajaxC: Api.Ajax.constructor,
+    $ajaxT: Api.Ajax.ajaxTabla,
+    $ajaxS: Api.Ajax.ajaxSimple,
+    $mensajeS: Api.Mensaje.superior,
+    $uriCrud: Api.Uri.crudObjecto,
+    $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
+    $informacion: null,
+
+    _Consultar: null,
+    _Eliminar: null,
+
+    constructor: function() {
+        this._Consultar	            = this.$uriCrud('Consultar',this.controlador,this.carpeta);
+        this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
+
+        str         = this.controlador;
+        this.uri    = str.toLowerCase();
+
+        this.cargarInformacion();
+        //this.tabla();
+        Api.Herramientas.cambiarPestanhia('pestanhia-prestamo','detalle-prestamo');
+    },
+
+    cargarInformacion: function() {
+
+        var $AHfM = Api.Herramientas.formatoMoneda;
+
+        $('#informacion-prestamo-detalle').removeClass('ocultar');
+
+        $('#detalle-no-prestamo').text(this.$informacion.no_prestamo);
+        $('#detalle-cliente').text(this.$informacion.cliente);
+        $('#detalle-tipo-prestamo').text(this.$informacion.tipo_prestamo);
+        $('#detalle-forma-pago').text(this.$informacion.forma_pago);
+        $('#detalle-estado-pago').text(this.$informacion.estado_pago);
+        $('#detalle-intereses').text(this.$informacion.intereses + '%');
+        $('#detalle-no-cuotas').text(this.$informacion.no_cuotas);
+        $('#detalle-monto').text($AHfM(this.$informacion.monto_requerido));
+        $('#detalle-total-intereses').text($AHfM(this.$informacion.total_intereses));
+        $('#detalle-total').text($AHfM(this.$informacion.total));
+        $('#total-saldo-pagado').text($AHfM(this.$informacion.total_pagado));
+        $('#total-a-pagar').text($AHfM(this.$informacion.total - this.$informacion.total_pagado));
+    },
+
+    tabla: function(pagina,tamanhio) {
+
+        this.$ajaxC(this.nombreTabla,pagina,tamanhio);
+
+        this.$ajaxT(
+            this.nombreTabla,
+            this.uri,
+            this._Consultar,
+            {
+                objecto: this.controlador,
+                metodo: 'tabla',
+                funcionalidades: this.$funcionalidadesT,
+                opciones: this.opciones(),
+                checkbox: false,
+                columnas: [
+                    {nombre: 'no',              edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'identificacion',  edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'cliente',         edicion: false,	formato: '', alineacion:'izquierda'},
+                    {nombre: 'tipo_prestamo',   edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'forma_pago',      edicion: false,	formato: '', alineacion:'centrado'},
+                    {nombre: 'total',           edicion: false,	formato: 'moneda', alineacion:'centrado'},
+                    {nombre: 'total_pagado',    edicion: false,	formato: 'moneda', alineacion:'centrado'},
+                    {nombre: 'estado_pago',     edicion: false,	formato: '', alineacion:''},
+                    {nombre: 'estado',          edicion: false,	formato: '', alineacion:'centrado'}
+                ],
+                automatico: false
+            }
+        );
+    },
+
+    calcularPrestamo: function() {
+
+        var $AH         = Api.Herramientas,
+            $calculos   = Api.Calculos.calcularPrestamo();
+
+        if ($calculos) {
+
+            $('#total-intereses').text($AH.formatoMoneda($calculos.total_interes));
+            $('#total-general').text($AH.formatoMoneda($calculos.total_general));
+        }
+        else {
+            $('#total-intereses').text('$0');
+            $('#total-general').text('$0');
+        }
+    },
+
+    eliminar: function(id) {
+
+        var $objeto = Api[this.controlador];
+
+        this._Eliminar['id'] = id;
+
+        swal({
+            title: "¿Seguro que desea eliminarlo?",
+            text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, deseo eliminarlo",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        }, function () {
+
+            $objeto.$ajaxS(
+                '',
+                $objeto.uri,
+                $objeto._Eliminar,
+
+                function (json) {
+
+                    if (json.resultado === 1) {
+
+                        swal("Eliminado!", json.mensaje, "success");
+                        $objeto.constructor();
+                    }
+                    else {
+                        swal("Error", json.mensaje , "error");
+                    }
+                }
+            );
+        });
+    },
+
+    opciones: function() {
+        return {
+            parametrizacion: [
+                {
+                    nombre: 'Detalle del prestamo',
+                    icono: 'fa-list-alt',
+                    accion: 'Api.' + this.controlador + '.detalle',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: true
+                },
+                {
+                    nombre: 'Realizar pago',
+                    icono: 'fa-money',
+                    accion: 'Api.' + this.controlador + '.pagoValorSuperior',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: true
+                },
+                {
+                    nombre: 'Refinanciar',
+                    icono: 'fa-refresh',
+                    accion: 'Api.' + this.controlador + '.refinanciar',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: false,
+                    informacion: true
+                },
+                {
+                    accion: 'Api.' + this.controlador + '.cambiarEstado',
+                    color: '#f7a54a',
+                    estado: true,
+                    condicion: {
+                        1: {
+                            icono: 'fa-toggle-off',
+                            titulo: 'Desactivar',
+                            etiqueta: '<span class="label label-primary ">ACTIVO</span>'
+                        },
+                        0: {
+                            icono: 'fa-toggle-on',
+                            titulo: 'Activar',
+                            etiqueta: '<span class="label label-default">INACTIVO</span>'
+                        }
+                    },
+                    permiso: 'estado',
+                    informacion: false
+                },
+                {
+                    nombre: 'Eliminar',
+                    icono: 'fa-trash',
+                    accion: 'Api.' + this.controlador + '.eliminar',
+                    color: '#ec4758',
+                    estado: false,
+                    permiso: 'eliminar',
+                    informacion: false
+                }
+            ]
+        };
+    }
+};
 
 Api.LoanDetail = {
     folder: 'Prestamo',
