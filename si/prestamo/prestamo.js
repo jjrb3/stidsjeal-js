@@ -61,7 +61,8 @@ Api.Prestamo = {
                     {nombre: 'forma_pago',      edicion: false,	formato: '', alineacion:'centrado'},
                     {nombre: 'total',           edicion: false,	formato: 'moneda', alineacion:'centrado'},
                     {nombre: 'total_pagado',    edicion: false,	formato: 'moneda', alineacion:'centrado'},
-                    {nombre: 'estado_pago',     edicion: false,	formato: '', alineacion:''}
+                    {nombre: 'estado_pago',     edicion: false,	formato: '', alineacion:''},
+                    {nombre: 'estado',          edicion: false,	formato: '', alineacion:'centrado'}
                 ],
                 automatico: false
             }
@@ -193,6 +194,9 @@ Api.Prestamo = {
 
                         AH.cancelarCA('prestamo');
 
+                        $('#total-intereses').text('$0');
+                        $('#total-general').text('$0');
+
                         setTimeout(function(){
                             AH.cambiarPestanhia('pestanhia-prestamo','lista-prestamos');
                         }, 1000);
@@ -200,6 +204,61 @@ Api.Prestamo = {
                 }
             );
         }
+    },
+
+    cambiarEstado: function(id) {
+
+        var $objeto = Api[this.controlador];
+
+        this._CambiarEstado['id'] = id;
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._CambiarEstado,
+
+            function () {
+
+                $objeto.constructor();
+            }
+        );
+    },
+
+    eliminar: function(id) {
+
+        var $objeto = Api[this.controlador];
+
+        this._Eliminar['id'] = id;
+
+        swal({
+            title: "¿Seguro que desea eliminarlo?",
+            text: "Después de eliminarlo no podrás recuperar esta información ni revertir los cambios!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, deseo eliminarlo",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        }, function () {
+
+            $objeto.$ajaxS(
+                '',
+                $objeto.uri,
+                $objeto._Eliminar,
+
+                function (json) {
+
+                    if (json.resultado === 1) {
+
+                        swal("Eliminado!", json.mensaje, "success");
+                        $objeto.constructor();
+                    }
+                    else {
+                        swal("Error", json.mensaje , "error");
+                    }
+                }
+            );
+        });
     },
 
     // Revisar ----------------------------
