@@ -4,6 +4,7 @@ Api.PrestamoDetalle = {
     carpeta: 'Prestamo',
     controlador: 'PrestamoDetalle',
     nombreTabla: 'prestamo-detalle-tabla',
+    idPrestamo: null,
 
     $ajaxC: Api.Ajax.constructor,
     $ajaxT: Api.Ajax.ajaxTabla,
@@ -11,21 +12,24 @@ Api.PrestamoDetalle = {
     $mensajeS: Api.Mensaje.superior,
     $uriCrud: Api.Uri.crudObjecto,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
+    $AHcP: Api.Herramientas.cambiarPestanhia,
     $informacion: null,
 
-    _Consultar: null,
+    _ConsultarPorPrestamo: null,
     _Eliminar: null,
 
     constructor: function() {
-        this._Consultar	            = this.$uriCrud('Consultar',this.controlador,this.carpeta);
+        this._ConsultarPorPrestamo	= this.$uriCrud('ConsultarPorPrestamo',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
 
+        $('#prestamo-detalle-tabla').html('');
+
         this.cargarInformacion();
-        //this.tabla();
-        Api.Herramientas.cambiarPestanhia('pestanhia-prestamo','detalle-prestamo');
+        this.tabla();
+        this.$AHcP('pestanhia-prestamo','detalle-prestamo');
     },
 
     cargarInformacion: function() {
@@ -52,10 +56,12 @@ Api.PrestamoDetalle = {
 
         this.$ajaxC(this.nombreTabla,pagina,tamanhio);
 
+        this._ConsultarPorPrestamo['idPrestamo'] = this.idPrestamo;
+
         this.$ajaxT(
             this.nombreTabla,
             this.uri,
-            this._Consultar,
+            this._ConsultarPorPrestamo,
             {
                 objecto: this.controlador,
                 metodo: 'tabla',
@@ -63,15 +69,15 @@ Api.PrestamoDetalle = {
                 opciones: this.opciones(),
                 checkbox: false,
                 columnas: [
-                    {nombre: 'no',              edicion: false,	formato: '', alineacion:'centrado'},
-                    {nombre: 'identificacion',  edicion: false,	formato: '', alineacion:'centrado'},
-                    {nombre: 'cliente',         edicion: false,	formato: '', alineacion:'izquierda'},
-                    {nombre: 'tipo_prestamo',   edicion: false,	formato: '', alineacion:'centrado'},
-                    {nombre: 'forma_pago',      edicion: false,	formato: '', alineacion:'centrado'},
-                    {nombre: 'total',           edicion: false,	formato: 'moneda', alineacion:'centrado'},
-                    {nombre: 'total_pagado',    edicion: false,	formato: 'moneda', alineacion:'centrado'},
-                    {nombre: 'estado_pago',     edicion: false,	formato: '', alineacion:''},
-                    {nombre: 'estado',          edicion: false,	formato: '', alineacion:'centrado'}
+                    {nombre: 'no',              edicion: false,	formato: '',        alineacion:'centrado'},
+                    {nombre: 'fecha_pago',      edicion: false,	formato: '',        alineacion:'centrado'},
+                    {nombre: 'saldo_inicial',   edicion: false,	formato: 'moneda',  alineacion:'centrado'},
+                    {nombre: 'cuota_a_pagar',   edicion: false,	formato: 'moneda',  alineacion:'centrado'},
+                    {nombre: 'intereses',       edicion: false,	formato: 'moneda',  alineacion:'centrado'},
+                    {nombre: 'abono_capital',   edicion: false,	formato: 'moneda',  alineacion:'centrado'},
+                    {nombre: 'saldo_final',     edicion: false,	formato: 'moneda',  alineacion:'centrado'},
+                    {nombre: 'valor_pagado',    edicion: false,	formato: 'moneda',  alineacion:'centrado'},
+                    {nombre: 'estado_pago',    edicion: false,	formato: '',        alineacion:'centrado'}
                 ],
                 automatico: false
             }
@@ -135,7 +141,7 @@ Api.PrestamoDetalle = {
         return {
             parametrizacion: [
                 {
-                    nombre: 'Detalle del prestamo',
+                    nombre: 'Detalle de la cuota',
                     icono: 'fa-list-alt',
                     accion: 'Api.' + this.controlador + '.detalle',
                     color: '#428bca',
@@ -144,7 +150,7 @@ Api.PrestamoDetalle = {
                     informacion: true
                 },
                 {
-                    nombre: 'Realizar pago',
+                    nombre: 'Pagar cuota',
                     icono: 'fa-money',
                     accion: 'Api.' + this.controlador + '.pagoValorSuperior',
                     color: '#428bca',
@@ -153,31 +159,12 @@ Api.PrestamoDetalle = {
                     informacion: true
                 },
                 {
-                    nombre: 'Refinanciar',
-                    icono: 'fa-refresh',
-                    accion: 'Api.' + this.controlador + '.refinanciar',
-                    color: '#428bca',
+                    nombre: 'Borrar pago',
+                    icono: 'fa-eraser',
+                    accion: 'Api.' + this.controlador + '.borrarPago',
+                    color: '#ec4758',
                     estado: false,
-                    permiso: false,
-                    informacion: true
-                },
-                {
-                    accion: 'Api.' + this.controlador + '.cambiarEstado',
-                    color: '#f7a54a',
-                    estado: true,
-                    condicion: {
-                        1: {
-                            icono: 'fa-toggle-off',
-                            titulo: 'Desactivar',
-                            etiqueta: '<span class="label label-primary ">ACTIVO</span>'
-                        },
-                        0: {
-                            icono: 'fa-toggle-on',
-                            titulo: 'Activar',
-                            etiqueta: '<span class="label label-default">INACTIVO</span>'
-                        }
-                    },
-                    permiso: 'estado',
+                    permiso: 'eliminar',
                     informacion: false
                 },
                 {
@@ -188,7 +175,16 @@ Api.PrestamoDetalle = {
                     estado: false,
                     permiso: 'eliminar',
                     informacion: false
-                }
+                }/*,
+                {
+                    nombre: 'Descargar Pagos',
+                    icono: 'fa-cloud-download',
+                    accion: 'Api.' + this.controlador + '.descargarPagos',
+                    color: '#23c6c8',
+                    estado: false,
+                    permiso: 'exportar',
+                    informacion: false
+                }*/
             ]
         };
     }

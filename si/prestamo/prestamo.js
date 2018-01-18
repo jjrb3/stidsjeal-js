@@ -268,7 +268,7 @@ Api.Prestamo = {
 
         var $AP = Api.PrestamoDetalle;
 
-        $AP.id = id;
+        $AP.idPrestamo = id;
         $AP.$informacion = $informacion;
 
         $AP.constructor();
@@ -430,7 +430,16 @@ Api.Prestamo = {
                     estado: false,
                     permiso: 'eliminar',
                     informacion: false
-                }
+                }/*,
+                {
+                    nombre: 'Descargar Información',
+                    icono: 'fa-cloud-download',
+                    accion: 'Api.' + this.controlador + '.descargarInformacion',
+                    color: '#23c6c8',
+                    estado: false,
+                    permiso: 'exportar',
+                    informacion: false
+                }*/
             ]
         };
     },

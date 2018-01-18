@@ -295,15 +295,6 @@ Api.Cliente = {
                     informacion: true
                 },
                 {
-                    nombre: 'Descargar Información',
-                    icono: 'fa-cloud-download',
-                    accion: 'Api.' + this.controlador + '.descargarInformacion',
-                    color: '#1a7bb9',
-                    estado: false,
-                    permiso: 'exportar',
-                    informacion: false
-                },
-                {
                     nombre: 'Actualizar',
                     icono: 'fa-pencil-square-o',
                     accion: 'Api.' + this.controlador + '.editar',
@@ -338,6 +329,15 @@ Api.Cliente = {
                     color: '#ec4758',
                     estado: false,
                     permiso: 'eliminar',
+                    informacion: false
+                },
+                {
+                    nombre: 'Descargar Información',
+                    icono: 'fa-cloud-download',
+                    accion: 'Api.' + this.controlador + '.descargarInformacion',
+                    color: '#23c6c8',
+                    estado: false,
+                    permiso: 'exportar',
                     informacion: false
                 }
             ]
