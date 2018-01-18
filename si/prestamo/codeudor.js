@@ -56,7 +56,7 @@ Api.Codeudor = {
                 opciones: this.opciones(),
                 checkbox: false,
                 columnas: [
-                    {nombre: 'cedula',              edicion: false,	formato: 'numerico', alineacion:'centrado'},
+                    {nombre: 'cedula',              edicion: false,	formato: '', alineacion:'centrado'},
                     //{nombre: 'fecha_expedicion',    edicion: false,	formato: '', alineacion:'centrado'},
                     {nombre: 'nombres',             edicion: false,	formato: '', alineacion:'izquierda'},
                     {nombre: 'apellidos',           edicion: false,	formato: '', alineacion:'izquierda'},
