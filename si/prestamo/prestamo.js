@@ -17,7 +17,7 @@ Api.Prestamo = {
 
     _InicializarFormulario: null,
     _Consultar: null,
-    _CrearActualizar: null,
+    _Crear: null,
     _CambiarEstado: null,
     _Eliminar: null,
     /*consultarRegistroPorId: null,
@@ -26,7 +26,7 @@ Api.Prestamo = {
     constructor: function() {
         this._InicializarFormulario	= this.$uriCrud('InicializarFormulario',this.controlador,this.carpeta);
         this._Consultar	            = this.$uriCrud('Consultar',this.controlador,this.carpeta);
-        this._CrearActualizar	    = this.$uriCrud('CrearActualizar',this.controlador,this.carpeta);
+        this._Crear                 = this.$uriCrud('Crear',this.controlador,this.carpeta);
         this._CambiarEstado         = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
         /*this.consultarRegistroPorId = this.uriCrud('ConsultarId',this.controlador,this.carpeta)+'&';
@@ -153,6 +153,52 @@ Api.Prestamo = {
             $(contenedor + '#tabla').val(this.$calculos.cadena);
 
             $(contenedor).submit();
+        }
+    },
+
+    crear: function() {
+
+        var $objeto     = Api[this.controlador];
+        var $parametros = Api.Calculos.calcularPrestamo();
+
+        if ($parametros) {
+
+            this._Crear['id_cliente']           = parseInt($parametros.informacion.id_cliente);
+            this._Crear['id_tipo_prestamo']     = parseInt($parametros.informacion.id_tipo_prestamo);
+            this._Crear['id_forma_pago']        = parseInt($parametros.informacion.forma_pago);
+            this._Crear['fecha_pago_inicial']   = $parametros.informacion.fecha_pago;
+            this._Crear['monto']                = parseInt($parametros.informacion.monto);
+            this._Crear['interes']              = parseFloat($parametros.informacion.interes);
+            this._Crear['cuotas']               = parseInt($parametros.informacion.cuotas);
+            this._Crear['cadena_cuotas']        = $parametros.cadena;
+            this._Crear['total_interes']        = $parametros.total_interes;
+            this._Crear['total_general']        = $parametros.total_general;
+
+
+            this.$ajaxS(
+                '',
+                this.uri,
+                this._Crear,
+
+                function (json) {
+
+                    Api.Mensaje.jsonSuperior(json);
+
+                    if (json.resultado === 1) {
+
+                        var AH = Api.Herramientas;
+
+                        $objeto.id = null;
+                        $objeto.constructor();
+
+                        AH.cancelarCA('prestamo');
+
+                        setTimeout(function(){
+                            AH.cambiarPestanhia('pestanhia-prestamo','lista-prestamos');
+                        }, 1000);
+                    }
+                }
+            );
         }
     },
 
@@ -332,10 +378,6 @@ Api.Prestamo = {
                 AH.cargarSelectJSON(contenedor + '#id-cliente',json.clientes,true);
                 AH.cargarSelectJSON(contenedor + '#id-forma-pago',json.forma_pago,true);
                 AH.cargarSelectJSON(contenedor + '#id-tipo-prestamo',json.tipo_prestamo,true);
-
-                Api.Prestamo.cargarPruebasFormulario();
-                Api.Prestamo.calcularPrestamo();
-                Api.Prestamo.simularPrestamo();
             }
         );
     },

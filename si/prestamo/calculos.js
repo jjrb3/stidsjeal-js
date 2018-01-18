@@ -104,6 +104,8 @@ Api.Calculos = {
             clienteNombre   = $('#id-cliente option:selected').text();
 
         return {
+            id_cliente:         $('#id-cliente option:selected').val(),
+            id_tipo_prestamo:   $('#id-tipo-prestamo option:selected').val(),
             cliente_nombre:     clienteNombre ? clienteNombre.split('-')[1].trim() : '',
             forma_pago_nombre:  $('#id-forma-pago option:selected').text(),
             tipo_nombre:        $('#id-tipo-prestamo option:selected').text(),

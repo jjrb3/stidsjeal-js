@@ -92,7 +92,6 @@ Api.Cliente = {
                 }
             );
         }
-
     },
 
     editar: function(id,objeto) {
