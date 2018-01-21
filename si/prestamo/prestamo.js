@@ -417,24 +417,6 @@ Api.Prestamo = {
                     informacion: true
                 },
                 {
-                    nombre: 'Aplicación',
-                    icono: 'fa-expand',
-                    accion: 'Api.' + this.controlador + '.ampliar',
-                    color: '#428bca',
-                    estado: false,
-                    permiso: 'actualizar',
-                    informacion: true
-                },
-                {
-                    nombre: 'Actualizar fechas',
-                    icono: 'fa-calendar',
-                    accion: 'Api.' + this.controlador + '.actualiarFechas',
-                    color: '#428bca',
-                    estado: false,
-                    permiso: 'actualizar',
-                    informacion: true
-                },
-                {
                     nombre: 'Observaciones',
                     icono: 'fa-commenting-o',
                     accion: 'Api.' + this.controlador + '.observaciones',
