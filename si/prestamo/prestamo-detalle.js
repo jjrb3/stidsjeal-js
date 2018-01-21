@@ -18,11 +18,13 @@ Api.PrestamoDetalle = {
     _ConsultarPorPrestamo: null,
     _Eliminar: null,
     _GuardarPago: null,
+    _BorrarPago: null,
 
     constructor: function() {
         this._ConsultarPorPrestamo	= this.$uriCrud('ConsultarPorPrestamo',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
         this._GuardarPago           = this.$uriCrud('GuardarPago',this.controlador,this.carpeta);
+        this._BorrarPago           = this.$uriCrud('BorrarPago',this.controlador,this.carpeta);
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
@@ -179,6 +181,44 @@ Api.PrestamoDetalle = {
 
                         swal("Eliminado!", json.mensaje, "success");
                         $objeto.constructor();
+                    }
+                    else {
+                        swal("Error", json.mensaje , "error");
+                    }
+                }
+            );
+        });
+    },
+
+    borrarPago: function(id) {
+
+        var $objeto = Api[this.controlador];
+
+        this._BorrarPago['id'] = id;
+
+        swal({
+            title: "¿Seguro que desea borrarlo?",
+            text: "Después de borrar este pago no podrás recuperar esta información ni revertir los cambios!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, deseo borrarlo",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        }, function () {
+
+            $objeto.$ajaxS(
+                '',
+                $objeto.uri,
+                $objeto._BorrarPago,
+
+                function (json) {
+
+                    if (json.resultado === 1) {
+
+                        swal("Eliminado!", json.mensaje, "success");
+                        $objeto.tabla();
+                        Api.Prestamo.tabla();
                     }
                     else {
                         swal("Error", json.mensaje , "error");
