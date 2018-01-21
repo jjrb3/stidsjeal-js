@@ -239,16 +239,16 @@ Api.PrestamoDetalle = {
                     estado: false,
                     permiso: false,
                     informacion: true
-                },
+                },*/
                 {
-                    nombre: 'Pagar cuota',
-                    icono: 'fa-money',
-                    accion: 'Api.' + this.controlador + '.pagoValorSuperior',
+                    nombre: 'Observaciones',
+                    icono: 'fa-commenting-o',
+                    accion: 'Api.' + this.controlador + '.observaciones',
                     color: '#428bca',
                     estado: false,
-                    permiso: false,
+                    permiso: 'actualizar',
                     informacion: true
-                },*/
+                },
                 {
                     nombre: 'Borrar pago',
                     icono: 'fa-eraser',

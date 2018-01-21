@@ -44,6 +44,8 @@ Api.Prestamo = {
 
     tabla: function(pagina,tamanhio) {
 
+        tamanhio = !tamanhio ? 25 : tamanhio;
+
         this.$ajaxC(this.nombreTabla,pagina,tamanhio);
 
         this.$ajaxT(
@@ -391,7 +393,7 @@ Api.Prestamo = {
                     nombre: 'Detalle del prestamo',
                     icono: 'fa-list-alt',
                     accion: 'Api.' + this.controlador + '.detalle',
-                    color: '#428bca',
+                    color: '#555',
                     estado: false,
                     permiso: false,
                     informacion: true
@@ -400,18 +402,45 @@ Api.Prestamo = {
                     nombre: 'Realizar pago',
                     icono: 'fa-money',
                     accion: 'Api.' + this.controlador + '.realizarPago',
-                    color: '#428bca',
+                    color: '#1ab394',
                     estado: false,
-                    permiso: false,
+                    permiso: 'crear',
                     informacion: true
                 },
                 {
                     nombre: 'Refinanciar',
                     icono: 'fa-refresh',
                     accion: 'Api.' + this.controlador + '.refinanciar',
+                    color: '#1ab394',
+                    estado: false,
+                    permiso: 'crear',
+                    informacion: true
+                },
+                {
+                    nombre: 'Aplicación',
+                    icono: 'fa-expand',
+                    accion: 'Api.' + this.controlador + '.ampliar',
                     color: '#428bca',
                     estado: false,
-                    permiso: false,
+                    permiso: 'actualizar',
+                    informacion: true
+                },
+                {
+                    nombre: 'Actualizar fechas',
+                    icono: 'fa-calendar',
+                    accion: 'Api.' + this.controlador + '.actualiarFechas',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: 'actualizar',
+                    informacion: true
+                },
+                {
+                    nombre: 'Observaciones',
+                    icono: 'fa-commenting-o',
+                    accion: 'Api.' + this.controlador + '.observaciones',
+                    color: '#428bca',
+                    estado: false,
+                    permiso: 'actualizar',
                     informacion: true
                 },
                 {
