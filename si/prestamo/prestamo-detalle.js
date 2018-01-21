@@ -191,7 +191,7 @@ Api.PrestamoDetalle = {
     opciones: function() {
         return {
             parametrizacion: [
-                {
+                /*{
                     nombre: 'Detalle de la cuota',
                     icono: 'fa-list-alt',
                     accion: 'Api.' + this.controlador + '.detalle',
@@ -200,7 +200,7 @@ Api.PrestamoDetalle = {
                     permiso: false,
                     informacion: true
                 },
-                /*{
+                {
                     nombre: 'Pagar cuota',
                     icono: 'fa-money',
                     accion: 'Api.' + this.controlador + '.pagoValorSuperior',
