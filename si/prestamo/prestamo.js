@@ -15,13 +15,14 @@ Api.Prestamo = {
     $uriCrud: Api.Uri.crudObjecto,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
     $calculos: null,
+    $informacion: null,
 
     _InicializarFormulario: null,
     _Consultar: null,
     _Crear: null,
     _CambiarEstado: null,
     _Eliminar: null,
-    /*consultarRegistroPorId: null,
+    /*
     crearRefinanciacion: null,*/
 
     constructor: function() {
@@ -30,8 +31,7 @@ Api.Prestamo = {
         this._Crear                 = this.$uriCrud('Crear',this.controlador,this.carpeta);
         this._CambiarEstado         = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
-        /*this.consultarRegistroPorId = this.uriCrud('ConsultarId',this.controlador,this.carpeta)+'&';
-        this.crearRefinanciacion    = this.uriCrud('GuardarRefinanciacion',this.controlador,this.carpeta)+'&';*/
+        /*this.crearRefinanciacion    = this.uriCrud('GuardarRefinanciacion',this.controlador,this.carpeta)+'&';*/
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
@@ -39,6 +39,7 @@ Api.Prestamo = {
         this.tabla();
         this.inicializarFormulario();
         this.$mensajeP('informacion','#prestamo-detalle-tabla','Seleccione un prestamo para ver el listado de cuotas que debe pagar el cliente');
+        $('#informacion-prestamo-detalle').addClass('ocultar');
     },
 
     tabla: function(pagina,tamanhio) {
@@ -266,12 +267,22 @@ Api.Prestamo = {
 
     detalle: function(id, $informacion) {
 
-        var $AP = Api.PrestamoDetalle;
+        var $APD = Api.PrestamoDetalle;
 
-        $AP.idPrestamo = id;
+        $APD.idPrestamo = id;
+        $APD.$informacion = $informacion;
+
+        $APD.constructor();
+    },
+
+    realizarPago: function(id, $informacion) {
+
+        var $AP = Api.Prestamo;
+
+        $AP.id           = id;
         $AP.$informacion = $informacion;
 
-        $AP.constructor();
+        $('#modal-pagos').modal('show');
     },
 
     // Revisar ----------------------------
@@ -388,7 +399,7 @@ Api.Prestamo = {
                 {
                     nombre: 'Realizar pago',
                     icono: 'fa-money',
-                    accion: 'Api.' + this.controlador + '.pagoValorSuperior',
+                    accion: 'Api.' + this.controlador + '.realizarPago',
                     color: '#428bca',
                     estado: false,
                     permiso: false,

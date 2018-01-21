@@ -17,19 +17,23 @@ Api.PrestamoDetalle = {
 
     _ConsultarPorPrestamo: null,
     _Eliminar: null,
+    _GuardarPago: null,
 
     constructor: function() {
         this._ConsultarPorPrestamo	= this.$uriCrud('ConsultarPorPrestamo',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
+        this._GuardarPago           = this.$uriCrud('GuardarPago',this.controlador,this.carpeta);
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
 
         $('#prestamo-detalle-tabla').html('');
 
-        this.cargarInformacion();
-        this.tabla();
-        this.$AHcP('pestanhia-prestamo','detalle-prestamo');
+        if (this.idPrestamo) {
+            this.cargarInformacion();
+            this.tabla();
+            this.$AHcP('pestanhia-prestamo', 'detalle-prestamo');
+        }
     },
 
     cargarInformacion: function() {
@@ -100,6 +104,53 @@ Api.PrestamoDetalle = {
         }
     },
 
+    guardarPago: function() {
+
+        this.idPrestamo = null;
+
+        this.constructor();
+
+        var $parametros = this.verificarFormularioPagos(this._GuardarPago);
+        var $AP         = Api.Prestamo;
+        var $AM         = Api.Mensaje;
+
+        $parametros['id_prestamo'] = $AP.id;
+
+        if ($parametros) {
+            this.$ajaxS(
+                '',
+                this.uri,
+                $parametros,
+
+                function (json) {
+
+                    $AM.jsonSuperior(json);
+                    $AM.publicar('informacion','#prestamo-detalle-tabla','Seleccione un prestamo para ver el listado de cuotas que debe pagar el cliente');
+                    $AP.tabla();
+
+                    $('#informacion-prestamo-detalle').addClass('ocultar');
+                    $('#pagos-valor').val('');
+                    $('#pagos-observacion').val('');
+                    $('#modal-pagos').modal('hide');
+                }
+            );
+        }
+    },
+
+    verificarFormularioPagos: function($objeto) {
+
+        $objeto['valor']        = $('#pagos-valor').val().replace(/,/g,'');
+        $objeto['observacion']  = $('#pagos-observacion').val().trim();
+
+
+        if (!$objeto['valor']) {
+            this.$mensajeS('advertencia','Advertencia','Debe digitar el valor a pagar para continuar');
+            return false;
+        }
+
+        return $objeto;
+    },
+
     eliminar: function(id) {
 
         var $objeto = Api[this.controlador];
@@ -149,7 +200,7 @@ Api.PrestamoDetalle = {
                     permiso: false,
                     informacion: true
                 },
-                {
+                /*{
                     nombre: 'Pagar cuota',
                     icono: 'fa-money',
                     accion: 'Api.' + this.controlador + '.pagoValorSuperior',
@@ -157,7 +208,7 @@ Api.PrestamoDetalle = {
                     estado: false,
                     permiso: false,
                     informacion: true
-                },
+                },*/
                 {
                     nombre: 'Borrar pago',
                     icono: 'fa-eraser',
