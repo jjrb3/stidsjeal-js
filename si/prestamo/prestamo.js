@@ -15,6 +15,7 @@ Api.Prestamo = {
     $uriCrud: Api.Uri.crudObjecto,
     $funcionalidadesT: Api.Elementos.funcionalidadesTabla(),
     $calculos: null,
+    $prestamo: null,
     $informacion: null,
 
     _InicializarFormulario: null,
@@ -287,6 +288,86 @@ Api.Prestamo = {
         $('#modal-pagos').modal('show');
     },
 
+    refinanciar: function(id, $informacion) {
+
+        var $AH = Api.Herramientas;
+
+        $('#refinanciar-no-prestamo').text($informacion.no);
+        $('#refinanciar-nombre-cliente').text($informacion.cliente);
+        $('#refinanciar-forma-pago').text($informacion.forma_pago);
+        $('#refinanciar-tipo-prestamo').text($informacion.tipo_prestamo);
+        $('#refinanciar-monto').text($AH.formatoMoneda($informacion.monto_requerido));
+        $('#refinanciar-intereses').text($informacion.intereses + '%');
+        $('#refinanciar-cuotas').text($informacion.no_cuotas);
+        $('#refinanciar-total-interes').text($AH.formatoMoneda($informacion.total_intereses));
+        $('#refinanciar-total-general').text($AH.formatoMoneda($informacion.total));
+        $('#refinanciar-total-deuda').text($AH.formatoMoneda($informacion.total - $informacion.total_pagado));
+        $('#refinanciar-valor-refinanciar').val($AH.formatoMoneda($informacion.total - $informacion.total_pagado));
+
+        $('#modal-refinanciar').modal('show');
+
+        this.$prestamo = {
+            id_cliente:         $informacion.id_cliente,
+            id_tipo_prestamo:   $informacion.id_tipo_prestamo,
+            cliente_nombre:     $informacion.cliente,
+            forma_pago_nombre:  $informacion.forma_pago,
+            tipo_nombre:        $informacion.tipo_prestamo,
+            forma_pago:         $informacion.id_forma_pago,
+            fecha_pago:         null,
+            tipo:               String($informacion.id_tipo_prestamo),
+            monto:              ($informacion.total - $informacion.total_pagado),
+            interes:            $informacion.intereses,
+            cuotas:             null
+        }
+    },
+
+    simularRefinanciacion: function() {
+
+        var $calculos   =  null,
+            modal       = '#modal-refinanciar ',
+            $AH         = Api.Herramientas,
+            $tbody      = null;
+
+
+        this.$prestamo['fecha_pago'] = $('#refinanciar-fecha-inicial').val().trim();
+        this.$prestamo['cuotas']     = parseInt($('#refinanciacion-cuotas').val());
+
+        if (!this.$prestamo.fecha_pago) {
+            this.$mensajeS('advertencia','Advertencia','Llene el campo de fecha inicial para poder realizar la simulación');
+            return false;
+        }
+
+        if (this.$prestamo.cuotas < 1) {
+            this.$mensajeS('advertencia','Advertencia','Seleccione el número de cuotas para poder realizar la simulación');
+            return false;
+        }
+
+        $calculos = Api.Calculos.calcularPrestamo(this.$prestamo);
+
+        console.log($calculos);
+
+        if ($calculos) {
+
+            $tbody = $(modal + '#tabla-simulacion-refinanciar').find('tbody').html('');
+
+            $.each($calculos.lista_cuotas, function (k, i) {
+
+                $tbody.append('<tr></tr>');
+
+                $tbody.find('tr').last()
+                    .append('<td class="centrado">' + i.no_cuota + '</td>')
+                    .append('<td class="centrado">' + i.fecha_pago + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.saldo_inicial) + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.cuota) + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.interes) + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.abono_capital) + '</td>')
+                    .append('<td class="centrado">' + $AH.formatoMoneda(i.saldo_final) + '</td>')
+            });
+        }
+
+        this.$calculos = $calculos;
+    },
+
     // Revisar ----------------------------
     guardarRefinanciacion: function(id) {
 
@@ -326,63 +407,6 @@ Api.Prestamo = {
                 }
             }
         )
-    },
-    // Revisar ----------------------------
-
-    // Revisar ----------------------------
-    simularRefinanciacion: function() {
-
-        var nuevaCuota      = 0;
-        var $contenedor     = '#modal-refinanciacion ';
-        var monto           = $($contenedor + '#refinanciar-monto').val();
-        var interes         = $($contenedor + '#refinanciar-intereses').val();
-        var cuotas          = parseInt($($contenedor + '#cuotas').val());
-        var fechaInicial    = $($contenedor + '#fecha-inicial').val();
-        var formaPago       = $($contenedor + '#refinanciar-id-forma-pago').val();
-        var tipoPrestamo    = $($contenedor + '#refinanciar-id-tipo-prestamo').val();
-        var siguienteCuota  = parseInt($($contenedor + '#refinanciar-siguiente-cuota').val());
-
-        $($contenedor + '#tabla-refinanciacion > table > tbody').html('');
-
-        if (!fechaInicial.trim()) {
-            _mensaje('advertencia','modal-refinanciacion #mensaje','Seleccione la fecha de pago inicial para continuar');
-            return false;
-        }
-
-        if (!cuotas || cuotas < 1) {
-            _mensaje('advertencia','modal-refinanciacion #mensaje','Digite una cantidad de cuotas mayor que 0');
-            return false;
-        }
-
-
-        this.calculos.calculosPrestamo(
-            monto,
-            interes,
-            cuotas,
-            fechaInicial,
-            formaPago,
-            tipoPrestamo,
-
-            function(data){
-
-                $.each(data.arreglo, function(k, i) {
-
-                    nuevaCuota = i.no_cuota + siguienteCuota;
-
-                    $($contenedor + '#tabla-refinanciacion > table > tbody:last').append('<tr></tr>');
-
-                    $($contenedor + '#tabla-refinanciacion > table > tbody > tr:last')
-                        .append('<td align="center">' + nuevaCuota + '</td>')
-                        .append('<td align="center">' + i.fecha_pago + '</td>')
-                        .append('<td align="center">$' + _formatoNumerico(i.capital) + '</td>')
-                        .append('<td align="center">$' + _formatoNumerico(i.amortizacion) + '</td>')
-                        .append('<td align="center">$' + _formatoNumerico(i.interes) + '</td>')
-                        .append('<td align="center">$' + _formatoNumerico(i.total) + '</td>');
-                });
-
-                $($contenedor + '#refinanciar-nueva-cuota').val(nuevaCuota);
-            }
-        );
     },
     // Revisar ----------------------------
 

@@ -4,9 +4,9 @@ Api.Calculos = {
     totalIntereses: null,
     totalGeneral: null,
 
-    calcularPrestamo: function() {
+    calcularPrestamo: function($prestamo) {
 
-        $prestamo = this.obtenerParametrosPrestamo();
+        $prestamo = $prestamo ? $prestamo : this.obtenerParametrosPrestamo();
 
         if ($prestamo.tipo && $prestamo.monto > 0 && $prestamo.interes > 0 && $prestamo.cuotas > 0) {
 
@@ -21,7 +21,6 @@ Api.Calculos = {
                 cuota           = Math.round((porcentaje * Math.pow(1 + porcentaje, $prestamo.cuotas) * $prestamo.monto) / (Math.pow(1 + porcentaje, $prestamo.cuotas) - 1)),
                 cadenaCuotas    = '',
                 $tablaCuotas    = [];
-
 
             for (var i = 0; i < $prestamo.cuotas; i++) {
 
