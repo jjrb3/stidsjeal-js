@@ -19,12 +19,14 @@ Api.PrestamoDetalle = {
     _Eliminar: null,
     _GuardarPago: null,
     _BorrarPago: null,
+    _GuardarAmpliacion: null,
 
     constructor: function() {
         this._ConsultarPorPrestamo	= this.$uriCrud('ConsultarPorPrestamo',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
         this._GuardarPago           = this.$uriCrud('GuardarPago',this.controlador,this.carpeta);
-        this._BorrarPago           = this.$uriCrud('BorrarPago',this.controlador,this.carpeta);
+        this._BorrarPago            = this.$uriCrud('BorrarPago',this.controlador,this.carpeta);
+        this._GuardarAmpliacion     = this.$uriCrud('GuardarAmpliacion',this.controlador,this.carpeta);
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
@@ -226,6 +228,70 @@ Api.PrestamoDetalle = {
                 }
             );
         });
+    },
+
+    ampliar: function(id,$informacion) {
+
+        this.id = id;
+
+        $('#ampliar-no-cuota').text($informacion.no);
+        $('#ampliar-saldo').val($informacion.cuota);
+        $('#ampliar-total').val('');
+
+        $('#modal-ampliar').modal('show');
+    },
+
+    calcularAmpliacion: function() {
+
+
+        var saldo   = parseInt($('#ampliar-saldo').val().replace(/,/g,'')),
+            dias    = parseInt($('#ampliar-dias').val());
+
+        if (saldo > 0 && dias > 0) {
+            $('#ampliar-total').val(Api.Herramientas.formatoMoneda(Math.round(saldo / 30 * dias)));
+        }
+        else {
+            $('#ampliar-total').val(0);
+        }
+    },
+
+    guardarAmpliacion: function() {
+
+        var $objeto = Api[this.controlador];
+
+        this._GuardarAmpliacion['id']       = this.id;
+        this._GuardarAmpliacion['valor']    = $('#ampliar-total').val();
+
+
+        if (!this._GuardarAmpliacion.valor) {
+            this.$mensajeS('advertencia','Advertencia','Realice el calculo para poder guardar la ampliación');
+            return false;
+        }
+        else {
+            this._GuardarAmpliacion['valor'] = this._GuardarAmpliacion['valor'].substring(1).replace(/,/g,'')
+        }
+
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._GuardarAmpliacion,
+
+            function (json) {
+
+                Api.Mensaje.jsonSuperior(json);
+
+                if (json.resultado === 1) {
+
+                    $objeto.constructor();
+                    Api.Prestamo.tabla();
+
+                    $('#ampliar-total').val('');
+                    $('#ampliar-dias').val('1');
+                    $('#modal-ampliar').modal('hide');
+                }
+            }
+        );
     },
 
     opciones: function() {
@@ -433,19 +499,6 @@ Api.LoanDetail = {
     showPaymentWithHigherValue: function() {
 
         $('#bloque-pago-valor-superior').slideDown(300);
-    },
-
-    calculateMagnification: function() {
-
-        var interes = parseInt($('#modal-detalle-prestamo #valor-intereses').val());
-        var days = parseInt($('#modal-detalle-prestamo #dias').val());
-
-        if (interes > 0 && days > 0) {
-            $('#modal-detalle-prestamo #result-magnification').val(Math.round(interes / 30 * days));
-        }
-        else {
-            $('#modal-detalle-prestamo #result-magnification').val(0);
-        }
     },
 
     showRefinancing:function(id) {
