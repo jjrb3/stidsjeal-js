@@ -20,6 +20,7 @@ Api.PrestamoDetalle = {
     _GuardarPago: null,
     _BorrarPago: null,
     _GuardarAmpliacion: null,
+    _ActualizarFecha: null,
 
     constructor: function() {
         this._ConsultarPorPrestamo	= this.$uriCrud('ConsultarPorPrestamo',this.controlador,this.carpeta);
@@ -27,6 +28,7 @@ Api.PrestamoDetalle = {
         this._GuardarPago           = this.$uriCrud('GuardarPago',this.controlador,this.carpeta);
         this._BorrarPago            = this.$uriCrud('BorrarPago',this.controlador,this.carpeta);
         this._GuardarAmpliacion     = this.$uriCrud('GuardarAmpliacion',this.controlador,this.carpeta);
+        this._ActualizarFecha       = this.$uriCrud('ActualizarFecha',this.controlador,this.carpeta);
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
@@ -294,6 +296,49 @@ Api.PrestamoDetalle = {
         );
     },
 
+    actualizarFechas: function(id, $informacion) {
+
+        this.id = id;
+
+        $('#cambiar-fecha-no-cuota').text($informacion.no_cuota);
+        $('#cambiar-fecha').val($informacion.fecha_pago);
+
+        $('#modal-cambiar-fecha').modal('show');
+    },
+
+    guardarFecha: function() {
+
+        var $objeto = Api[this.controlador];
+
+        this._ActualizarFecha['id']    = this.id;
+        this._ActualizarFecha['fecha'] = $('#cambiar-fecha').val();
+
+
+        if (!this._ActualizarFecha.fecha) {
+            this.$mensajeS('advertencia','Advertencia','Seleccione una fecha para poder actualizar');
+            return false;
+        }
+
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._ActualizarFecha,
+
+            function (json) {
+
+                Api.Mensaje.jsonSuperior(json);
+
+                if (json.resultado === 1) {
+
+                    $objeto.constructor();
+
+                    $('#modal-cambiar-fecha').modal('hide');
+                }
+            }
+        );
+    },
+
     opciones: function() {
         return {
             parametrizacion: [
@@ -318,7 +363,7 @@ Api.PrestamoDetalle = {
                 {
                     nombre: 'Actualizar fechas',
                     icono: 'fa-calendar',
-                    accion: 'Api.' + this.controlador + '.actualiarFechas',
+                    accion: 'Api.' + this.controlador + '.actualizarFechas',
                     color: '#428bca',
                     estado: false,
                     permiso: 'actualizar',
