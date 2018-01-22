@@ -23,8 +23,7 @@ Api.Prestamo = {
     _Crear: null,
     _CambiarEstado: null,
     _Eliminar: null,
-    /*
-    crearRefinanciacion: null,*/
+    _GuardarRefinanciacion: null,
 
     constructor: function() {
         this._InicializarFormulario	= this.$uriCrud('InicializarFormulario',this.controlador,this.carpeta);
@@ -32,7 +31,7 @@ Api.Prestamo = {
         this._Crear                 = this.$uriCrud('Crear',this.controlador,this.carpeta);
         this._CambiarEstado         = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
-        /*this.crearRefinanciacion    = this.uriCrud('GuardarRefinanciacion',this.controlador,this.carpeta)+'&';*/
+        this._GuardarRefinanciacion = this.$uriCrud('GuardarRefinanciacion',this.controlador,this.carpeta);
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
@@ -317,7 +316,8 @@ Api.Prestamo = {
             tipo:               String($informacion.id_tipo_prestamo),
             monto:              ($informacion.total - $informacion.total_pagado),
             interes:            $informacion.intereses,
-            cuotas:             null
+            cuotas:             null,
+            id_prestamo:        id
         }
     },
 
@@ -344,8 +344,6 @@ Api.Prestamo = {
 
         $calculos = Api.Calculos.calcularPrestamo(this.$prestamo);
 
-        console.log($calculos);
-
         if ($calculos) {
 
             $tbody = $(modal + '#tabla-simulacion-refinanciar').find('tbody').html('');
@@ -368,47 +366,49 @@ Api.Prestamo = {
         this.$calculos = $calculos;
     },
 
-    // Revisar ----------------------------
-    guardarRefinanciacion: function(id) {
+    guardarRefinanciacion: function() {
 
-        var $contenedor = '#modal-refinanciacion ';
-        var $calculos   = Api.Calculos;
-        var cadena      = $calculos.cadenaPrestamo;
+        var $objeto = Api[this.controlador];
 
-        if (!cadena) {
-            _mensaje('advertencia','modal-refinanciacion #mensaje','Debe generar la refinanciación para poderla guardar')
-            return false;
-        }
+        this._GuardarRefinanciacion['id']                   = parseInt(this.$calculos.informacion.id_prestamo);
+        this._GuardarRefinanciacion['id_cliente']           = parseInt(this.$calculos.informacion.id_cliente);
+        this._GuardarRefinanciacion['id_tipo_prestamo']     = parseInt(this.$calculos.informacion.id_tipo_prestamo);
+        this._GuardarRefinanciacion['id_forma_pago']        = parseInt(this.$calculos.informacion.forma_pago);
+        this._GuardarRefinanciacion['fecha_inicial']        = this.$calculos.informacion.fecha_pago;
+        this._GuardarRefinanciacion['monto_requerido']      = parseInt(this.$calculos.informacion.monto);
+        this._GuardarRefinanciacion['interes']              = parseFloat(this.$calculos.informacion.interes);
+        this._GuardarRefinanciacion['cuotas']               = parseInt(this.$calculos.informacion.cuotas);
+        this._GuardarRefinanciacion['cadena_refinaciacion'] = this.$calculos.cadena;
+        this._GuardarRefinanciacion['total_intereses']      = this.$calculos.total_interes;
+        this._GuardarRefinanciacion['total']                = this.$calculos.total_general;
+        this._GuardarRefinanciacion['observacion']          = $('#refinanciar-observacion').val();
+        this._GuardarRefinanciacion['total_cuotas']         = parseInt($('#refinanciar-cuotas').text());
 
-        $($contenedor).modal('hide');
-
-        this.ajaxS(
-            'mensaje-tabla-detalle',
+        this.$ajaxS(
+            '',
             this.uri,
-            this.crearRefinanciacion + '&id='                   + id
-                                     + '&cadena_refinaciacion=' + $calculos.cadenaPrestamo
-                                     + '&monto_requerido='      + $calculos.totalMonto
-                                     + '&total_intereses='      + $calculos.totalIntereses
-                                     + '&total='                + $calculos.totalGeneral
-                                     + '&fecha_inicial='        + $($contenedor + '#fecha-inicial').val()
-                                     + '&cuotas='               + $($contenedor + '#cuotas').val()
-                                     + '&observacion='          + $($contenedor + '#observacion').val()
-                                     + '&ultima_cuota_pagada='  + $($contenedor + '#refinanciar-siguiente-cuota').val()
-                                     + '&total_cuotas='         + $($contenedor + '#refinanciar-nueva-cuota').val()
-            ,
-            function(json){
+            this._GuardarRefinanciacion,
 
-                Api.Prestamo.messageResultJson(json,'mensaje-tabla-detalle');
+            function (json) {
 
-                if (json.resultado == 1) {
+                Api.Mensaje.jsonSuperior(json);
 
-                    listado();
-                    detallePrestamo(json.id);
+                if (json.resultado === 1) {
+
+                    var AH = Api.Herramientas;
+
+                    $objeto.id = null;
+                    $objeto.constructor();
+
+                    $('#modal-refinanciar').modal('hide');
+
+                    setTimeout(function(){
+                        AH.cambiarPestanhia('pestanhia-prestamo','lista-prestamos');
+                    }, 1000);
                 }
             }
-        )
+        );
     },
-    // Revisar ----------------------------
 
     opciones: function() {
         return {
