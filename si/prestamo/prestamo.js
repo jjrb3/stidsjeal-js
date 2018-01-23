@@ -24,6 +24,7 @@ Api.Prestamo = {
     _CambiarEstado: null,
     _Eliminar: null,
     _GuardarRefinanciacion: null,
+    _GuardarObservacion: null,
 
     constructor: function() {
         this._InicializarFormulario	= this.$uriCrud('InicializarFormulario',this.controlador,this.carpeta);
@@ -32,6 +33,7 @@ Api.Prestamo = {
         this._CambiarEstado         = this.$uriCrud('CambiarEstado',this.controlador,this.carpeta);
         this._Eliminar              = this.$uriCrud('Eliminar',this.controlador,this.carpeta);
         this._GuardarRefinanciacion = this.$uriCrud('GuardarRefinanciacion',this.controlador,this.carpeta);
+        this._GuardarObservacion    = this.$uriCrud('GuardarObservacion',this.controlador,this.carpeta);
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
@@ -410,6 +412,51 @@ Api.Prestamo = {
         );
     },
 
+    observacion: function(id, $informacion) {
+
+        this.id = id;
+
+        if ($('#btn-guardar-observacion').length > 0) {
+            $('#btn-guardar-observacion').attr('onclick','Api.Prestamo.guardarObservacion()');
+        }
+
+        $('#observacion').val(Api.Herramientas.noNull($informacion.observacion));
+        $('#modal-observacion').modal('show');
+    },
+
+    guardarObservacion: function() {
+
+        var $objeto = Api[this.controlador];
+
+        this._GuardarObservacion['id']          = this.id;
+        this._GuardarObservacion['observacion'] = $('#observacion').val();
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._GuardarObservacion,
+
+            function (json) {
+
+                Api.Mensaje.jsonSuperior(json);
+
+                if (json.resultado === 1) {
+
+                    var AH = Api.Herramientas;
+
+                    $objeto.id = null;
+                    $objeto.constructor();
+
+                    $('#modal-observacion').modal('hide');
+
+                    setTimeout(function(){
+                        AH.cambiarPestanhia('pestanhia-prestamo','lista-prestamos');
+                    }, 1000);
+                }
+            }
+        );
+    },
+
     opciones: function() {
         return {
             parametrizacion: [
@@ -443,7 +490,7 @@ Api.Prestamo = {
                 {
                     nombre: 'Observaciones',
                     icono: 'fa-commenting-o',
-                    accion: 'Api.' + this.controlador + '.observaciones',
+                    accion: 'Api.' + this.controlador + '.observacion',
                     color: '#428bca',
                     estado: false,
                     permiso: 'actualizar',
