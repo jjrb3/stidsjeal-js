@@ -21,6 +21,7 @@ Api.PrestamoDetalle = {
     _BorrarPago: null,
     _GuardarAmpliacion: null,
     _ActualizarFecha: null,
+    _GuardarObservacion: null,
 
     constructor: function() {
         this._ConsultarPorPrestamo	= this.$uriCrud('ConsultarPorPrestamo',this.controlador,this.carpeta);
@@ -29,6 +30,7 @@ Api.PrestamoDetalle = {
         this._BorrarPago            = this.$uriCrud('BorrarPago',this.controlador,this.carpeta);
         this._GuardarAmpliacion     = this.$uriCrud('GuardarAmpliacion',this.controlador,this.carpeta);
         this._ActualizarFecha       = this.$uriCrud('ActualizarFecha',this.controlador,this.carpeta);
+        this._GuardarObservacion    = this.$uriCrud('GuardarObservacion',this.controlador,this.carpeta);
 
         str         = this.controlador;
         this.uri    = str.toLowerCase();
@@ -334,6 +336,47 @@ Api.PrestamoDetalle = {
                     $objeto.constructor();
 
                     $('#modal-cambiar-fecha').modal('hide');
+                }
+            }
+        );
+    },
+
+    observacion: function(id, $informacion) {
+
+        this.id = id;
+
+        if ($('#btn-guardar-observacion').length > 0) {
+            $('#btn-guardar-observacion').attr('onclick','Api.PrestamoDetalle.guardarObservacion()');
+        }
+
+        $('#observacion').val(Api.Herramientas.noNull($informacion.observacion));
+        $('#modal-observacion').modal('show');
+    },
+
+    guardarObservacion: function() {
+
+        var $objeto = Api[this.controlador];
+
+        this._GuardarObservacion['id']          = this.id;
+        this._GuardarObservacion['observacion'] = $('#observacion').val();
+
+        this.$ajaxS(
+            '',
+            this.uri,
+            this._GuardarObservacion,
+
+            function (json) {
+
+                Api.Mensaje.jsonSuperior(json);
+
+                if (json.resultado === 1) {
+
+                    var AH = Api.Herramientas;
+
+                    $objeto.id = null;
+                    $objeto.tabla();
+
+                    $('#modal-observacion').modal('hide');
                 }
             }
         );
