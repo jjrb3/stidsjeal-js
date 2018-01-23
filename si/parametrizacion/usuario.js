@@ -44,8 +44,8 @@ Api.Usuario = {
 
         // Graficas
         if (this.$permisosG.length > 0) {
-            this.$permisosG.indexOf(1) > -1 ? Api.Graficas.Usuario.transacciones() : null;
-            this.$permisosG.indexOf(2) > -1 ? Api.Graficas.Usuario.total() : null;
+            this.$permisosG.indexOf(1) > -1 ? Api.Graficas.Parametrizacion.transacciones() : null;
+            this.$permisosG.indexOf(2) > -1 ? Api.Graficas.Parametrizacion.total() : null;
         }
     },
 

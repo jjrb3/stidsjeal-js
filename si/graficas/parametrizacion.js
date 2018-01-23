@@ -1,5 +1,5 @@
 
-Api.Graficas.Usuario = {
+Api.Graficas.Parametrizacion = {
     uri: null,
     carpeta: 'Parametrizacion',
     controlador: 'Usuario',
