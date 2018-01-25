@@ -51,109 +51,6 @@ Api.Graficas.Prestamo = {
 
         $('#bg-prestamo-detalle-recaudo').removeClass('ocultar');
 
-        var chart = AmCharts.makeChart("chartdiv", {
-            "type": "serial",
-            "theme": "light",
-            "legend": {
-                "equalWidths": true,
-                "useGraphSettings": true,
-                "valueAlign": "left",
-                "valueWidth": 100
-            },
-            "dataProvider": [{
-                "date": "2012-01-01",
-                "total": 100,
-                "capital": 80,
-                "interes": 30
-            }, {
-                "date": "2012-01-02",
-                "total": 331,
-                "capital": 40,
-                "interes": 482
-            }, {
-                "date": "2012-01-03",
-                "total": 433,
-                "capital": 34.22,
-                "interes": 562
-            }, {
-                "date": "2012-01-31"
-            }],
-            "valueAxes": [],
-            "graphs": [{
-                "alphaField": "alpha",
-                "balloonText": "Total. $[[value]]",
-                "dashLengthField": "dashLength",
-                "fillAlphas": 0.7,
-                "legendPeriodValueText": "general $[[value.sum]]",
-                "legendValueText": " $[[value]]",
-                "title": "Total",
-                "type": "column",
-                "valueField": "total",
-                "valueAxis": "totalAxis"
-            }, {
-                "balloonText": "Capital. $[[value]]",
-                "bullet": "round",
-                "bulletBorderAlpha": 1,
-                "useLineColorForBulletBorder": true,
-                "bulletColor": "#FFFFFF",
-                "bulletSizeField": "townSize",
-                "dashLengthField": "dashLength",
-                "descriptionField": "townName",
-                "legendPeriodValueText": "total $[[value.sum]]",
-                "legendValueText": "$[[value]]",
-                "title": "Capital",
-                "fillAlphas": 0,
-                "valueField": "capital",
-                "valueAxis": "capitalAxis"
-            }, {
-                "balloonText": "Interes. $[[value]]",
-                "bullet": "square",
-                "bulletBorderAlpha": 1,
-                "bulletBorderThickness": 1,
-                "dashLengthField": "dashLength",
-                "legendPeriodValueText": "total $[[value.sum]]",
-                "legendValueText": "$[[value]]",
-                "title": "Interes",
-                "fillAlphas": 0,
-                "valueField": "interes",
-                "valueAxis": "interesAxis"
-            }],
-            "chartCursor": {
-                "categoryBalloonDateFormat": "DD",
-                "cursorAlpha": 0.1,
-                "cursorColor":"#000000",
-                "fullWidth":true,
-                "valueBalloonsEnabled": false,
-                "zoomable": false
-            },
-            "dataDateFormat": "YYYY-MM-DD",
-            "categoryField": "date",
-            "categoryAxis": {
-                "dateFormats": [{
-                    "period": "DD",
-                    "format": "DD"
-                }, {
-                    "period": "WW",
-                    "format": "MMM DD"
-                }, {
-                    "period": "MM",
-                    "format": "MMM"
-                }, {
-                    "period": "YYYY",
-                    "format": "YYYY"
-                }],
-                "parseDates": true,
-                "autoGridCount": false,
-                "axisColor": "#555555",
-                "gridAlpha": 0.1,
-                "gridColor": "#FFFFFF",
-                "gridCount": 50
-            },
-            "export": {
-                "enabled": false
-            }
-        });
-
         this.$ajaxS(
             '',
             url + this.uri,
@@ -161,9 +58,95 @@ Api.Graficas.Prestamo = {
 
             function (json) {
 
-                if (json.totales) {
+                console.log(json.detalle)
 
-                    console.log(json.totales);
+                AmCharts.makeChart("chartdiv", {
+                    "type": "serial",
+                    "theme": "light",
+                    "legend": {
+                        "equalWidths": true,
+                        "useGraphSettings": true,
+                        "valueAlign": "left",
+                        "valueWidth": 100
+                    },
+                    "dataProvider": json.detalle,
+                    "valueAxes": [],
+                    "graphs": [{
+                        "alphaField": "alpha",
+                        "balloonText": "Total. $[[value]]",
+                        "dashLengthField": "dashLength",
+                        "fillAlphas": 0.7,
+                        "legendPeriodValueText": "general $[[value.sum]]",
+                        "legendValueText": " $[[value]]",
+                        "title": "Total",
+                        "type": "column",
+                        "valueField": "total",
+                        "valueAxis": "totalAxis"
+                    }, {
+                        "balloonText": "Capital. $[[value]]",
+                        "bullet": "round",
+                        "bulletBorderAlpha": 1,
+                        "useLineColorForBulletBorder": true,
+                        "bulletColor": "#FFFFFF",
+                        "bulletSizeField": "townSize",
+                        "dashLengthField": "dashLength",
+                        "descriptionField": "townName",
+                        "legendPeriodValueText": "total $[[value.sum]]",
+                        "legendValueText": "$[[value]]",
+                        "title": "Capital",
+                        "fillAlphas": 0,
+                        "valueField": "capital",
+                        "valueAxis": "capitalAxis"
+                    }, {
+                        "balloonText": "Interes. $[[value]]",
+                        "bullet": "square",
+                        "bulletBorderAlpha": 1,
+                        "bulletBorderThickness": 1,
+                        "dashLengthField": "dashLength",
+                        "legendPeriodValueText": "total $[[value.sum]]",
+                        "legendValueText": "$[[value]]",
+                        "title": "Interes",
+                        "fillAlphas": 0,
+                        "valueField": "interes",
+                        "valueAxis": "interesAxis"
+                    }],
+                    "chartCursor": {
+                        "categoryBalloonDateFormat": "DD",
+                        "cursorAlpha": 0.1,
+                        "cursorColor":"#000000",
+                        "fullWidth":true,
+                        "valueBalloonsEnabled": false,
+                        "zoomable": false
+                    },
+                    "dataDateFormat": "YYYY-MM-DD",
+                    "categoryField": "fecha",
+                    "categoryAxis": {
+                        "dateFormats": [{
+                            "period": "DD",
+                            "format": "DD"
+                        }, {
+                            "period": "WW",
+                            "format": "MMM DD"
+                        }, {
+                            "period": "MM",
+                            "format": "MMM"
+                        }, {
+                            "period": "YYYY",
+                            "format": "YYYY"
+                        }],
+                        "parseDates": true,
+                        "autoGridCount": false,
+                        "axisColor": "#555555",
+                        "gridAlpha": 0.1,
+                        "gridColor": "#FFFFFF",
+                        "gridCount": 50
+                    },
+                    "export": {
+                        "enabled": false
+                    }
+                });
+
+                if (json.totales) {
 
                     var contenedor = '#lista-prestamo-totales ';
 
