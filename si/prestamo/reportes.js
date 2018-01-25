@@ -94,5 +94,30 @@ Api.Reportes = {
         $(contenedor).attr('onsubmit','return Api.Reportes.RecaudoDiario();');
 
         setTimeout(function(){ document.getElementById("form-recaudo-diario").reset(); }, 2000);
+    },
+
+    prestamosTotalRecaudado: function() {
+
+        $('#mensaje').html('');
+
+        var contenedor      = '#form-prestamos-total-recaudado ';
+        var fechaInicial    = $(contenedor + '#fecha-inicio').val();
+        var fechaFinal      = $(contenedor + '#fecha-fin').val();
+
+        if (!fechaInicial || !fechaFinal) {
+            _mensaje('advertencia','mensaje','Debe llenar todo los campos de fecha para continuar');
+            return false;
+        }
+
+        if (_diferenciaEntreFechas(fechaInicial,fechaFinal,'dias') < 0) {
+            _mensaje('advertencia','mensaje','La fecha final no puede ser menor que la fecha inicial');
+            return false;
+        }
+
+        $(contenedor).attr('onsubmit','');
+        $(contenedor).submit();
+        $(contenedor).attr('onsubmit','return Api.Reportes.prestamosTotalRecaudado();');
+
+        setTimeout(function(){ document.getElementById('form-prestamos-total-recaudado').reset(); }, 2000);
     }
 };

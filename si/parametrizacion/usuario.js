@@ -270,13 +270,9 @@ Api.Usuario = {
         $objeto['telefono']                = $(contenedor + '#telefono').val().trim();
         $objeto['celular']                 = $(contenedor + '#celular').val().trim();
         $objeto['id_empresa']              = this.ie;
+        $objeto['clave']                   = $(contenedor + '#clave').val();
+        $objeto['id']                      = this.id;
 
-        if (tipo === 'crear') {
-            $objeto['clave']               = $(contenedor + '#clave').val();
-        }
-        else {
-            $objeto['id']                  = this.id;
-        }
 
 
         $(contenedor + '#mensaje').html('');
