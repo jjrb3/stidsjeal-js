@@ -58,8 +58,6 @@ Api.Graficas.Prestamo = {
 
             function (json) {
 
-                console.log(json.detalle)
-
                 AmCharts.makeChart("chartdiv", {
                     "type": "serial",
                     "theme": "light",
@@ -146,30 +144,28 @@ Api.Graficas.Prestamo = {
                     }
                 });
 
-                if (json.totales) {
+                var contenedor = '#lista-prestamo-totales ';
 
-                    var contenedor = '#lista-prestamo-totales ';
+                $(contenedor + '.precio-interes').text($AHfN(json.totales.intereses));
+                $(contenedor + '.proncentaje-interes').text(String(json.totales.porcentaje_interes) + '%');
+                $(contenedor + '.pb-interes').css('width',String(json.totales.porcentaje_interes) + '%');
 
-                    $(contenedor + '.precio-interes').text($AHfN(json.totales.intereses));
-                    $(contenedor + '.proncentaje-interes').text(String(json.totales.porcentaje_interes) + '%');
-                    $(contenedor + '.pb-interes').css('width',String(json.totales.porcentaje_interes) + '%');
+                $(contenedor + '.precio-capital').text($AHfN(json.totales.abono_capital));
+                $(contenedor + '.proncentaje-capital').text(String(json.totales.porcentaje_capital) + '%');
+                $(contenedor + '.pb-capital').css('width',String(json.totales.porcentaje_capital) + '%');
 
-                    $(contenedor + '.precio-capital').text($AHfN(json.totales.abono_capital));
-                    $(contenedor + '.proncentaje-capital').text(String(json.totales.porcentaje_capital) + '%');
-                    $(contenedor + '.pb-capital').css('width',String(json.totales.porcentaje_capital) + '%');
+                $(contenedor + '.precio-total-pagado').text($AHfN(json.totales.total_pagado));
+                $(contenedor + '.proncentaje-total-pagado').text(String(json.totales.porcentaje_pagado) + '%');
+                $(contenedor + '.pb-total-pagado').css('width',String(json.totales.porcentaje_pagado) + '%');
 
-                    $(contenedor + '.precio-total-pagado').text($AHfN(json.totales.total_pagado));
-                    $(contenedor + '.proncentaje-total-pagado').text(String(json.totales.porcentaje_pagado) + '%');
-                    $(contenedor + '.pb-total-pagado').css('width',String(json.totales.porcentaje_pagado) + '%');
+                $(contenedor + '.precio-por-recaudar').text($AHfN(json.totales.total_recaudar));
+                $(contenedor + '.proncentaje-por-recaudar').text(String(json.totales.porcentaje_recaudar) + '%');
+                $(contenedor + '.pb-por-recaudar').css('width',String(json.totales.porcentaje_recaudar) + '%');
 
-                    $(contenedor + '.precio-por-recaudar').text($AHfN(json.totales.total_recaudar));
-                    $(contenedor + '.proncentaje-por-recaudar').text(String(json.totales.porcentaje_recaudar) + '%');
-                    $(contenedor + '.pb-por-recaudar').css('width',String(json.totales.porcentaje_recaudar) + '%');
+                $(contenedor + '.precio-general').text($AHfN(json.totales.total_general));
+                $(contenedor + '.proncentaje-general').text('100%');
+                $(contenedor + '.pb-general').css('width','100%');
 
-                    $(contenedor + '.precio-general').text($AHfN(json.totales.total_general));
-                    $(contenedor + '.proncentaje-general').text('100%');
-                    $(contenedor + '.pb-general').css('width','100%');
-                }
             }
         );
     }
